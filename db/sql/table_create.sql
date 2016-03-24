@@ -51,7 +51,7 @@ CREATE TABLE company (
 	name	varchar(300),
 	PRIMARY KEY (uid),
 	FOREIGN KEY (uid) REFERENCES user(uid) ON DELETE CASCADE,
-	FOREIGN KEY (lid) REFERENCES location(lid),
+	FOREIGN KEY (lid) REFERENCES location(lid)
 );
 
 CREATE TABLE person_location (
