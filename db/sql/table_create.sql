@@ -3,7 +3,7 @@ DROP DATABASE IF EXISTS linkedin_group_5;
 
 #	Create the database anew
 CREATE DATABASE linkedin_group_5;
-USE DATABASE linkedin_group_5;
+USE linkedin_group_5;
 
 
 CREATE TABLE user (
