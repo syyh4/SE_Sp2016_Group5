@@ -1,3 +1,1 @@
-<?
-echo <p>Testing Something</p>
-?>
+<h1>Tesing</h1>
