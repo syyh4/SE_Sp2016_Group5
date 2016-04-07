@@ -1,7 +1,7 @@
 <h1>
-This website is for Software Engineering Project from Group 5
+This website is for Software Engineering Project from Group 5.\n
 
-Make sure all codes are under SE_Sp2016_Group5/WWW
+Make sure all codes are under SE_Sp2016_Group5/WWW\n
 
 After you push a commit, it will take at most 30 seconds to update.
 </h1>
