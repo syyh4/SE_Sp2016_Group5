@@ -1,2 +1,3 @@
-# SE_Sp2016_Group5
-Software Engineering Spring 2016 Group 5
+# Software Engineering Group 5
+
+Live URL: (http://52.165.38.69)
