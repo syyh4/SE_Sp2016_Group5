@@ -110,7 +110,7 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1 box">
           <div class="col-md-12 text-center">
-            <h1 class="company-name">Group </h1>
+            <h1 class="company-name">Group 5</h1>
             <h2 class="lead location">Software Engineering</h2>
             <p class="company-desc"></p>
           </div>
