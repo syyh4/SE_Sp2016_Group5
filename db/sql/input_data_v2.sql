@@ -1,5 +1,5 @@
 # SELECT THE PROPER DATABASE TO USE
-USE linked_in_group_5;
+USE linkedin_group_5;
 
 
 
