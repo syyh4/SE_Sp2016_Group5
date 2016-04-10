@@ -7,6 +7,6 @@ USE linkedin_group_5;
 LOAD DATA LOCAL INFILE '../input_data/v2/user_input_v2_fixed.csv' INTO TABLE user
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
-LINES TERMINATED BY '\r\n'
+LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (username, email);
