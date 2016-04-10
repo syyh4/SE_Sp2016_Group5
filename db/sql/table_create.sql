@@ -14,8 +14,8 @@ CREATE TABLE user (
 );
 
 CREATE TABLE user_authentication (
-	uid			BIGINT UNSIGNED,
-	password_hast char(40) NOT NULL,
+	uid				uBIGINT UNSIGNED,
+	password_hash 	char(40) NOT NULL,
 	salt			char(40) NOT NULL,
 	PRIMARY KEY (uid),
 	FOREIGN KEY (uid) REFERENCES user(uid) ON DELETE CASCADE
@@ -46,9 +46,10 @@ CREATE TABLE location (
 );
 
 CREATE TABLE company (
-	uid		BIGINT UNSIGNED,
-	lid		BIGINT UNSIGNED,
-	name	varchar(300),
+	uid			BIGINT UNSIGNED,
+	lid			BIGINT UNSIGNED,
+	name		VARCHAR(300),
+	description VARCHAR(500),
 	PRIMARY KEY (uid),
 	FOREIGN KEY (uid) REFERENCES user(uid) ON DELETE CASCADE,
 	FOREIGN KEY (lid) REFERENCES location(lid)
@@ -73,5 +74,43 @@ CREATE TABLE company_employees (
 	PRIMARY KEY (eid, cid),
 	FOREIGN KEY (eid) REFERENCES user(uid),
 	FOREIGN KEY (cid) REFERENCES user(uid)
+);
+
+CREATE TABLE skill (
+	skill_id		SERIAL,
+	name			VARCHAR(100),
+	skill_type		VARCHAR(100),
+	description		VARCHAR(300),	
+	PRIMARY KEY (skill_id)
+);
+
+CREATE TABLE position (
+	posid			SERIAL,
+	name			VARCHAR(100),
+	description		VARCHAR(100),
+	thumb_image_url	VARCHAR(100),
+	PRIMARY KEY (posid)
+);
+
+CREATE TABLE job_offer (
+	offer_id		SERIAL,
+	posid			BIGINT UNSIGNED,
+	date_posted		TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	cid				BIGINT UNSIGNED,
+	salary_low		REAL NOT NULL DEFAULT 0.0,
+	salary_high		REAL NOT NULL DEFAULT 0.0,
+	salary_median	REAL NOT NULL DEFAULT 0.0,
+	can_work_remote	BOOLEAN NOT NULL DEFAULT false,
+	active			BOOLEAN NOT NULL DEFAULT true,
+	PRIMARY KEY (offer_id),
+	FOREIGN KEY (posid) REFERENCES position(posid),
+	FOREIGN KEY (cid) REFERENCES company(uid)	
+);
+
+CREATE TABLE job_offer_acceptance (
+	offer_id		BIGINT UNSIGNED,
+	user_id			BIGINT UNSIGNED,
+	date_accepted	DATE NOT NULL DEFAULT CURRENT_DATE,
+	
 );
 
