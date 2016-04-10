@@ -14,7 +14,7 @@ CREATE TABLE user (
 );
 
 CREATE TABLE user_authentication (
-	uid				uBIGINT UNSIGNED,
+	uid				BIGINT UNSIGNED,
 	password_hash 	char(40) NOT NULL,
 	salt			char(40) NOT NULL,
 	PRIMARY KEY (uid),
