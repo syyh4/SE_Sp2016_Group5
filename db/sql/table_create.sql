@@ -1,10 +1,3 @@
-#	Drop the database so that table creation can start anew
-DROP DATABASE IF EXISTS linkedin_group_5;
-
-#	Create the database anew
-CREATE DATABASE linkedin_group_5;
-USE linkedin_group_5;
-
 
 CREATE TABLE user (
 	uid			SERIAL,
@@ -84,7 +77,7 @@ CREATE TABLE skill (
 	PRIMARY KEY (skill_id)
 );
 
-CREATE TABLE position (
+CREATE TABLE pos (
 	posid			SERIAL,
 	name			VARCHAR(100),
 	description		VARCHAR(100),
@@ -94,17 +87,17 @@ CREATE TABLE position (
 
 CREATE TABLE job_offer (
 	offer_id		SERIAL,
-	posid			BIGINT UNSIGNED,
+	position_id			BIGINT UNSIGNED,
 	date_posted		TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	cid				BIGINT UNSIGNED,
+	company_id				BIGINT UNSIGNED,
 	salary_low		REAL NOT NULL DEFAULT 0.0,
 	salary_high		REAL NOT NULL DEFAULT 0.0,
 	salary_median	REAL NOT NULL DEFAULT 0.0,
-	can_work_remote	BOOLEAN NOT NULL DEFAULT false,
-	active			BOOLEAN NOT NULL DEFAULT true,
+	can_work_remote	BOOLEAN NOT NULL,
+	active			BOOLEAN NOT NULL,
 	PRIMARY KEY (offer_id),
-	FOREIGN KEY (posid) REFERENCES position(posid),
-	FOREIGN KEY (cid) REFERENCES user(uid)	
+  FOREIGN KEY (position_id) REFERENCES pos(posid),
+  FOREIGN KEY (company_id) REFERENCES user(uid)	
 );
 
 CREATE TABLE job_offer_acceptance (
