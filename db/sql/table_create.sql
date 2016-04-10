@@ -104,7 +104,7 @@ CREATE TABLE job_offer (
 	active			BOOLEAN NOT NULL DEFAULT true,
 	PRIMARY KEY (offer_id),
 	FOREIGN KEY (posid) REFERENCES position(posid),
-	FOREIGN KEY (cid) REFERENCES company(uid)	
+	FOREIGN KEY (cid) REFERENCES user(uid)	
 );
 
 CREATE TABLE job_offer_acceptance (
