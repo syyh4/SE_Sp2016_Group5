@@ -1,3 +1,10 @@
+#	Drop the database so that table creation can start anew
+DROP DATABASE IF EXISTS linkedin_group_5;
+
+#	Create the database anew
+CREATE DATABASE linkedin_group_5;
+USE linkedin_group_5;
+
 
 CREATE TABLE user (
 	uid			SERIAL,
@@ -107,4 +114,3 @@ CREATE TABLE job_offer_acceptance (
 	PRIMARY KEY (offer_id, user_id, date_accepted)
 	
 );
-
