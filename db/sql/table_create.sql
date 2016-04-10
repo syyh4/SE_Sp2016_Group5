@@ -111,7 +111,7 @@ CREATE TABLE job_offer_acceptance (
 	offer_id		BIGINT UNSIGNED,
 	user_id			BIGINT UNSIGNED,
 	date_accepted	TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (offer_id, user_id, date_accepted);
+	PRIMARY KEY (offer_id, user_id, date_accepted)
 	
 );
 
