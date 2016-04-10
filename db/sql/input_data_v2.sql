@@ -9,4 +9,4 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '/r/n'
 IGNORE 1 LINES
-(uid, username, email);
+(username, email);
