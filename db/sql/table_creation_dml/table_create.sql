@@ -104,8 +104,8 @@ CREATE TABLE job_offer (
 	can_work_remote	BOOLEAN NOT NULL,
 	active			BOOLEAN NOT NULL,
 	PRIMARY KEY (offer_id),
-  FOREIGN KEY (position_id) REFERENCES pos(posid),
-  FOREIGN KEY (company_id) REFERENCES user(uid)	
+	FOREIGN KEY (position_id) REFERENCES pos(posid),
+	FOREIGN KEY (company_id) REFERENCES user(uid)	
 );
 
 CREATE TABLE job_offer_acceptance (
@@ -114,12 +114,4 @@ CREATE TABLE job_offer_acceptance (
 	date_accepted	TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (offer_id, user_id, date_accepted)
 	
-);
-
-CREATE TABLE company_employee (
-	cid				BIGINT UNSIGNED,
-	emp_id			BIGINT UNSIGNED,
-	PRIMARY KEY (cid, emp_id),
-	FOREIGN KEY (cid) REFERENCES user(uid),
-	FOREIGN KEY (emp_id) REFERENCES user(uid)
 );
