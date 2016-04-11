@@ -23,6 +23,7 @@ CREATE TABLE user_authentication (
 
 CREATE TABLE person (
 	uid			BIGINT UNSIGNED,
+	gender		varchar(40),
 	firstname	varchar(200),
 	middlename	varchar(200),
 	lastname	varchar(200),
@@ -113,4 +114,12 @@ CREATE TABLE job_offer_acceptance (
 	date_accepted	TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (offer_id, user_id, date_accepted)
 	
+);
+
+CREATE TABLE company_employee (
+	cid				BIGINT UNSIGNED,
+	emp_id			BIGINT UNSIGNED,
+	PRIMARY KEY (cid, emp_id),
+	FOREIGN KEY (cid) REFERENCES user(uid),
+	FOREIGN KEY (emp_id) REFERENCES user(uid)
 );
