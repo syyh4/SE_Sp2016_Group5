@@ -1,3 +1,13 @@
+/*
+	File Name:			table_create.sql
+	
+	Last Major Update:	4/11/2016 by Anthony Forsythe
+	
+	Todo List:
+		-	Add remaining table descriptions	
+*/
+
+
 #	Drop the database so that table creation can start anew
 DROP DATABASE IF EXISTS linkedin_group_5;
 
@@ -56,6 +66,25 @@ CREATE TABLE company (
 	FOREIGN KEY (lid) REFERENCES location(lid)
 );
 
+
+
+#	
+#	Table Name
+#		person_location
+#
+#	Columns 
+#		-	lid		(This references a location's lid from the location table)
+#		-	pid		(This references a person's uid from the user table)
+#		-	from_date	(This is the date the person began living at this location)
+#		-	to_date		(This is the date the person stopped living at this location)
+#		-	curr_res	(This is a boolean value indicating whether this is the persons current location or not)
+#	
+#	Primary Key
+#		-	lid & pid & from_date (This primary key is a combination of the lid, pid, and from_date)
+#
+#	Purpose
+#		This table lists all the locations (including the current location) that a person resides at
+#
 CREATE TABLE person_location (
 	lid				BIGINT UNSIGNED,
 	pid				BIGINT UNSIGNED,
@@ -67,9 +96,27 @@ CREATE TABLE person_location (
 	FOREIGN KEY (pid) REFERENCES user(uid)
 );
 
+
+
+#
+#	Table Name
+#		company_employees
+#
+#	Columns
+#		-	posid			(This is the autoincrementing primary key for the table)
+#		-	name			(This is the name of the position)
+#		-	description		(This is the description of the position)
+#		-	thumb_image_url	(This is the url of the thumbnail image for this position)
+#		
+#	Primary Key
+#		-	posid
+#
+#	Purpose
+#		This table lists all of the empoyees that work at a specific company
+#
 CREATE TABLE company_employees (
-	eid				BIGINT UNSIGNED,	# The ID of the employee
-	cid				BIGINT UNSIGNED,	# The ID of the company
+	eid				BIGINT UNSIGNED,
+	cid				BIGINT UNSIGNED,
 	start_date		DATE,
 	end_date		DATE,
 	PRIMARY KEY (eid, cid),
