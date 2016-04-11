@@ -3,6 +3,8 @@
 	
 	$some_test_data_values = create_array_of_rand_ints( 7 );
 	$some_test_data_labels = create_array_of_labels();
+	$bar_fill_color = get_bar_color_with_r_b_g_a( 40.0, 50.0, 60.0, 0.5);
+	$highlight_color = get_bar_color_with_r_b_g_a( 10.0, 10.0, 10.0, 0.7);
 	
 	
 	
@@ -10,7 +12,21 @@
 	
 	
 	
-	
+	function get_bar_fill_color()
+	{
+		$red_value = 56.0;
+		$blue_value = 55.0;
+		$green_value = 155.0;
+		$alpha_value = 0.7;
+		
+		return '"'.get_bar_color_with_r_b_g_a( $red_value, $blue_value, $green_value, $alpha_value).'"';
+	}
+	function get_bar_color_with_r_b_g_a( $red, $blue, $green, $alpha)
+	{
+		$quote_mark = '"';
+		
+		return $quote_mark."rgba(".$red.",".$blue.",".$green.",".$alpha.")".$quote_mark;
+	}
 	
 	function create_array_of_labels()
 	{
@@ -53,9 +69,9 @@
 		labels : <?php echo json_encode($some_test_data_labels); ?>,
 		datasets : [
 			{
-				fillColor : "rgba(220,220,220,0.5)",
+				fillColor : <?php echo $bar_fill_color; ?>,
 				strokeColor : "rgba(220,220,220,0.8)",
-				highlightFill: "rgba(220,220,220,0.75)",
+				highlightFill: <?php echo $highlight_color ?>,
 				highlightStroke: "rgba(220,220,220,1)",
 				data : <?php echo json_encode($some_test_data_values); ?>
 			}		]

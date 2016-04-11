@@ -95,9 +95,10 @@ CREATE TABLE pos (
 
 CREATE TABLE job_offer (
 	offer_id		SERIAL,
-	position_id			BIGINT UNSIGNED,
+	position_id		BIGINT UNSIGNED,
 	date_posted		TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	company_id				BIGINT UNSIGNED,
+	description		VARCHAR(300),
+	company_id		BIGINT UNSIGNED,
 	salary_low		REAL NOT NULL DEFAULT 0.0,
 	salary_high		REAL NOT NULL DEFAULT 0.0,
 	salary_median	REAL NOT NULL DEFAULT 0.0,
