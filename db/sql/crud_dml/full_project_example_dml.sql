@@ -153,6 +153,30 @@ ORDER BY JOF.date_posted DESC limit 5;
 
 
 
+#	
+#	Query Title
+#		Get Skills Required By Job Offer
+#
+#	Values Passed
+#		$1	=	The offer_id of the job offer
+#
+#	Values Returned
+#		-	A list of of records each containing the following information:
+#			-	The job offer's offer_id
+#			-	The skill's skill_id
+#			-	The name of the skill
+#			-	The aptitude level of the skill required by the job offer
+#
+SELECT rs.offer_id AS job_offer_id, 
+       rs.skill_id AS skill_id, 
+       s.NAME, 
+       rs.aptitude_level 
+FROM   job_offer_required_skills rs, 
+       skill s 
+WHERE  rs.offer_id = $1 
+ORDER  BY rs.aptitude_level DESC; 
+
+
 /*
 	ORGANIZATION PAGE
 */
@@ -228,6 +252,4 @@ FROM   job_offer JO,
        pos AS P 
 WHERE  JO.position_id = P.posid 
        AND JO.cid = $1; 
-       
-       
 
