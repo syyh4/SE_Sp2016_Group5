@@ -321,6 +321,7 @@ CREATE TABLE user_job_offer_favorites (
 
 
 
+#
 #	Table Name
 #		user_job_offer_suggestion
 #
