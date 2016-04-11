@@ -125,6 +125,9 @@ CREATE TABLE job_offer_acceptance (
 #		-	company_id		(This references a company's UID from the user table)
 #		-	user_id			(This references a person's UID from the user table)
 #
+#	Primary Key
+#		-	company_id & user_id	(The primary key is a combination of the uid of the company and the uid of the user)
+#
 #	Purpose
 #		This table keeps track of a user's subscription to a company
 #	
@@ -148,6 +151,9 @@ CREATE TABLE company_feed_subscription (
 #		-	feed_item_type	(This is the type of the feed item. Possible values are: 'n/a' , 'job_offer' , 'status_update')
 #		-	feed_body		(This is the main body of the feed item)
 #	
+#	Primary Key
+#		-	feed_item_id
+#
 #	Purpose
 #		This table contains feed items (made either by the user manually posting a status update or automatically by some activity of the user)
 #
@@ -158,6 +164,29 @@ CREATE TABLE user_feed (
 	feed_type			VARCHAR(100) NOT NULL DEFAULT 'n/a',
 	feed_body			VARCHAR(500),
 	PRIMARY KEY (feed_item_id),
-	FOREIGN KEY (poster_id) REFERENCES user(uid),
-	
-)
+	FOREIGN KEY (poster_id) REFERENCES user(uid),	
+);
+
+
+#
+#	Table Name
+#		user_job_offer_favorites
+#	
+#	Columns
+#		-	user_id		(References a person's uid from the user table)
+#		-	offer_id	(References a job offer's offer_id from the job_offer table)
+#	
+#	Primary Key
+#		-	user_id & offer_id	(The primary key is a combination of the user_id and offer_id)
+#
+#	Purpose
+#		This table keeps track of what job offer a user has favorited
+#
+CREATE TABLE user_job_offer_favorites (
+	user_id			BIGINT UNSIGNED,
+	offer_id		BIGINT UNSIGNED,
+	date_favorited	TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (user_id, offer_id),
+	FOREIGN KEY (user_id) REFERENCES user(uid),
+	FOREIGN KEY (offer_id) REFERENCES job_offer(offer_id)
+);
