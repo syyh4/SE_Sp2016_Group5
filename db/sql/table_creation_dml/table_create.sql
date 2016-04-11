@@ -93,6 +93,30 @@ CREATE TABLE pos (
 	PRIMARY KEY (posid)
 );
 
+
+
+#
+#	Table Name
+#		job_offer
+#
+#	Columns
+#		-	offer_id		(The autoincrementing primary key for this table)
+#		-	position_id		(This references a position's posid from the pos [position] table)
+#		-	date_posted		(This is the date the job offer was posted. It defaults to the date the record was inserted into this table)
+#		-	description		(This is a description of the job offer)
+#		-	company_id		(This references a company's uid from the user table)
+#		-	salary_low		(This is the low end value for the offer's salary)
+#		-	salary_high		(This is the high end value for the offer's salary)
+#		-	salary_median	(This is the median value for the salary)
+#		-	can_work_remote	(This is a boolean value that indicates whether the applicant can work from home or not)
+#		-	active			(This is a boolean value that indicates whether the job offer is still active or not)
+#
+#	Primary Key
+#		-	offer_id
+#	
+#	Purpose
+#		This table keeps track of the job offers that companies post
+#
 CREATE TABLE job_offer (
 	offer_id		SERIAL,
 	position_id		BIGINT UNSIGNED,
@@ -108,6 +132,7 @@ CREATE TABLE job_offer (
 	FOREIGN KEY (position_id) REFERENCES pos(posid),
 	FOREIGN KEY (company_id) REFERENCES user(uid)	
 );
+
 
 
 #
@@ -134,6 +159,8 @@ CREATE TABLE job_offer_acceptance (
 	FOREIGN KEY (user_id) REFERENCES user(uid)
 );
 
+
+
 #
 #	Table Name
 #		company_feed_subscription
@@ -155,6 +182,7 @@ CREATE TABLE company_feed_subscription (
 	FOREIGN KEY (company_id) REFERENCES user(uid),
 	FOREIGN KEY (user_id) REFERENCES user(uid)
 );
+
 
 
 #
@@ -183,6 +211,7 @@ CREATE TABLE user_feed (
 	PRIMARY KEY (feed_item_id),
 	FOREIGN KEY (poster_id) REFERENCES user(uid),	
 );
+
 
 
 #
