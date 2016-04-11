@@ -69,6 +69,90 @@ WHERE  UF.poster_id IN (SELECT CFS.company_id
                         WHERE  CFS.user_id = $1); 
 
 
+
+
+#
+#	Query Title
+#		Get Job Offer Suggestions for User
+#
+#	Values Passed
+#		$1	=	The UID of the user
+#
+#	Values Returned
+#		-	A list of job suggestions each containing the following information
+#			-	The date the suggestion was calculated
+#			-	The position's 'posid' value
+#			-	The name of the position
+#			-	A description of the position
+#			-	If the offer allows the applicant to work remotely
+#			-	The name of the company offering the position
+#
+#	Purpose
+#		This query will return all the information needed to display job offer suggestions for the user
+#		
+SELECT   P.posid           AS position_id, 
+         P.NAME            AS position_name, 
+         P.description     AS position_description, 
+         P.thumb_image_url AS position_image_url, 
+         C.uid             AS company_id, 
+         C.NAME            AS company_name, 
+         JO.offer_id       AS job_offer_id, 
+         JO.salalary_low   AS offer_salary_low, 
+         JO.salary_high    AS offer_salary_high, 
+         OS.date_posted    AS suggestion_date, 
+FROM     user_job_offer_suggestion OS 
+JOIN     job_offer JO 
+ON       OS.offer_id = JO.offer_id 
+JOIN     company C 
+ON       C.uid = JO.cid 
+JOIN     position P 
+ON       P.posid = JO.posid 
+WHERE    OS.uid = $1 
+ORDER BY OS.date_posted DESC limit 5;
+
+
+
+#
+#	Query Title
+#		Get Watched Job Offers for User
+#
+#	Values Passed
+#		$1	=	The UID of the user
+#
+#	Values Returned
+#		-	A list of job offers each containing the following information
+#			-	The date the suggestion was calculated
+#			-	The position's 'posid' value
+#			-	The name of the position
+#			-	A description of the position
+#			-	If the offer allows the applicant to work remotely
+#			-	The name of the company offering the position
+#
+#	Purpose
+#		This query will return all the information needed to display the watched job offers for the user
+#		
+SELECT   P.posid			AS position_id, 
+         P.NAME				AS position_name, 
+         P.description		AS position_description, 
+         P.thumb_image_url	AS position_image_url, 
+         C.uid				AS company_id, 
+         C.NAME				AS company_name, 
+         JO.offer_id		AS job_offer_id, 
+         JO.salalary_low	AS offer_salary_low, 
+         JO.salary_high    	AS offer_salary_high, 
+		 JOF.date_favorited	AS suggestion_date, 
+FROM     user_job_offer_favorites JOF
+JOIN     job_offer JO 
+ON       JOF.offer_id = JO.offer_id 
+JOIN     company C 
+ON       C.uid = JO.cid 
+JOIN     position P 
+ON       P.posid = JO.posid 
+WHERE    JOF.uid = $1
+ORDER BY JOF.date_posted DESC limit 5;
+
+
+
 /*
 	ORGANIZATION PAGE
 */
