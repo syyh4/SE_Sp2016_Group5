@@ -40,6 +40,33 @@ WHERE  uid = (SELECT uid
 */
 
 
+#
+#	Query Title
+#		Get Activity Feed Items for User
+#
+#	Values Passed
+#		$1	=	The users UID value (obtained from a session variable)
+#	
+#	Values Returned
+#		-	A list of records each containing the following information:
+#			-	Feed Item ID
+#			-	Feed Poster UID
+#			-	Date the feed item was posted
+#			-	The type of feed item
+#			-	The body of the feed item
+#
+#	Purpose
+#		To pull all of the feed items from the organizations that the user has subscribed to
+#
+SELECT UF.feed_item_id AS feed_item_id, 
+       UF.poster_id    AS poster_id, 
+       UF.date_posted  AS date_posted, 
+       UF.feed_type    AS feed_type, 
+       UF.feed_body    AS feed_body 
+FROM   user_feed UF 
+WHERE  UF.poster_id IN (SELECT CFS.company_id 
+                        FROM   company_feed_subscription CFS 
+                        WHERE  CFS.user_id = $1); 
 
 
 /*
@@ -54,7 +81,7 @@ WHERE  uid = (SELECT uid
 #		$1	= 	The organizations UID value (obtained from a parameter in the URL)
 #
 #	Values Returned
-#		$1	=	A single record containing all of the basic information for this particular organization
+#		-	A single record containing all of the basic information for this particular organization
 #
 #	Purpose
 #		Once the user lands on a page for some organization this query will pull all of the relevant information
@@ -117,3 +144,6 @@ FROM   job_offer JO,
        pos AS P 
 WHERE  JO.position_id = P.posid 
        AND JO.cid = $1; 
+       
+       
+
