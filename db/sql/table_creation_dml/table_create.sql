@@ -77,6 +77,24 @@ CREATE TABLE company_employees (
 	FOREIGN KEY (cid) REFERENCES user(uid)
 );
 
+
+
+#
+#	Table Name
+#		skill
+#
+#	Columns
+#		-	skill_id		(This is the autoincrementing primary key for the table)
+#		-	name			(This is the name of the skill)
+#		-	skill_type		(This is the type of skill... e.g 'Software Development' , 'Data Analysis', etc.)
+#		-	description		(This is the description of the skill)
+#		
+#	Primary Key
+#		-	skill_id
+#
+#	Purpose
+#		This table contains all of the possible workplace skills 
+#	
 CREATE TABLE skill (
 	skill_id		SERIAL,
 	name			VARCHAR(100),
@@ -85,6 +103,23 @@ CREATE TABLE skill (
 	PRIMARY KEY (skill_id)
 );
 
+
+
+#
+#	Table Name
+#		pos		(This table was named 'pos' instead of 'position' because 'position' is some function or whatever and kept throwing errors)
+#
+#	Columns
+#		-	posid			(This is the autoincrementing primary key for the table)
+#		-	name			(This is the name of the position)
+#		-	description		(This is the description of the position)
+#		-	thumb_image_url	(This is the url of the thumbnail image for this position)
+#		
+#	Primary Key
+#		-	posid
+#
+#	Purpose
+#		
 CREATE TABLE pos (
 	posid			SERIAL,
 	name			VARCHAR(100),
