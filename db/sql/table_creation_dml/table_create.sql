@@ -116,3 +116,48 @@ CREATE TABLE job_offer_acceptance (
 	PRIMARY KEY (offer_id, user_id, date_accepted)
 	
 );
+
+#
+#	Table Name
+#		company_feed_subscription
+#
+#	Columns
+#		-	company_id		(This references a company's UID from the user table)
+#		-	user_id			(This references a person's UID from the user table)
+#
+#	Purpose
+#		This table keeps track of a user's subscription to a company
+#	
+CREATE TABLE company_feed_subscription (
+	company_id			BIGINT UNSIGNED,
+	user_id				BIGINT UNSIGNED,
+	PRIMARY KEY (company_id, user_id),
+	FOREIGN KEY (company_id) REFERENCES user(uid),
+	FOREIGN KEY (user_id) REFERENCES user(uid)
+);
+
+
+#
+#	Table Name
+#		user_feed
+#	
+#	Columns
+#		-	feed_item_id	(This is the autoincrementing primary key for the user_feed table)
+#		-	poster_id		(This is the user that posted this feed item. It references the user's UID from the user table)
+#		-	date_posted		(This is the date the feed item was posted. It defaults to the date the record was inserted)
+#		-	feed_item_type	(This is the type of the feed item. Possible values are: 'n/a' , 'job_offer' , 'status_update')
+#		-	feed_body		(This is the main body of the feed item)
+#	
+#	Purpose
+#		This table contains feed items (made either by the user manually posting a status update or automatically by some activity of the user)
+#
+CREATE TABLE user_feed (
+	feed_item_id		SERIAL,
+	poster_id			BIGINT UNSIGNED,
+	date_posted			TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	feed_type			VARCHAR(100) NOT NULL DEFAULT 'n/a',
+	feed_body			VARCHAR(500),
+	PRIMARY KEY (feed_item_id),
+	FOREIGN KEY (poster_id) REFERENCES user(uid),
+	
+)
