@@ -109,12 +109,29 @@ CREATE TABLE job_offer (
 	FOREIGN KEY (company_id) REFERENCES user(uid)	
 );
 
+
+#
+#	Table Name
+#		job_offer_acceptance
+#
+#	Columns
+#		-	offer_id		(This references the job offer's offer_id from the job_offer table)
+#		-	user_id			(This references the user's uid from the user table)
+#		-	date_accepted	(This is the date the job offer was accepted by the user)
+#
+#	Primary Key
+#		-	offer_id & user_id	(The primary key is a combination of the offer_id and the user_id)
+#
+#	Purpose
+#		This table keeps track of job offers that have been accepted by users
+#
 CREATE TABLE job_offer_acceptance (
 	offer_id		BIGINT UNSIGNED,
 	user_id			BIGINT UNSIGNED,
 	date_accepted	TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (offer_id, user_id, date_accepted)
-	
+	PRIMARY KEY (offer_id, user_id, date_accepted),
+	FOREIGN KEY (offer_id) REFERENCES job_offer(offer_id),
+	FOREIGN KEY (user_id) REFERENCES user(uid)
 );
 
 #
