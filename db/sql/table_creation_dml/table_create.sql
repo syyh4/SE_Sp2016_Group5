@@ -318,3 +318,29 @@ CREATE TABLE user_job_offer_favorites (
 	FOREIGN KEY (user_id) REFERENCES user(uid),
 	FOREIGN KEY (offer_id) REFERENCES job_offer(offer_id)
 );
+
+
+
+#	Table Name
+#		user_job_offer_suggestion
+#
+#	Columns
+#		-	user_id		(References a person's uid from the user table)
+#		-	offer_id	(References a job offer's offer_id from the job_offer table)
+#		-	date_posted	(This is the date this suggestion was added to the table)
+#	
+#	Primary Key
+#		-	user_id & offer_id & date_posted (The primary key is a combination of these three attributes)
+#
+#	Purpose
+#		This table will hold all of the job offer suggestions that are calculated by a program that will run
+#		every night or so
+#
+CREATE TABLE user_job_offer_suggestion (
+	user_id			BIGINT UNSIGNED,
+	offer_id		BIGINT UNSIGNED,
+	date_posted		TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (user_id, offer_id, date_posted),
+	FOREIGN KEY (user_id) REFERENCES user(uid),
+	FOREIGN KEY (offer_id) REFERENCES job_offer(offer_id)
+);
