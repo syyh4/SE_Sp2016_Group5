@@ -345,3 +345,31 @@ CREATE TABLE user_job_offer_suggestion (
 	FOREIGN KEY (user_id) REFERENCES user(uid),
 	FOREIGN KEY (offer_id) REFERENCES job_offer(offer_id)
 );
+
+
+
+#
+#	Table Name
+#		job_offer_required_skills
+#
+#	Columns
+#		-	offer_id		(This references a job offer's offer_id from the job_offer table)
+#		-	skill_id		(This references the skill's skill_id from the skill table. It is the skill that is required for this job offer)
+#		-	aptitude_level	(This is the aptitude level of the skill required for this job. It can be a value between 1 and 5)
+#	
+#	Primary Key
+#		-	offer_id & skill_id	(The primary key is a combination of the offer_id and the skill_id)
+#
+#	Purpose
+#		This table contains the skills that are required for a particular job offer
+#
+CREATE TABLE job_offer_required_skills (
+	offer_id		BIGINT UNSIGNED,
+	skill_id		BIGINT UNSIGNED,
+	aptitude_level	SMALLINT UNSIGNED NOT NULL DEFAULT 1,
+	PRIMARY KEY (offer_id, skill_id),
+	FOREIGN KEY (offer_id) REFERENCES job_offer(offer_id),
+	FOREIGN KEY (skill_id) REFERENCES skill(skill_id),
+	CONSTRAINT chk_aptitude_level CHECK (aptitude_level > 0 AND aptitude_level <= 5)
+);
+
