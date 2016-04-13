@@ -72,7 +72,7 @@
 			
 			$stmt->execute();
 			
-			$result = $stmt->fetch_all();
+			$result = $stmt->fetchAll();
 			
 			print_r($result);	
 		}
