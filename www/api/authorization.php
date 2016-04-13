@@ -40,7 +40,7 @@
 		{
 			
 			//	Execute the placeholder query
-			execute_placeholder_query();
+			execute_placeholder_query( $db_conn );
 			
 			//	The authorization endpoint is only set up to handle GET requests. All other types should throw an error.
 			handle_request_error();
@@ -61,7 +61,7 @@
 	//
 	//	Random Utility Functions
 	//
-	function execute_placeholder_query() {
+	function execute_placeholder_query( $db_conn ) {
 		
 		//	First prepare the SQL query
 		$query_string = "SELECT * FROM user";
