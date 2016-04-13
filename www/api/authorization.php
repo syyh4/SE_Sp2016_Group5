@@ -58,6 +58,39 @@
 	
 	
 	
+	function print_result_values( $result ) {
+		
+		$num_fields = $result->field_count;
+		
+		while ($row = $result->fetch_row()) {
+			
+			echo "\n";
+			for ($i = 0; $i < $num_fields; $i++) {
+				
+				echo $row[$i] . "  ";
+			}	
+		}
+		
+		echo "\n";
+	}
+	
+	function print_result_headers( $result ) {
+		
+		echo "\n";
+		
+		$num_fields = $result->field_count;
+		
+		$fields = $result->fetch_fields();
+		
+		for ($i = 0; $i < $num_fields; $i++) {
+			echo $fields[$i] . "  ";
+		}	
+	}
+	function print_result_all( $result ) {
+		
+		print_result_headers( $result );
+		print_result_values( $result );
+	}
 	//
 	//	Random Utility Functions
 	//
@@ -69,9 +102,9 @@
 		if ($result = $db_conn->query($query_string)) {
 		
 			
-			$num_fields = $result->field_count;
+			print_result_all( $result );
 			
-			echo "The number of fields is " . $num_fields;
+			
 		}
 		else {
 			echo "Couldn't prepare the statement";
