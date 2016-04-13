@@ -31,15 +31,6 @@ WHERE  uid = (SELECT uid
 	HOME PAGE
 */
 
-/*
-	There should be queries here to pull feed information
-
-		-	Fetch activity feed for user
-		-	Fetch suggested job offers
-		-	Fetch watched job offers
-*/
-
-
 #
 #	Query Title
 #		Get Activity Feed Items for User
@@ -67,9 +58,6 @@ FROM   user_feed UF
 WHERE  UF.poster_id IN (SELECT CFS.company_id 
                         FROM   company_feed_subscription CFS 
                         WHERE  CFS.user_id = $1); 
-
-
-
 
 #
 #	Query Title
