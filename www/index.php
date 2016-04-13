@@ -19,9 +19,9 @@
       font-family: Helvetica, Arial, sans-serif;
     }
     .box {
-      margin-top: 50px;
-      padding-top: 80px;
-      padding-bottom: 80px;
+      margin-top: 10px;
+      padding-top: 40px;
+      padding-bottom: 40px;
       background-color: white;
       -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
       -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
@@ -37,34 +37,16 @@
     .company-desc {
       text-align: left;
     }
-    .employeesheader {
-      margin-top: 0px;
-      margin-bottom: 30px;
-    }
-    .positionsheader {
-      margin-top: 0px;
-      margin-bottom: 30px;
-    }
-    .employeelist {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-    .positionlist {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-    .salariesheader {
-      margin-top: 0px;
-      margin-bottom: 30px;
-    }
-    .footer {
-      width: 100%;
-      height: 50px;
-      background-color: #222222;
-      margin-top: 30px;
-    }
     .footer p {
       margin: 15px 0px;
+    }
+    .form-group label {
+      color: #66696A;
+      font-weight: 500;
+      margin-bottom: 0px;
+    }
+    .create-button {
+      margin-top: 30px;
     }
     
     </style>
@@ -98,22 +80,43 @@
             <li><a href="#">Search</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Logout</a></li>
+            <li><a href="#">Login</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
-    <!-- ABOUT COMPANY
+    <!-- REGISTER
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="container">
       <div class="row">
-        <div class="col-md-10 col-md-offset-1 box">
-          <div class="col-md-12 text-center">
-            <h1 class="company-name">Group 5</h1>
-            <h2 class="lead location">Software Engineering</h2>
-            <p class="company-desc"></p>
+        <div class="col-md-6 text-center col-md-offset-3 box">
+          <h1 class="company-name">LinkedIn</h1>
+          <h2 class="lead location">Create An Account</h2>
+          
+          <div class="col-md-10 col-md-offset-1 text-left">
+            <form>
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" class="form-control" id="fname" name="fname">
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" class="form-control" id="lname" name="lname">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email">
+              </div>
+              <div class="form-group">
+                <label for="password">Password (6 or more characters)</label>
+                <input type="password" class="form-control" id="password" name="password">
+              </div>
+              
+              <button type="submit" class="btn btn-primary btn-block btn-lg create-button">Create Account</button>
+            </form>
           </div>
+
         </div>
       </div>
     </div>
