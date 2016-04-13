@@ -66,15 +66,12 @@
 		//	First prepare the SQL query
 		$query_string = "SELECT * FROM user";
 		
-		if ($stmt = $db_conn->prepare($query_string)) {
+		if ($result = $db_conn->query($query_string)) {
 		
-			//	If the statement could be prepare then go ahead and execute it
 			
-			$stmt->execute();
+			$num_fields = $result->field_count;
 			
-			$result = $stmt->fetchAll();
-			
-			print_r($result);	
+			echo "The number of fields is " . $num_fields;
 		}
 		else {
 			echo "Couldn't prepare the statement";
