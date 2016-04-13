@@ -2,11 +2,11 @@
 	
 	//	Include reference to sensitive databse information
 	//		Note:	This file should NOT be included in the public GitHub repository, it should only exist on the server.
-	#	include("../../")
+	include("../../../db_security/security.php");
 	
 	
 	//	First connect to the database using values from the included file
-	$db_conn = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+	$db_conn = new mysqli(constant("DB_HOST"), constant("DB_USERNAME"), constant("DB_PASSWORD"), constant("DB_DATABASE"));
 	
 	if ($db_conn->error_code) {
 		
@@ -33,12 +33,15 @@
 		case 'GET':
 		{
 			//	Check the authorization_type (either 'initial' or 'refresh')
-			
 		}
 		break;
 		
 		default:
 		{
+			
+			//	Execute the placeholder query
+			execute_placeholder_query();
+			
 			//	The authorization endpoint is only set up to handle GET requests. All other types should throw an error.
 			handle_request_error();
 		}
@@ -51,6 +54,35 @@
 	/*
 		UTILITY FUNCTIONS
 	*/
+	
+	
+	
+	
+	//
+	//	Random Utility Functions
+	//
+	function execute_placeholder_query() {
+		
+		//	First prepare the SQL query
+		$query_string = "SELECT * FROM user";
+		
+		if ($stmt = $db_conn->prepare($query_string)) {
+		
+			//	If the statement could be prepare then go ahead and execute it
+			
+			$stmt->execute();
+			
+			$result = $stmt->fetch_all();
+			
+			print_r($result);	
+		}
+		else {
+			echo "Couldn't prepare the statement";
+		}
+	}	
+	//
+	//	Error Handling
+	//
 	function handle_request_error() {
 		
 		
