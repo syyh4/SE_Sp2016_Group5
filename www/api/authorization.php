@@ -83,7 +83,7 @@
 		$fields = $result->fetch_fields();
 		
 		for ($i = 0; $i < $num_fields; $i++) {
-			echo $fields[$i]['name'] . "  ";
+			echo $fields[$i]->name . "  ";
 		}	
 	}
 	function print_result_all( $result ) {
