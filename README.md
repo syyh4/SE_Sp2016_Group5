@@ -17,6 +17,10 @@ All information will be kept in a database.
 Ethan Hannah, Anthony Forsythe, Wil Thuston, Luke Anderson, Shizeng Yao
 
 ### Website
-Live URL: http://52.165.38.69
+Index/Register: http://52.165.38.69
+
+Login: http://52.165.38.69/login.php
+
+Company: http://52.165.38.69/company.php
 
 

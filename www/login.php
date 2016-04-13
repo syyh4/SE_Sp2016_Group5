@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Group 5 | LinkedIn</title>
+    <title>Register | LinkedIn</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -80,7 +80,7 @@
             <li><a href="#">Search</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Login</a></li>
+            <li><a href="#">Register</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -92,18 +92,10 @@
       <div class="row">
         <div class="col-md-6 text-center col-md-offset-3 box">
           <h1 class="company-name">LinkedIn</h1>
-          <h2 class="lead location">Create An Account</h2>
+          <h2 class="lead location">Login To Your Account</h2>
           
           <div class="col-md-10 col-md-offset-1 text-left">
             <form>
-              <div class="form-group">
-                <label for="fname">First Name</label>
-                <input type="text" class="form-control" id="fname" name="fname">
-              </div>
-              <div class="form-group">
-                <label for="lname">Last Name</label>
-                <input type="text" class="form-control" id="lname" name="lname">
-              </div>
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email">
@@ -113,7 +105,7 @@
                 <input type="password" class="form-control" id="password" name="password">
               </div>
               
-              <button type="submit" class="btn btn-primary btn-block btn-lg create-button">Create Account</button>
+              <button type="submit" class="btn btn-primary btn-block btn-lg create-button">Login</button>
             </form>
           </div>
 
