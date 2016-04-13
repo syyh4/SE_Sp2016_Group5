@@ -67,7 +67,7 @@
 			echo "\n";
 			for ($i = 0; $i < $num_fields; $i++) {
 				
-				echo $row[$i] . "  ";
+				echo $row[$i] . "\t\t";
 			}	
 		}
 		
@@ -83,7 +83,7 @@
 		$fields = $result->fetch_fields();
 		
 		for ($i = 0; $i < $num_fields; $i++) {
-			echo $fields[$i]->name . "  ";
+			echo $fields[$i]->name . "\t\t";
 		}	
 	}
 	function print_result_all( $result ) {
