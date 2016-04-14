@@ -1,0 +1,14 @@
+lid,coord_lat,coord_long,street_address,country,state,zip,city
+1,37.422,-122.084058,1600 Amphitheatre Pkwy,United States,CA,94043,Mountain Vew
+2,37.423376,-122.071529,2029 Stierlin Ct,United States,CA,94043,Mountain View
+3,47.6396409,-122.1291942,1 Microsoft Way,United States,WA,98052,Redmond
+4,30.486593,97.666462,One Dell Way,United States,TX,78682,Round Rock
+5,37.331964,-122.029756,1 Infinite Loop,United States,CA,95014,Cupertino
+6,37.231654,-121.574874,2200 Mission College Blvd,United States,CA,95054,Santa Clara
+7,37.2154,-122.061358,1501 Page Mill,United States,CA,94304,Palo Alto
+8,37.33091,-121.894094,345 Park Avenue,United States,CA,95110,San Jose
+9,37.484864,-122.148364,1 Hacker Way,United States,CA,94025,Menlo Park
+10,33.99151,-84.3443427,8601 Dunwoody,United States,GA,30301,Atlanta
+11,37.776773,-122.416406,1355 Market Street,United States,CA,94103,San Francisco
+12,41.1083018,-73.7226564,1 New Orchard Road,United States,NY,10504,Armonk
+13,47.5809609,-122.3381133,2401 Utah Avenue South,United States,WA,98134,Seattle
