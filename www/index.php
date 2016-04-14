@@ -17,7 +17,7 @@
 		//	This should be replace PHP that sets the HTTP status code to 500 and
 		//	sets the body to the JSON object that contains the error_code and
 		//	error_string as defined by the API
-		// die("The connection to the database failed: " . $db_conn->connect_error);
+		die("The connection to the database failed: " . $db_conn->connect_error);
 	}
 
 	if(isset($_POST['btn-signup']))
@@ -25,8 +25,8 @@
  		$fname = mysql_real_escape_string($_POST['fname']);
 		$lname = mysql_real_escape_string($_POST['lname']);
  		$email = mysql_real_escape_string($_POST['email']);
- 		$gender= mysql_real_escape_string($_POST['gender'])
- 		$birth = mysql_real_escape_string($_POST['birthday']);
+ 		//$gender= mysql_real_escape_string($_POST['gender'])
+ 		//$birth = mysql_real_escape_string($_POST['birthday']);
  		$upass = md5(mysql_real_escape_string($_POST['password']));
  
  		if(mysql_query("INSERT INTO users(firstname,lastname,email,gender,birthday,password) VALUES('$fname','$lname','$email','$gender','$birth','$upass')"))
