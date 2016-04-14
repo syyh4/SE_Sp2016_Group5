@@ -153,7 +153,22 @@
                 <input type="email" class="form-control" id="email" name="email">
               </div>
               <div class="form-group">
+                <label for="lname">Gender</label>
+                <select class="form-control">
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="lname">Birthday</label>
+                <input type="text" class="form-control" id="lname" name="lname">
+              </div>
+              <div class="form-group">
                 <label for="password">Password (6 or more characters)</label>
+                <input type="password" class="form-control" id="password" name="password">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
                 <input type="password" class="form-control" id="password" name="password">
               </div>
               
