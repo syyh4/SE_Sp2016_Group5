@@ -26,7 +26,7 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(coord_lat, coord_long, stree_address, state, zip, city);
+(coord_lat, coord_long, street_address, state, zip, city);
 
 #	LOAD COMPANY DATA
 LOAD DATA LOCAL INFILE '../../input_data/v3/company.csv' INTO TABLE company 
