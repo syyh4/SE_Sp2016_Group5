@@ -26,7 +26,7 @@
 		$lname = mysql_real_escape_string($_POST['lname']);
  		$email = mysql_real_escape_string($_POST['email']);
  		//$gender= mysql_real_escape_string($_POST['gender'])
- 		//$birth = mysql_real_escape_string($_POST['birthday']);
+ 		$birth = mysql_real_escape_string($_POST['birthday']);
  		$upass = md5(mysql_real_escape_string($_POST['password']));
  
  		if(mysql_query("INSERT INTO users(firstname,lastname,email,gender,birthday,password) VALUES('$fname','$lname','$email','$gender','$birth','$upass')"))
