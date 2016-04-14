@@ -1,3 +1,47 @@
+<?php
+
+	session_start();
+	if(isset($_SESSION['user'])!="")
+	{
+ 		header("Location: home.php");
+	}
+
+	include("../../../db_security/security.php");
+	
+	
+	//	First connect to the database using values from the included file
+	$db_conn = new mysqli(constant("DB_HOST"), constant("DB_USERNAME"), constant("DB_PASSWORD"), constant("DB_DATABASE"));
+	
+	if ($db_conn->error_code) {
+		
+		//	This should be replace PHP that sets the HTTP status code to 500 and
+		//	sets the body to the JSON object that contains the error_code and
+		//	error_string as defined by the API
+		die("The connection to the database failed: " . $db_conn->connect_error);
+	}
+
+	if(isset($_POST['btn-signup']))
+	{
+ 		$fname = mysql_real_escape_string($_POST['fname']);
+		$lname = mysql_real_escape_string($_POST['lname']);
+ 		$email = mysql_real_escape_string($_POST['email']);
+ 		$upass = md5(mysql_real_escape_string($_POST['password']));
+ 
+ 		if(mysql_query("INSERT INTO users(firstname,lastname,email,password) VALUES('$fname','$lname','$email','$upass')"))
+ 		{
+  		?>
+        		<script>alert('successfully registered ');</script>
+        		<?php
+ 		}
+ 		else
+ 		{
+  		?>
+        		<script>alert('error while registering you...');</script>
+        		<?php
+ 		}
+	}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
