@@ -17,7 +17,7 @@
 		//	This should be replace PHP that sets the HTTP status code to 500 and
 		//	sets the body to the JSON object that contains the error_code and
 		//	error_string as defined by the API
-		// die("The connection to the database failed: " . $db_conn->connect_error);
+		die("The connection to the database failed: " . $db_conn->connect_error);
 	}
 
 	if(isset($_POST['btn-signup']))
