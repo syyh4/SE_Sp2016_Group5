@@ -27,4 +27,6 @@ User: http://52.165.38.69/user.php
 
 Search: http://52.165.38.69/search.php
 
+Activity: http://52.165.38.69/activity.php
+
 
