@@ -6,7 +6,7 @@
  		header("Location: home.php");
 	}
 
-	include("../../../db_security/security.php");
+	include("../../db_security/security.php");
 	
 	
 	//	First connect to the database using values from the included file
