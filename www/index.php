@@ -25,9 +25,11 @@
  		$fname = mysql_real_escape_string($_POST['fname']);
 		$lname = mysql_real_escape_string($_POST['lname']);
  		$email = mysql_real_escape_string($_POST['email']);
+ 		$gender= mysql_real_escape_string($_POST['gender'])
+ 		$birth = mysql_real_escape_string($_POST['birthday']);
  		$upass = md5(mysql_real_escape_string($_POST['password']));
  
- 		if(mysql_query("INSERT INTO users(firstname,lastname,email,password) VALUES('$fname','$lname','$email','$upass')"))
+ 		if(mysql_query("INSERT INTO users(firstname,lastname,email,gender,birthday,password) VALUES('$fname','$lname','$email','$gender','$birth','$upass')"))
  		{
   		?>
         		<script>alert('successfully registered ');</script>
@@ -153,15 +155,15 @@
                 <input type="email" class="form-control" id="email" name="email">
               </div>
               <div class="form-group">
-                <label for="lname">Gender</label>
+                <label for="gender">Gender</label>
                 <select class="form-control">
                   <option>Male</option>
                   <option>Female</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="lname">Birthday</label>
-                <input type="text" class="form-control" id="lname" name="lname">
+                <label for="birthday">Birthday</label>
+                <input type="text" class="form-control" id="birthday" name="birthday">
               </div>
               <div class="form-group">
                 <label for="password">Password (6 or more characters)</label>
