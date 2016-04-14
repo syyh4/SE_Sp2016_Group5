@@ -1,9 +1,9 @@
 <?php
 
 	session_start();
-	if(isset($_SESSION['user'])!="")
+	//if(isset($_SESSION['user'])!="")
 	{
- 		header("Location: home.php");
+ 		//header("Location: home.php");
 	}
 
 	include("../../db_security/security.php");
