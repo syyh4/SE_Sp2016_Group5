@@ -1,49 +1,3 @@
-<?php
-
-	session_start();
-	if(isset($_SESSION['user'])!="")
-	{
- 		header("Location: home.php");
-	}
-
-	include("../../../db_security/security.php");
-	
-	
-	//	First connect to the database using values from the included file
-	$db_conn = new mysqli(constant("DB_HOST"), constant("DB_USERNAME"), constant("DB_PASSWORD"), constant("DB_DATABASE"));
-	
-	if ($db_conn->error_code) {
-		
-		//	This should be replace PHP that sets the HTTP status code to 500 and
-		//	sets the body to the JSON object that contains the error_code and
-		//	error_string as defined by the API
-		die("The connection to the database failed: " . $db_conn->connect_error);
-	}
-
-	if(isset($_POST['btn-signup']))
-	{
- 		$fname = mysql_real_escape_string($_POST['fname']);
-		$lname = mysql_real_escape_string($_POST['lname']);
- 		$email = mysql_real_escape_string($_POST['email']);
- 		$gender= mysql_real_escape_string($_POST['gender'])
- 		$birth = mysql_real_escape_string($_POST['birthday']);
- 		$upass = md5(mysql_real_escape_string($_POST['password']));
- 
- 		if(mysql_query("INSERT INTO users(firstname,lastname,email,gender,birthday,password) VALUES('$fname','$lname','$email','$gender','$birth','$upass')"))
- 		{
-  		?>
-        		<script>alert('successfully registered ');</script>
-        		<?php
- 		}
- 		else
- 		{
-  		?>
-        		<script>alert('error while registering you...');</script>
-        		<?php
- 		}
-	}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -51,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Group 5 | LinkedIn</title>
+    <title>Search | LinkedIn</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -86,13 +40,12 @@
     .footer p {
       margin: 15px 0px;
     }
-    .form-group label {
-      color: #66696A;
-      font-weight: 500;
-      margin-bottom: 0px;
+    #searchField {
+      width: 80%;
     }
-    .create-button {
-      margin-top: 30px;
+    .searchlist {
+      padding-left: 10px;
+      padding-right: 10px;
     }
     
     </style>
@@ -132,56 +85,83 @@
       </div>
     </nav>
 
-    <!-- REGISTER
+    <!-- SEARCH FORM
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="container">
       <div class="row">
-        <div class="col-md-6 text-center col-md-offset-3 box">
-          <h1 class="company-name">LinkedIn</h1>
-          <h2 class="lead location">Create An Account</h2>
+        <div class="col-md-8 text-center col-md-offset-2 box">
+          <h1 class="company-name">Search</h1>
+          <h2 class="lead location">Find A Person Or Company</h2>
           
-          <div class="col-md-10 col-md-offset-1 text-left">
+          <div class="col-md-10 col-md-offset-1 text-center">
             <form>
               <div class="form-group">
-                <label for="fname">First Name</label>
-                <input type="text" class="form-control" id="fname" name="fname">
+                <input type="test" class="form-control" name="query" placeholder="Enter A Name Or Company...">
               </div>
-              <div class="form-group">
-                <label for="lname">Last Name</label>
-                <input type="text" class="form-control" id="lname" name="lname">
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
-              </div>
-              <div class="form-group">
-                <label for="gender">Gender</label>
-                <select class="form-control">
-                  <option>Male</option>
-                  <option>Female</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="birthday">Birthday</label>
-                <input type="text" class="form-control" id="birthday" name="birthday">
-              </div>
-              <div class="form-group">
-                <label for="password">Password (6 or more characters)</label>
-                <input type="password" class="form-control" id="password" name="password">
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
-              </div>
-              
-              <button type="submit" class="btn btn-primary btn-block btn-lg create-button">Create Account</button>
+              <button type="submit" class="btn btn-primary">Search</button>
             </form>
           </div>
 
         </div>
       </div>
     </div>
-    
+
+    <!-- SEARCH RESULTS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 box">
+          <h3 class="text-center" style="margin-bottom:40px;">X Results</h3>
+          <div class="searchlist">
+            <div class="media">
+              <div class="media-left">
+                <a href="#">
+                  <img class="media-object" src="http://placehold.it/64x64">
+                </a>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">Employee One</h4>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
+              </div>
+            </div>
+            <div class="media">
+              <div class="media-left">
+                <a href="#">
+                  <img class="media-object" src="http://placehold.it/64x64">
+                </a>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">Company Two</h4>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
+              </div>
+            </div>
+            <div class="media">
+              <div class="media-left">
+                <a href="#">
+                  <img class="media-object" src="http://placehold.it/64x64">
+                </a>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">Employee Three</h4>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
+              </div>
+            </div>
+            <div class="media">
+              <div class="media-left">
+                <a href="#">
+                  <img class="media-object" src="http://placehold.it/64x64">
+                </a>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">Employee Four</h4>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

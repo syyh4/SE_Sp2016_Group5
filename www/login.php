@@ -1,3 +1,47 @@
+<?php
+
+	session_start();
+	
+	include("../../../db_security/security.php");
+	
+	
+	//	First connect to the database using values from the included file
+	$db_conn = new mysqli(constant("DB_HOST"), constant("DB_USERNAME"), constant("DB_PASSWORD"), constant("DB_DATABASE"));
+	
+	if ($db_conn->error_code) {
+		
+		//	This should be replace PHP that sets the HTTP status code to 500 and
+		//	sets the body to the JSON object that contains the error_code and
+		//	error_string as defined by the API
+		die("The connection to the database failed: " . $db_conn->connect_error);
+	}
+
+	if(isset($_SESSION['user'])!="")
+	{
+ 		header("Location: home.php");
+	}
+
+
+	if(isset($_POST['btn-login']))
+	{
+ 		$email = mysql_real_escape_string($_POST['email']);
+ 		$upass = mysql_real_escape_string($_POST['password']);
+		$res=mysql_query("SELECT * FROM users WHERE email='$email'"); // users is the database name
+		$row=mysql_fetch_array($res);
+ 		if($row['pw']==md5($upass)) // use md5 to encrypt password
+ 		{
+  			$_SESSION['user'] = $row['user_id'];
+  			header("Location: home.php");
+ 		}
+ 		else
+ 		{
+  		?>
+        		<script>alert('wrong details');</script>
+        		<?php
+ 		}
+	}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
