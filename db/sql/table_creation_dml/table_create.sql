@@ -373,3 +373,28 @@ CREATE TABLE job_offer_required_skills (
 	CONSTRAINT chk_aptitude_level CHECK (aptitude_level > 0 AND aptitude_level <= 5)
 );
 
+
+#
+#	Table Name
+#		user_auth_tokens
+#
+#	Columns
+#		-	token_id		(This is the primary key of the token)
+#		-	issued_to_id	(This is the id of the user that the token was issued to)
+#		-	issue_time		(This is the date the token was issued)
+#		-	expire_time		(This is the time the token expires)
+#
+#	Primary Key
+#		-	token_id
+#
+#	Purpose
+#		This table will hold the tokens for the REST API
+CREATE TABLE user_auth_tokens (
+	token_id			SERIAL,
+	issued_to			BIGINT UNSIGNED,
+	issue_time			TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	expire_time			TIMESTAMP,
+	PRIMARY KEY (token_id),
+	FOREIGN KEY (issued_to) REFERENCES user(uid)
+);
+
