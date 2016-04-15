@@ -25,7 +25,7 @@
  		$fname = mysql_real_escape_string($_POST['fname']);
 		$lname = mysql_real_escape_string($_POST['lname']);
  		$email = mysql_real_escape_string($_POST['email']);
- 		//$gender= mysql_real_escape_string($_POST['gender'])
+ 		$gender= mysql_real_escape_string($_POST['gender']);
  		$birth = mysql_real_escape_string($_POST['birthday']);
  		$upass = md5(mysql_real_escape_string($_POST['password']));
  
