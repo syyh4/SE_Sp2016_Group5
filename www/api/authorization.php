@@ -130,7 +130,7 @@
 		{
 			
 			//	Execute the placeholder query
-			execute_placeholder_query( $db_conn );
+			//execute_placeholder_query( $db_conn );
 			
 			//	The authorization endpoint is only set up to handle GET requests. All other types should throw an error.
 			handle_request_error();
