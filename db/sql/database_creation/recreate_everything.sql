@@ -9,3 +9,7 @@ source ./table_create.sql;
 
 #	Load the input data
 source ./input_data_v2.sql;
+
+
+#	Create the views
+source ./views_create.sql;
