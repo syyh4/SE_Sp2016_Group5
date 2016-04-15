@@ -35,6 +35,7 @@
 			//	Check the authorization_type (either 'initial' or 'refresh')
 		
 			if (isset($_GET['auth_type'])) {
+				echo "Auth set";
 				
 				if ($_GET['auth_type'] == "initial") {
 					
