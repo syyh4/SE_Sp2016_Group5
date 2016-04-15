@@ -38,17 +38,7 @@
 				echo "Auth set";
 				
 				if ($_GET['auth_type'] == "initial") {
-					
-					
-					if (!isset($_GET['username'])) {
-						set_error_response( 5, "The username was not set");
-						break;
-					}
-					
-					if (!isset($_GET['password'])) {
-						set_error_response( 6, "The password was not set");
-						break;
-					}
+					echo "auth initial";
 					
 					
 					$username = $_GET['username'];
@@ -70,11 +60,6 @@
 						if ($result = $stmt->get_result())
 						{
 							//	Check to make sure the row count is equal to one
-							
-							if ($result->num_rows != 1) {
-								set_error_response( 12, "SQL Error");
-								break;
-							}
 							
 							
 							$row = $result->fetch_array(MYSQLI_NUM);
