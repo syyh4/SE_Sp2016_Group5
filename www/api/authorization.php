@@ -56,7 +56,9 @@
 						echo "hi3".$username;
 						$stmt->bind_param("s" , $username);
 						echo "hi4";
-						$stmt->execute();
+						if (!$stmt->execute()) {
+							echo "Error" . " " . $stmt->error;
+						}
 						echo "hi5";
 						
 						echo json_encode($stmt);
