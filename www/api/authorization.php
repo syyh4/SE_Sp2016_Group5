@@ -33,6 +33,96 @@
 		case 'GET':
 		{
 			//	Check the authorization_type (either 'initial' or 'refresh')
+		
+			if (isset($_GET['auth_type'])) {
+				
+				if ($_GET['auth_type'] == "initial") {
+					
+					
+					if (!isset($_GET['username'])) {
+						set_error_response( 5, "The username was not set");
+						break;
+					}
+					
+					if (!isset($_GET['password'])) {
+						set_error_response( 6, "The password was not set");
+						break;
+					}
+					
+					
+					$username = $_GET['username'];
+					$password = $_GET['password'];
+					
+					
+					$stmt = $db_conn->stmt_init();
+					
+					$sql_query = "SELECT U.uid, U.username, UA.password_hash as hash, UA.salt as salt FROM user U, user_authentication UA WHERE U.uid = UA.uid AND U.username = ? LIMIT 1";
+					
+					
+					if ($stmt->prepare($sql_query)) {
+						
+						
+						$stmt->bind_param("s" , $username);
+						
+						$stmt->execute();
+						
+						if ($result = $stmt->get_result())
+						{
+							//	Check to make sure the row count is equal to one
+							
+							if ($result->num_rows != 1) {
+								set_error_response( 12, "SQL Error");
+								break;
+							}
+							
+							
+							$row = $result->fetch_array(MYSQLI_NUM);
+							
+							$result_uid = $row[0];
+							$result_username = $row[1];
+							$result_hash = $row[2];
+							$result_salt = $row[3];
+							
+							
+							http_response_code(200);
+							
+							echo json_encode($row);
+							
+						}
+						else
+						{
+							set_error_response( 11, "SQL Error");
+							break;
+						}
+						
+						
+						
+						
+					}
+					else
+					{
+						set_error_response( 10, "The proper SQL statement could not be prepared");
+						break;
+					}
+					
+				}
+				else if ($_GET['auth_type'] == "refresh") {
+					
+					
+					
+					
+					
+					
+					
+				}
+				else {
+					set_error_response( 5, "You set an invalid value for the 'auth_type' key");
+				}
+				
+			}
+			else {
+				set_error_response( 4, "The auth parameter was not properly set");
+			}
 		}
 		break;
 		
@@ -57,6 +147,20 @@
 	
 	
 	
+	function set_error_response( $error_code , $error_message ) {
+		
+		
+		$http_response_code = 500;
+		
+		$response_array = array(
+			"error_code" => $error_code,
+			"error_message" => $error_message
+		);
+		
+		http_response_code($http_response_code);
+		
+		echo json_encode($response_array);
+	}
 	
 	function print_result_values( $result ) {
 		
