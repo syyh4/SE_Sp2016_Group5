@@ -53,17 +53,19 @@
 					echo "hi1";
 					if ($stmt->prepare($sql_query)) {
 						
-						
+						echo "hi3";
 						$stmt->bind_param("s" , $username);
-						
+						echo "hi4";
 						$stmt->execute();
+						echo "hi5";
 						
 						if ($result = $stmt->get_result())
 						{
 							//	Check to make sure the row count is equal to one
 							
-							
+							echo "hi7";
 							$row = $result->fetch_array(MYSQLI_NUM);
+							echo "hi8";
 							
 							$result_uid = $row[0];
 							$result_username = $row[1];
@@ -81,7 +83,7 @@
 							set_error_response( 11, "SQL Error");
 							break;
 						}
-						
+						echo "hi6";
 						
 						
 						
