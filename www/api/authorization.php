@@ -47,7 +47,7 @@
 					
 					$stmt = $db_conn->stmt_init();
 					
-					$sql_query = "SELECT U.uid, U.username, UA.password_hash as hash, UA.salt as salt FROM user U, user_authentication UA WHERE U.uid = UA.uid AND U.username = ? LIMIT 1";
+					$sql_query = "SELECT U.uid, U.username, UA.password_hash as hash, UA.salt as salt FROM user U, user_authentication UA WHERE U.uid = UA.uid AND U.username = '?' LIMIT 1";
 					
 					
 					if ($stmt->prepare($sql_query)) {
