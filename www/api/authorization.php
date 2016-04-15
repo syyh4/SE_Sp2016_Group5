@@ -59,6 +59,8 @@
 						$stmt->execute();
 						echo "hi5";
 						
+						echo json_encode($stmt);
+						
 						if ($result = $stmt->get_result())
 						{
 							//	Check to make sure the row count is equal to one
