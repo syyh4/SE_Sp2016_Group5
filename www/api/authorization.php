@@ -27,7 +27,7 @@
 	
 	$req_method = $_SERVER['REQUEST_METHOD'];
 	
-	
+	echo $req_method;
 	switch ($req_method) {
 		
 		case 'GET':
