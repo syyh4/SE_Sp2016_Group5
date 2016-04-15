@@ -159,7 +159,7 @@
 		);
 				echo json_encode($response_array);
 
-		http_response_code($http_response_code);
+		http_response_code($error_code);
 		
 	}
 	
