@@ -157,10 +157,10 @@
 			"error_code" => $error_code,
 			"error_message" => $error_message
 		);
-		
+				echo json_encode($response_array);
+
 		http_response_code($http_response_code);
 		
-		echo json_encode($response_array);
 	}
 	
 	function print_result_values( $result ) {
