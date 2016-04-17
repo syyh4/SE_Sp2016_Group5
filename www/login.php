@@ -1,6 +1,5 @@
-/*<?php
-
-	session_start();
+<?php
+	/*session_start();
 	
 	include("../../db_security/security.php");
 	
@@ -39,11 +38,9 @@
         		<script>alert('No user information');</script>
         		<?php
  		}
-	}
+	}*/
 
-?>*/
 
-<?php
 include('login_function.php'); // Includes Login Script
 
 if(isset($_SESSION['login_user'])){
