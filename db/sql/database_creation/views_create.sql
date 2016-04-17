@@ -9,10 +9,11 @@ USE linkedin_group_5;
 
 DROP VIEW IF EXISTS company_location_view;
 
-CREATE VIEW company_location_view 
+CREATE VIEW company_full_view 
 AS 
   (SELECT C.uid        AS company_id, 
           C.name       AS company_name, 
+          C.description AS company_description,
           L.lid        AS location_id, 
           L.coord_lat  AS latitude, 
           L.coord_long AS longitude, 
@@ -24,3 +25,6 @@ AS
    FROM   company C, 
           location L 
    WHERE  C.lid = L.lid); 
+   
+   
+
