@@ -19,7 +19,7 @@ OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (uid, firstname, middlename, lastname, @birth_date_variable, gender)
-SET birth_date = STR_TO_DATE(@birth_date_variable, '%e/%c/%Y');
+SET birth_date = STR_TO_DATE(@birth_date_variable, '%c/%e/%Y');
 
 show warnings\G;
 
