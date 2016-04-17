@@ -97,30 +97,20 @@ header("location: user.php");
 
     <!-- REGISTER
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="main">
-      <div class="row">
-        <div class="col-md-6 text-center col-md-offset-3 box">
-          <h1 class="company-name">LinkedIn</h1>
-          <h2 class="lead location">Login To Your Account</h2>
-          
-          <div class="col-md-10 col-md-offset-1 text-left">
-            <form>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
-              </div>
-              <div class="form-group">
-                <label for="password">Password (6 or more characters)</label>
-                <input type="password" class="form-control" id="password" name="password">
-              </div>
-              <input name="submit" type="submit" value=" Login ">
-              <!--button type="submit" class="btn btn-primary btn-block btn-lg create-button">Login</button-->
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </div>
+    <div id="main">
+	<h1>LinkedIn Login</h1>
+	<div id="login">
+	<h2>Login Window</h2>
+	<form action="" method="post">
+	<label>UserName :</label>
+	<input id="email" name="email" placeholder="Email" type="text">
+	<label>Password :</label>
+	<input id="password" name="password" placeholder="**********" type="password">
+	<input name="submit" type="submit" value=" Login ">
+	<span><?php echo $error; ?></span>
+	</form>
+	</div>
+  </div>
     
 
 
