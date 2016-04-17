@@ -1,0 +1,31 @@
+<!doctype html>
+	<head>
+		<script  type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+		<script  type="text/javascript" src="../bower_components/Chart.js/Chart.js"></script>
+		<script type="text/javascript" src="../bower_components/angular-chart.js/dist/angular-chart.js"></script>
+
+		<script type="text/javascript" src="../js/controllers/chart_testing_controllers.js"></script>
+		<link rel="stylesheet" href="../bower_components/angular-chart.js/dist/angular-chart.css">
+		
+		
+
+	</head>
+	
+	<body ng-app="chart_testing">
+		
+		
+			
+		
+		<div class="col-lg-6 col-sm-12" id="line-chart" ng-controller="LineChartController as lineCtrl">
+          <div class="panel panel-default">
+            <div class="panel-heading">Line Chart</div>
+            <div class="panel-body">
+              <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true"
+                      chart-click="onClick" chart-hover="onHover" chart-series="series"></canvas>
+            </div>
+          </div>
+        </div>
+        
+        
+	</body>
+</html>
