@@ -58,7 +58,7 @@ header("location: user.php");
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
+    <link href="style.css" rel="stylesheet" type="text/css">
     <!-- CUSTOM STYLES
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <style type="text/css">
@@ -137,30 +137,20 @@ header("location: user.php");
 
     <!-- REGISTER
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 text-center col-md-offset-3 box">
-          <h1 class="company-name">LinkedIn</h1>
-          <h2 class="lead location">Login To Your Account</h2>
-          
-          <div class="col-md-10 col-md-offset-1 text-left">
-            <form>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
-              </div>
-              <div class="form-group">
-                <label for="password">Password (6 or more characters)</label>
-                <input type="password" class="form-control" id="password" name="password">
-              </div>
-              
-              <button type="submit" class="btn btn-primary btn-block btn-lg create-button">Login</button>
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </div>
+    <div id="main">
+	<h1>PHP Login Session Example</h1>
+	<div id="login">
+	<h2>Login Form</h2>
+	<form action="" method="post">
+	<label>UserName :</label>
+	<input id="name" name="username" placeholder="username" type="text">
+	<label>Password :</label>
+	<input id="password" name="password" placeholder="**********" type="password">
+	<input name="submit" type="submit" value=" Login ">
+	<span><?php echo $error; ?></span>
+	</form>
+	</div>
+  </div>
     
 
 
