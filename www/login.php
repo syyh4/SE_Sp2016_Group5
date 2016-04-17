@@ -1,16 +1,53 @@
+/*<?php
+
+	session_start();
+	
+	include("../../db_security/security.php");
+	
+	
+	//	First connect to the database using values from the included file
+	$db_conn = new mysqli(constant("DB_HOST"), constant("DB_USERNAME"), constant("DB_PASSWORD"), constant("DB_DATABASE"));
+	
+	if ($db_conn->error_code) {
+		
+		//	This should be replace PHP that sets the HTTP status code to 500 and
+		//	sets the body to the JSON object that contains the error_code and
+		//	error_string as defined by the API
+		die("The connection to the database failed: " . $db_conn->connect_error);
+	}
+
+	$cid = mysql_select_db('users',$db_conn);
+	
+	define('CSV_PATH','../db/input_data/v3/');
+	
+	$csv_file = CSV_PATH . "users.csv";
+
+	if(isset($_POST['btn-login']))
+	{
+ 		$email = mysql_real_escape_string($_POST['email']);
+ 		$upass = mysql_real_escape_string($_POST['password']);
+		$result= mysql_query("SELECT * FROM email",$db_conn);
+		//$result_checkuser=mysql_fetch_array($result);
+ 		if(mysql_num_rows($result)>0 && $result) // if user exists
+ 		{
+  			//echo 'Successfully login';
+  			//header("Location: user.php");
+ 		}
+ 		else
+ 		{
+  		?>
+        		<script>alert('No user information');</script>
+        		<?php
+ 		}
+	}
+
+?>*/
+
 <?php
-/*include('login_function.php'); // Includes Login Script
+include('login_function.php'); // Includes Login Script
 
 if(isset($_SESSION['login_user'])){
 header("location: user.php");
-}*/
-session_start(); // Starting Session
-//include("../../db_security/security.php");
-$error=''; // Variable To Store Error Message
-if (isset($_POST['submit'])) {
-$error = "Email or Password is invalid";
-echo $error;
-header("Location: http://www.example.com/");
 }
 ?>
 
@@ -121,8 +158,7 @@ header("Location: http://www.example.com/");
                 <input type="password" class="form-control" id="password" name="password">
               </div>
               
-              <!-- <button name = "submit" type="submit" class="btn btn-primary btn-block btn-lg create-button">Login</button> -->
-              <input name="submit" type="submit" value=" Login ">
+              <button type="submit" class="btn btn-primary btn-block btn-lg create-button">Login</button>
             </form>
           </div>
 
