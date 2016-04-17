@@ -18,7 +18,8 @@ FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(uid, firstname, middlename, lastname, birth_date, gender);
+(uid, firstname, middlename, lastname, @birth_date_variable, gender)
+SET date_time = STR_TO_DATE(@birth_date_variable, '%d/%d/%Y');
 
 #	LOAD LOCATION DATA
 LOAD DATA LOCAL INFILE '../../input_data/v3/locations.csv' INTO TABLE location
