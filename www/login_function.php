@@ -4,7 +4,7 @@ include("../../db_security/security.php");
 $error=''; // Variable To Store Error Message
 if (isset($_POST['submit'])) {
 if (empty($_POST['email']) || empty($_POST['password'])) {
-$error = "Email or Password is invalid";
+$error = "Email or Password is empty";
 }
 else
 {
@@ -29,13 +29,16 @@ $email = mysql_real_escape_string($email);
 $password = mysql_real_escape_string($password);
 // Selecting Database
 $db = mysql_select_db("users", $db_conn);
+define('CSV_PATH','../db/input_data/v3/');
+$csv_file = CSV_PATH . "users.csv"; 
 // SQL query to fetch information of registerd users and finds user match.
-$query = mysql_query("select * from login where email='$email'", $db_conn);
+$query = mysql_query("select * from login where email='$email'", $db);
 $rows = mysql_num_rows($query);
 if ($rows == 1) {
 $_SESSION['login_user']=$email; // Initializing Session
 header("location: user.php"); // Redirecting To Other Page
 } else {
+	//header("location: user.php");
 $error = "Email or Password is invalid";
 }
 mysql_close($db_conn); // Closing Connection

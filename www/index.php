@@ -55,7 +55,8 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
+    <link href="style.css" rel="stylesheet" type="text/css">
+    
     <!-- CUSTOM STYLES
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <style type="text/css">
@@ -173,8 +174,8 @@
                 <label for="password">Password</label>
                 <input type="password" class="form-control" id="password" name="password">
               </div>
-              
-              <button type="submit" class="btn btn-primary btn-block btn-lg create-button">Create Account</button>
+              <input name="submit" type="submit" value=" Login ">
+              <!--button type="submit" class="btn btn-primary btn-block btn-lg create-button">Create Account</button-->
             </form>
           </div>
 

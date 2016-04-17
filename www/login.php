@@ -1,45 +1,4 @@
 <?php
-	/*session_start();
-	
-	include("../../db_security/security.php");
-	
-	
-	//	First connect to the database using values from the included file
-	$db_conn = new mysqli(constant("DB_HOST"), constant("DB_USERNAME"), constant("DB_PASSWORD"), constant("DB_DATABASE"));
-	
-	if ($db_conn->error_code) {
-		
-		//	This should be replace PHP that sets the HTTP status code to 500 and
-		//	sets the body to the JSON object that contains the error_code and
-		//	error_string as defined by the API
-		die("The connection to the database failed: " . $db_conn->connect_error);
-	}
-
-	$cid = mysql_select_db('users',$db_conn);
-	
-	define('CSV_PATH','../db/input_data/v3/');
-	
-	$csv_file = CSV_PATH . "users.csv";
-
-	if(isset($_POST['btn-login']))
-	{
- 		$email = mysql_real_escape_string($_POST['email']);
- 		$upass = mysql_real_escape_string($_POST['password']);
-		$result= mysql_query("SELECT * FROM email",$db_conn);
-		//$result_checkuser=mysql_fetch_array($result);
- 		if(mysql_num_rows($result)>0 && $result) // if user exists
- 		{
-  			//echo 'Successfully login';
-  			//header("Location: user.php");
- 		}
- 		else
- 		{
-  		?>
-        		<script>alert('No user information');</script>
-        		<?php
- 		}
-	}*/
-
 
 include('login_function.php'); // Includes Login Script
 
@@ -59,7 +18,7 @@ header("location: user.php");
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
+    <link href="style.css" rel="stylesheet" type="text/css">
     <!-- CUSTOM STYLES
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <style type="text/css">
@@ -138,30 +97,20 @@ header("location: user.php");
 
     <!-- REGISTER
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 text-center col-md-offset-3 box">
-          <h1 class="company-name">LinkedIn</h1>
-          <h2 class="lead location">Login To Your Account</h2>
-          
-          <div class="col-md-10 col-md-offset-1 text-left">
-            <form>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
-              </div>
-              <div class="form-group">
-                <label for="password">Password (6 or more characters)</label>
-                <input type="password" class="form-control" id="password" name="password">
-              </div>
-              
-              <button type="submit" class="btn btn-primary btn-block btn-lg create-button">Login</button>
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </div>
+    <div id="main">
+	<h1>LinkedIn Login</h1>
+	<div id="login">
+	<h2>Login Window</h2>
+	<form action="" method="post">
+	<label>UserName :</label>
+	<input id="email" name="email" placeholder="Email" type="text">
+	<label>Password :</label>
+	<input id="password" name="password" placeholder="**********" type="password">
+	<input name="submit" type="submit" value=" Login ">
+	<span><?php echo $error; ?></span>
+	</form>
+	</div>
+  </div>
     
 
 
