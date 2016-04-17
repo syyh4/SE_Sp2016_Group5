@@ -103,7 +103,7 @@ header("location: user.php");
 	<h2>Login Window</h2>
 	<form action="" method="post">
 	<label>UserName :</label>
-	<input id="email" name="email" placeholder="Email" type="text">
+	<input id="username" name="username" placeholder="Username" type="text">
 	<label>Password :</label>
 	<input id="password" name="password" placeholder="**********" type="password">
 	<input name="submit" type="submit" value=" Login ">
