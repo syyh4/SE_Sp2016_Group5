@@ -154,7 +154,8 @@ header("location: user.php");
                 <input type="password" class="form-control" id="password" name="password">
               </div>
               
-              <button type="submit" class="btn btn-primary btn-block btn-lg create-button">Login</button>
+              <!--button type="submit" class="btn btn-primary btn-block btn-lg create-button">Login</button-->
+              <input name="submit" type="sumbit" value=" Login ">
             </form>
           </div>
 
