@@ -26,9 +26,9 @@
 	{
  		$email = mysql_real_escape_string($_POST['email']);
  		$upass = mysql_real_escape_string($_POST['password']);
-		$result=mysql_query("SELECT * FROM email",$db_conn);
+		$result= mysql_query("SELECT * FROM email",$db_conn);
 		//$result_checkuser=mysql_fetch_array($result);
- 		/*if(mysql_num_rows($result)>0)) // if user exists
+ 		if(mysql_num_rows($result)>0 && $result) // if user exists
  		{
   			//echo 'Successfully login';
   			//header("Location: user.php");
@@ -38,7 +38,7 @@
   		?>
         		<script>alert('No user information');</script>
         		<?php
- 		}*/
+ 		}
 	}
 
 ?>
