@@ -2,7 +2,7 @@
 
 	session_start();
 	
-	include("../../../db_security/security.php");
+	include("../../db_security/security.php");
 	
 	
 	//	First connect to the database using values from the included file
@@ -16,10 +16,13 @@
 		die("The connection to the database failed: " . $db_conn->connect_error);
 	}
 
-	if(isset($_SESSION['user'])!="")
-	{
- 		header("Location: home.php");
-	}
+	// $myusername = mysqli_real_escape_string($db,$_POST['email']);
+        // $mypassword = mysqli_real_escape_string($db,$_POST['password']);
+
+	// if(isset($_SESSION['email'])!="")
+	// {
+ 		// header("Location: user.php");
+	// }
 
 
 	if(isset($_POST['btn-login']))
@@ -27,16 +30,16 @@
  		$email = mysql_real_escape_string($_POST['email']);
  		$upass = mysql_real_escape_string($_POST['password']);
 		$res=mysql_query("SELECT * FROM users WHERE email='$email'"); // users is the database name
-		$row=mysql_fetch_array($res);
- 		if($row['pw']==md5($upass)) // use md5 to encrypt password
+		$result_checkuser=mysql_fetch_array($res);
+ 		if(mysql_num_rows($result_checkuser)>0)) // use md5 to encrypt password
  		{
-  			$_SESSION['user'] = $row['user_id'];
-  			header("Location: home.php");
+  			echo 'Successfully login';
+  			header("Location: user.php");
  		}
  		else
  		{
   		?>
-        		<script>alert('wrong details');</script>
+        		<script>alert('No user information');</script>
         		<?php
  		}
 	}
