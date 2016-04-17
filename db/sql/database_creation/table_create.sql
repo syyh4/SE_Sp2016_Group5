@@ -391,10 +391,12 @@ CREATE TABLE job_offer_required_skills (
 #		This table will hold the tokens for the REST API
 CREATE TABLE user_auth_tokens (
 	token_id			SERIAL,
+	token				CHAR(64),
 	issued_to			BIGINT UNSIGNED,
 	issue_time			TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	expire_time			TIMESTAMP,
 	PRIMARY KEY (token_id),
-	FOREIGN KEY (issued_to) REFERENCES user(uid)
+	FOREIGN KEY (issued_to) REFERENCES user(uid),
+	UNIQUE (token)
 );
 

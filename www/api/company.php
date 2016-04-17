@@ -32,112 +32,43 @@
 		case 'GET':
 			//	Check the authorization_type (either 'initial' or 'refresh'
 			
-			if (isset($_GET['username'])) {
+			if (isset($_GET['auth_token'])) {
 				
-				if ($_GET['authtype'] == "initial") {
-										
-					$username = $_GET['username'];
-					$password = $_GET['password'];
-					
-					
-					$stmt = $db_conn->stmt_init();
-					
-					$sql_query = "SELECT U.uid, U.username, UA.password_hash as hash, UA.salt as salt FROM user U, user_authentication UA WHERE U.uid = UA.uid AND U.username = ?  LIMIT 1";
-					
-
-					if ($stmt->prepare($sql_query)) {
-						
-						$stmt->bind_param("s" , $username);
-						if (!$stmt->execute()) {
-							echo "Error" . " " . $stmt->error;
-						}
-					
-						
-						if ($result = $stmt->get_result())
-						{
-							//	Check to make sure the row count is equal to one
-							
-							$row = $result->fetch_array(MYSQLI_NUM);
-							
-							$result_uid = $row[0];
-							$result_username = $row[1];
-							$result_hash = $row[2];
-							$result_salt = $row[3];
-							
-							$computed_hash = sha1($result_salt.$password);
-							
-							if ($computed_hash == $result_hash) {
-								
-								
-								
-								
-								
-								
-								
-								$random_string = generate_255_char_random_string();
-								
-								
-								$insert_token_sql = "INSERT INTO user_auth_tokens (issued_to, token) VALUES ( ? , ? )";
-								
+				//	Check to see if the auth token exists in the database
+				$auth_token = $_GET['auth_token'];
 				
-								$insert_statement = $db_conn->stmt_init();
-								
-								$insert_statement->prepare($insert_token_sql);
-								
-								$insert_statement->bind_param("is", $result_uid, $random_string);
-								
-								if ($insert_statement->execute()) {
-									
-									
-									$resp_array = array();
-							
-							
-									$resp_array["uid"] = $result_uid;
-									$resp_array["username"] = $result_username;
-									$resp_array["auth_token"] = $random_string;
-									$resp_array["expires_in"] = 10;
-									
-									
-									http_response_code(200);
-									
-									echo json_encode($resp_array);
-								}
-								else
-								{
-									set_error_response( 13, "SQL Error" . $insert_statement->error);
-								}
-								
-							}							
-						}
-						else
-						{
-							set_error_response( 11, "SQL Error");
-							break;
-						}
+				$stmt = $db_conn->stmt_init();
+				
+				$get_token_sql = "SELECT uid, token from user_auth_tokens where token = ?";
+				
+				
+				if ($stmt->prepare($get_token_sql)) {
+					
+					$stmt->bind_param("s", $auth_token);
+					
+					
+					if ($stmt->execute()) {
+						
+						$row = $stmt->get_result();
 						
 						
+						$uid = $row[0];
+						
+						send_all_companies( $db_conn, $uid);
 						
 					}
 					else
 					{
-						set_error_response( 10, "The proper SQL statement could not be prepared");
-						break;
+						set_error_response( 20, "SQL Statement could not execute " . $stmt->error);
 					}
-					
-				}
-				else if ($_GET['auth_type'] == "refresh") {
-					
-					
-					
-					
 					
 					
 					
 				}
 				else {
-					set_error_response( 5, "You set an invalid value for the 'auth_type' key");
+					set_error_response( 21 , "SQL statement could not prepare " . $stmt->error);
 				}
-				
+								
 			}
 			else {
 				set_error_response( 4, "The auth parameter was not properly set");
@@ -157,6 +88,18 @@
 	
 	
 	
+	/*
+		GET
+	*/
+	
+	
+	function send_all_companies($db_conn, $uid) {
+		
+		
+		
+		
+		
+	}
 	/*
 		UTILITY FUNCTIONS
 	*/
