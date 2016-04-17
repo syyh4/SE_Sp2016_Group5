@@ -31,17 +31,17 @@
  		$upass = mysql_real_escape_string($_POST['password']);
 		$res=mysql_query("SELECT * FROM users WHERE email='$email'"); // users is the database name
 		$result_checkuser=mysql_fetch_array($res);
- 		/*if(mysql_num_rows($result_checkuser)>0)) // if user exists
+ 		if(mysql_num_rows($result_checkuser)>0)) // if user exists
  		{
-  			echo 'Successfully login';
-  			header("Location: user.php");
+  			//echo 'Successfully login';
+  			//header("Location: user.php");
  		}
  		else
  		{
   		?>
         		<script>alert('No user information');</script>
         		<?php
- 		}*/
+ 		}
 	}
 
 ?>
