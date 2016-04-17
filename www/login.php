@@ -13,7 +13,7 @@
 		//	This should be replace PHP that sets the HTTP status code to 500 and
 		//	sets the body to the JSON object that contains the error_code and
 		//	error_string as defined by the API
-		//die("The connection to the database failed: " . $db_conn->connect_error);
+		die("The connection to the database failed: " . $db_conn->connect_error);
 	}
 
 	// $myusername = mysqli_real_escape_string($db,$_POST['email']);
@@ -25,7 +25,7 @@
 	// }
 
 
-	if(isset($_POST['btn-login']))
+/*	if(isset($_POST['btn-login']))
 	{
  		$email = mysql_real_escape_string($_POST['email']);
  		$upass = mysql_real_escape_string($_POST['password']);
@@ -43,7 +43,7 @@
         		<?php
  		}
 	}
-
+*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
