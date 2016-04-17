@@ -24,18 +24,18 @@ margin:10px -40px;
 margin-bottom:30px
 }
 #login {
-width:800px;
+width:1000px;
 float:left;
-border-radius:10px;
+border-radius:20px;
 font-family:raleway;
 border:2px solid #ccc;
-padding:10px 40px 25px;
+padding:10px 40px 40px;
 margin-top:70px
 }
 input[type=text],input[type=password] {
 width:99.5%;
-padding:50px;
-margin-top:8px;
+padding:20px;
+margin-top:15px;
 border:1px solid #ccc;
 padding-left:5px;
 font-size:16px;
