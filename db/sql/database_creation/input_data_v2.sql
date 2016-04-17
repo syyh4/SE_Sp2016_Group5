@@ -21,6 +21,8 @@ IGNORE 1 LINES
 (uid, firstname, middlename, lastname, @birth_date_variable, gender)
 SET birth_date = STR_TO_DATE(@birth_date_variable, '%e/%c/%Y');
 
+show warnings\G;
+
 #	LOAD LOCATION DATA
 LOAD DATA LOCAL INFILE '../../input_data/v3/locations.csv' INTO TABLE location
 FIELDS TERMINATED BY ','
