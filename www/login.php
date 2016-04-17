@@ -1,4 +1,4 @@
-<?php
+/*<?php
 
 	session_start();
 	
@@ -44,7 +44,16 @@
  		}
 	}
 
+?>*/
+
+<?php
+include('login_function.php'); // Includes Login Script
+
+if(isset($_SESSION['login_user'])){
+header("location: user.php");
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
