@@ -16,25 +16,22 @@
 		die("The connection to the database failed: " . $db_conn->connect_error);
 	}
 
-	// $myusername = mysqli_real_escape_string($db,$_POST['email']);
-        // $mypassword = mysqli_real_escape_string($db,$_POST['password']);
-
-	// if(isset($_SESSION['email'])!="")
-	// {
- 		// header("Location: user.php");
-	// }
-
+	$cid = mysql_select_db('users',$db_conn);
+	
+	define('CSV_PATH','../db/input_data/v3/');
+	
+	$csv_file = CSV_PATH . "users.csv";
 
 	if(isset($_POST['btn-login']))
 	{
  		$email = mysql_real_escape_string($_POST['email']);
  		$upass = mysql_real_escape_string($_POST['password']);
-		$res=mysql_query("SELECT * FROM users WHERE email='$email'"); // users is the database name
-		$result_checkuser=mysql_fetch_array($res);
- 		if(mysql_num_rows($result_checkuser)>0)) // use md5 to encrypt password
+		$result= mysql_query("SELECT * FROM email",$db_conn);
+		//$result_checkuser=mysql_fetch_array($result);
+ 		if(mysql_num_rows($result)>0 && $result) // if user exists
  		{
-  			echo 'Successfully login';
-  			header("Location: user.php");
+  			//echo 'Successfully login';
+  			//header("Location: user.php");
  		}
  		else
  		{
