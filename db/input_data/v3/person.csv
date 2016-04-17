@@ -1,5 +1,5 @@
-"uid","firstname","middlename","lastname","birth_date","Gender","Email","Password"
-1,"Anthony","Robert","Forsythe","6/22/1993","Male","arfv2b@mail.missouri.edu","password"
+"uid","firstname","middlename","lastname","birth_date","Gender"
+1,"Anthony","Robert","Forsythe","6/22/1993","Male"
 15,"James","Aiden","Smith","8/12/1980","Male"
 16,"John","Anton","Johnson","9/10/1980","Male"
 17,"Robert","Aubrey","Williams","2/20/1981","Male"
