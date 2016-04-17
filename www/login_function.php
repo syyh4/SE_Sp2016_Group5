@@ -29,8 +29,10 @@ $email = mysql_real_escape_string($email);
 $password = mysql_real_escape_string($password);
 // Selecting Database
 $db = mysql_select_db("users", $db_conn);
+define('CSV_PATH','../db/input_data/v3/');
+$csv_file = CSV_PATH . "users.csv"; 
 // SQL query to fetch information of registerd users and finds user match.
-$query = mysql_query("select * from login where email='$email'", $db_conn);
+$query = mysql_query("select * from login where email='$email'", $db);
 $rows = mysql_num_rows($query);
 if ($rows == 1) {
 $_SESSION['login_user']=$email; // Initializing Session
