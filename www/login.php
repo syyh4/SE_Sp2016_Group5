@@ -121,7 +121,8 @@ header("location: user.php");
                 <input type="password" class="form-control" id="password" name="password">
               </div>
               
-              <button name = "submit" type="submit" class="btn btn-primary btn-block btn-lg create-button">Login</button>
+              <!-- <button name = "submit" type="submit" class="btn btn-primary btn-block btn-lg create-button">Login</button> -->
+              <input name="submit" type="submit" value=" Login ">
             </form>
           </div>
 
