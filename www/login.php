@@ -13,7 +13,7 @@
 		//	This should be replace PHP that sets the HTTP status code to 500 and
 		//	sets the body to the JSON object that contains the error_code and
 		//	error_string as defined by the API
-		die("The connection to the database failed: " . $db_conn->connect_error);
+		//die("The connection to the database failed: " . $db_conn->connect_error);
 	}
 
 	// $myusername = mysqli_real_escape_string($db,$_POST['email']);
@@ -31,7 +31,7 @@
  		$upass = mysql_real_escape_string($_POST['password']);
 		$res=mysql_query("SELECT * FROM users WHERE email='$email'"); // users is the database name
 		$result_checkuser=mysql_fetch_array($res);
- 		if(mysql_num_rows($result_checkuser)>0)) // use md5 to encrypt password
+ 		if(mysql_num_rows($result_checkuser)>0)) // if user exists
  		{
   			echo 'Successfully login';
   			header("Location: user.php");
