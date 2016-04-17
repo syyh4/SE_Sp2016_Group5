@@ -1,9 +1,17 @@
 <?php
-include('login_function.php'); // Includes Login Script
+/*include('login_function.php'); // Includes Login Script
 
-/*if(isset($_SESSION['login_user'])){
+if(isset($_SESSION['login_user'])){
 header("location: user.php");
 }*/
+session_start(); // Starting Session
+//include("../../db_security/security.php");
+$error=''; // Variable To Store Error Message
+if (isset($_POST['submit'])) {
+$error = "Email or Password is invalid";
+echo $error;
+header("location: user.php");
+}
 ?>
 
 <!DOCTYPE html>
