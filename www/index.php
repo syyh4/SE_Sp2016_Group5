@@ -1,10 +1,6 @@
 <?php
 
 	session_start();
-	if(isset($_SESSION['user'])!="")
-	{
- 		header("Location: home.php");
-	}
 
 	include("../../db_security/security.php");
 	
@@ -175,7 +171,7 @@
                 <input type="password" class="form-control" id="password" name="password">
               </div>
               <input name="submit" type="submit" value=" Login ">
-              <!--button type="submit" class="btn btn-primary btn-block btn-lg create-button">Create Account</button-->
+              <button type="submit" class="btn btn-primary btn-block btn-lg create-button">Create Account</button>
             </form>
           </div>
 
