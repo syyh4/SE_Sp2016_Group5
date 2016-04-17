@@ -38,8 +38,8 @@ if ($rows == 1) {
 $_SESSION['login_user']=$email; // Initializing Session
 header("location: user.php"); // Redirecting To Other Page
 } else {
-	header("location: user.php");
-//$error = "Email or Password is invalid";
+	//header("location: user.php");
+$error = "Email or Password is invalid";
 }
 mysql_close($db_conn); // Closing Connection
 }
