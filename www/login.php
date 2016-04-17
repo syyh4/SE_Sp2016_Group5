@@ -113,7 +113,7 @@ header("location: user.php");
                 <input type="password" class="form-control" id="password" name="password">
               </div>
               
-              <button type="submit" class="btn btn-primary btn-block btn-lg create-button">Login</button>
+              <button name = "submit" type="submit" class="btn btn-primary btn-block btn-lg create-button">Login</button>
             </form>
           </div>
 
