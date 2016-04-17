@@ -14,7 +14,7 @@ $email=$_POST['email'];
 $password=$_POST['password'];
 // Establishing Connection with Server by passing server_name, user_id and password as a parameter
 //$connection = mysql_connect("localhost", "root", "");
-$db_conn = new mysqli(constant("DB_HOST"), constant("DB_USERNAME"), constant("DB_PASSWORD"), constant("DB_DATABASE"));
+/*$db_conn = new mysqli(constant("DB_HOST"), constant("DB_USERNAME"), constant("DB_PASSWORD"), constant("DB_DATABASE"));
 	
 	if ($db_conn->error_code) {
 		
@@ -22,7 +22,8 @@ $db_conn = new mysqli(constant("DB_HOST"), constant("DB_USERNAME"), constant("DB
 		//	sets the body to the JSON object that contains the error_code and
 		//	error_string as defined by the API
 		die("The connection to the database failed: " . $db_conn->connect_error);
-	}
+	}*/
+$db_conn = mysql_connect("localhost", "root", "");
 // To protect MySQL injection for Security purpose
 $email = stripslashes($email);
 $password = stripslashes($password);
