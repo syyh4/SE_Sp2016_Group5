@@ -97,7 +97,7 @@ header("location: user.php");
 
     <!-- REGISTER
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="container">
+    <div class="main">
       <div class="row">
         <div class="col-md-6 text-center col-md-offset-3 box">
           <h1 class="company-name">LinkedIn</h1>
