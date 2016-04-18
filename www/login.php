@@ -41,6 +41,7 @@
 	}*/
 
 include('login_function.php'); // Includes Login Script
+include('./api/authorization.php');
 
 if(isset($_SESSION['login_user'])){
 header("location: user.php");
@@ -165,8 +166,7 @@ header("location: user.php");
 
         </div>
       </div>
-    </div>
-    
+    </div>    
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
