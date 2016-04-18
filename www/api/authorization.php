@@ -66,13 +66,7 @@
 							
 							$computed_hash = sha1($result_salt.$password);
 							
-							if ($computed_hash == $result_hash) {
-								
-								
-								
-								
-								
-								
+							if ($computed_hash == $result_hash) {								
 								
 								$random_string = generate_255_char_random_string();
 								

@@ -37,40 +37,36 @@
 				//	Check to see if the auth token exists in the database
 				$auth_token = $_GET['auth_token'];
 				
-				$stmt = $db_conn->stmt_init();
 				
-				$get_token_sql = "SELECT uid, token from user_auth_tokens where token = ?";
+				$get_token_sql = "SELECT issued_to, token from user_auth_tokens where token = " . "'$auth_token'";
 				
-				
-				if ($stmt->prepare($get_token_sql)) {
-					
-					$stmt->bind_param("s", $auth_token);
-					
-					
-					if ($stmt->execute()) {
+				if ($result = $db_conn->query($get_token_sql))
+				{
+					if ($row = $result->fetch_row()) {
 						
-						$row = $stmt->get_result();
-						
-						
-						$uid = $row[0];
-						
-						send_all_companies( $db_conn, $uid);
-						
+						$get_all_companies_sql = "SELECT uid FROM user";
+		
+						if ($company_result = $db_conn->query($get_all_companies_sql)) {
+							
+							http_response_code(200);
+							echo json_encode($company_result);
+							
+						}
+						else {
+							
+							set_error_response( 23, $db_conn->error);
+						}
+
 					}
-					else
-					{
-						set_error_response( 20, "SQL Statement could not execute " . $stmt->error);
-					}
-					
-					
-					
 				}
-				else {
-					set_error_response( 21 , "SQL statement could not prepare " . $stmt->error);
+				else 
+				{
+					set_error_response( 21 , "SQL statement could not prepare " . $db_conn->error);
 				}
 								
 			}
-			else {
+			else 
+			{
 				set_error_response( 4, "The auth parameter was not properly set");
 			}
 		break;
@@ -96,8 +92,7 @@
 	function send_all_companies($db_conn, $uid) {
 		
 		
-		
-		
+				
 		
 	}
 	/*
