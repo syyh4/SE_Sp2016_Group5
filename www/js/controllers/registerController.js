@@ -1,13 +1,32 @@
 angular.module('linkedinApp', [])
-  .controller('RegistrationController', function($scope) {
+  .controller('RegistrationController', function($scope, $http) {
   	  	
-  	$scope.regInfo = {
-	  	'fname' : '',
-	  	'lname' : '',
-	  	'birthdate' : ''
+  	$scope.reg_info = {
+	  	'firstname' : '',
+	  	'middlename' : '',
+	  	'lastname' : '',
+	  	'birthdate' : '',
+	  	'email' : '',
+	  	'gender' : '',
+	  	'password' : '',
+	  	'confirm_password' : ''
+  	};
+  	
+  	
+  	$scope.test_info = {
+	  	'fname' : 'Anthony',
+	  	'lname' : 'Forsythe',
+	  	'birthdate' : '06/22/1993',
+	  	'email' : 'forsythetony@gmail.com',
+	  	'gender' : 'male',
+	  	'username' : 'forsythetony',
+	  	'password' : 'justadefaultpassword',
+	  	'auth_token' : 'auth_token'
 	  	};
+	  	
+	$scope.val = 1;
 
-	$scope.$watch('registrationInformation', function( newValue, oldValue) {
+	$scope.$watch('regInfo', function( newValue, oldValue) {
 		
 		var isValid = true;
 		
@@ -20,6 +39,32 @@ angular.module('linkedinApp', [])
 		
 	});
 	
+	$scope.registerUser = function() {
+		
+		var auth_url = "http://40.86.85.30/cs4320_v2/api/authorization.php";
+		
+		var auth_url = auth_url + "?authtype=initial&" + "username=" + $scope.regInfo.username + "&password=" + $scope.regInfo.password;
+		
+		$http({
+			method : 'GET',
+			url : auth_url
+		}).then(function successCallBack(response) {
+			
+			console.log("data -> " + JSON.stringify(response.data));
+			
+		}, function errorCallback(response) {
+			
+			console.log("There was an error");
+			
+		});
+		
+		
+		
+	}
+	
+	
+	
+	
 	function isValidName( name_str ) {
 		
 		return (name.length > 5);
@@ -27,7 +72,10 @@ angular.module('linkedinApp', [])
 	
 	function isValidDate( date_str ) {
 		
-		return ^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$.test( date_str );
+		
+		var valid = true;
+		
+		console.log(( valid ? "Valid Date!" : "Not Valid!"));
 		
 	}
 	
@@ -36,3 +84,24 @@ angular.module('linkedinApp', [])
 	
 	
   });
+  
+var compareTo = function() {
+    return {
+        require: "ngModel",
+        scope: {
+            otherModelValue: "=compareTo"
+        },
+        link: function(scope, element, attributes, ngModel) {
+             
+            ngModel.$validators.compareTo = function(modelValue) {
+                return modelValue == scope.otherModelValue;
+            };
+ 
+            scope.$watch("otherModelValue", function() {
+                ngModel.$validate();
+            });
+        }
+    };
+};
+ 
+module.directive("compareTo", compareTo);
