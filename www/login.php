@@ -56,11 +56,17 @@ header("location: user.php");
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Register | LinkedIn</title>
 
+	<!-- Angular -->
+	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
     <!-- CUSTOM STYLES
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    
+    <link rel="stylesheet" href="css/custom.css">
+    
     <style type="text/css">
     
     body, html {
@@ -107,8 +113,10 @@ header("location: user.php");
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
-
+  <body ng-app="linkedinApp">
+	  
+  	<script type="text/javascript" src="js/controllers/loginController.js"></script>
+  	
     <!-- NAVBAR
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <nav class="navbar navbar-inverse navbar-static-top">
@@ -134,7 +142,7 @@ header("location: user.php");
 
     <!-- REGISTER
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="container">
+    <div class="container" ng-controller="LoginController as loginctrl">
       <div class="row">
         <div class="col-md-6 text-center col-md-offset-3 box">
           <h1 class="company-name">LinkedIn</h1>
@@ -143,15 +151,15 @@ header("location: user.php");
           <div class="col-md-10 col-md-offset-1 text-left">
             <form>
               <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" ng-model="credentials.username">
               </div>
               <div class="form-group">
                 <label for="password">Password (6 or more characters)</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <input type="password" class="form-control" id="password" name="password" ng-model="credentials.password">
               </div>
               
-              <button type="submit" class="btn btn-primary btn-block btn-lg create-button">Login</button>
+              <button type="submit" class="btn btn-primary btn-block btn-lg create-button" ng-click="authenticate()">Login</button>
             </form>
           </div>
 
