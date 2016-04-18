@@ -100,8 +100,8 @@ header("location: user.php");
     <div id="main">
 	<h1>LinkedIn Login</h1>
 	<div id="login">
-	<!--h2>Login Window</h2>
-	<form action="" method="post"-->
+	<!--h2>Login Window</h2-->
+	<form action="" method="post">
 	<label>UserName :</label>
 	<input id="username" name="username" placeholder="Username" type="text">
 	<label>Password :</label>
