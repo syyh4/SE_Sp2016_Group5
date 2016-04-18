@@ -1,7 +1,19 @@
 angular.module('linkedinApp', [])
   .controller('RegistrationController', function($scope, $http) {
   	  	
-  	$scope.regInfo = {
+  	$scope.reg_info = {
+	  	'firstname' : '',
+	  	'middlename' : '',
+	  	'lastname' : '',
+	  	'birthdate' : '',
+	  	'email' : '',
+	  	'gender' : '',
+	  	'password' : '',
+	  	'confirm_password' : ''
+  	};
+  	
+  	
+  	$scope.test_info = {
 	  	'fname' : 'Anthony',
 	  	'lname' : 'Forsythe',
 	  	'birthdate' : '06/22/1993',
@@ -14,7 +26,7 @@ angular.module('linkedinApp', [])
 	  	
 	$scope.val = 1;
 
-	$scope.$watch('registrationInformation', function( newValue, oldValue) {
+	$scope.$watch('regInfo', function( newValue, oldValue) {
 		
 		var isValid = true;
 		
@@ -72,3 +84,24 @@ angular.module('linkedinApp', [])
 	
 	
   });
+  
+var compareTo = function() {
+    return {
+        require: "ngModel",
+        scope: {
+            otherModelValue: "=compareTo"
+        },
+        link: function(scope, element, attributes, ngModel) {
+             
+            ngModel.$validators.compareTo = function(modelValue) {
+                return modelValue == scope.otherModelValue;
+            };
+ 
+            scope.$watch("otherModelValue", function() {
+                ngModel.$validate();
+            });
+        }
+    };
+};
+ 
+module.directive("compareTo", compareTo);

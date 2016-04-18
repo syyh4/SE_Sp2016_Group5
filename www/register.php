@@ -50,19 +50,22 @@
       <div class="row">
         <div class="col-md-6 text-center col-md-offset-3 box">
           <h1 class="company-name">LinkedIn</h1>
-          <h2 class="lead location">Login To Your Account</h2>
+          <h2 class="lead location">Register!</h2>
           
           <div class="col-md-10 col-md-offset-1 text-left">
             <form>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" ng-model="regInfo.fname">
+                <input type="email" class="form-control" ng-model="reg_info.firstname">
               </div>
               <div class="form-group">
                 <label for="password">Password (6 or more characters)</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <input type="password" class="form-control" id="password" name="password" ng-model="reg_info.password">
               </div>
-              
+              <div class="form-group">
+                <label for="password">Confirm Password</label>
+                <input type="password" class="form-control" id="password" name="confirmpassword" ng-model="reg_info.confirm_password" compare-to="reg_info.password">
+              </div>
               <button type="submit" class="btn btn-primary btn-block btn-lg create-button" ng-click="registerUser()">Login</button>
             </form>
           </div>
