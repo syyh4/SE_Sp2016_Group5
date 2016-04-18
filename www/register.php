@@ -1,17 +1,16 @@
 <?php
 
 if (isset($_POST['username']) && isset($_POST['password'])){
-    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $cpassword = $_POST['confirmpassword'];
 
 	if ($password != $cpassword){
-         $msg = "passwords doesn't match";
+         $msg = "Passwords don't match.";
     	}
 
 	else{
-	          $query = "INSERT INTO `register` (username, password,confirmpassword, email) VALUES ('$username', '$password', '$cpassword', '$email')";
+	          $query = "INSERT INTO `register` (email, password,confirmpassword) VALUES ('$email', '$password', '$cpassword')";
 	          $result = mysql_query($query);
 	          if($result){
 	             $msg = "User Created Successfully.";
