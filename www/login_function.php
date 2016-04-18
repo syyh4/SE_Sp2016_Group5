@@ -39,8 +39,8 @@ $rows = mysql_num_rows($query);
 if ($rows == 1) {
 $_SESSION['login_user']=$username; // Initializing Session
 header("location: user.php"); // Redirecting To Other Page
-} else {
-	//header("location: user.php");
+} 
+else {
 $error = "Username or Password is invalid";
 }
 mysql_close($db_conn); // Closing Connection
