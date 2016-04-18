@@ -1,4 +1,4 @@
-angular.module('linkedinApp', [])
+var app = angular.module('linkedinApp', [])
   .controller('RegistrationController', function($scope, $http) {
   	  	
   	$scope.reg_info = {
@@ -24,20 +24,7 @@ angular.module('linkedinApp', [])
 	  	'auth_token' : 'auth_token'
 	  	};
 	  	
-	$scope.val = 1;
-
-	$scope.$watch('regInfo', function( newValue, oldValue) {
-		
-		var isValid = true;
-		
-		isValid = isValidName( $scope.regInfo.fname );
-		isValid = isValidName( $scope.regInfo.lname );
-		isValid = isValidDate( $scope.regInfo.birthdate );
-		
-		
-		$scope.isValidInformation = isValid;
-		
-	});
+	$scope.passwordsAreEqual = true;
 	
 	$scope.registerUser = function() {
 		
@@ -94,6 +81,13 @@ var compareTo = function() {
         link: function(scope, element, attributes, ngModel) {
              
             ngModel.$validators.compareTo = function(modelValue) {
+	            
+	            var compare_value = modelValue == scope.otherModelValue;
+	            console.log(( compare_value ? "They're equal!" : "They're not equal!"));
+	            
+	            console.log( ngModel );
+	            scope.passwordsAreEqual = compare_value;
+	            console.log("The pass are equal value is " + scope.passwordsAreEqual);
                 return modelValue == scope.otherModelValue;
             };
  
@@ -104,4 +98,4 @@ var compareTo = function() {
     };
 };
  
-module.directive("compareTo", compareTo);
+app.directive("compareTo", compareTo);
