@@ -1,6 +1,7 @@
 <?php
 
 include('login_function.php'); // Includes Login Script
+include('./api/authorization.php');
 
 if(isset($_SESSION['login_user'])){
 header("location: user.php");
