@@ -47,21 +47,48 @@
           
           <div class="col-md-10 col-md-offset-1 text-left">
             <form name="reg_form">
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" ng-model="reg_info.firstname">
-              </div>
-              <div class="form-group">
-                <label for="password">Password (6 or more characters)</label>
-                <input type="password" class="form-control" id="password" name="password" ng-model="reg_info.password">
-              </div>
-              <div class="form-group">
-                <label for="password">Confirm Password</label>
-                <input type="password" class="form-control" id="password" name="confirm_password" ng-model="reg_info.confirm_password" compare-to="reg_info.password">
-                <div ng-hide="passwordsAreEqual" class="ng-hide">Hi {{}}</div>
-              </div>
-              
-              <button type="submit" class="btn btn-primary btn-block btn-lg create-button" ng-click="registerUser()">Login</button>
+	            <div class="form-group">
+	                <label for="fname">First Name</label>
+	                <input type="text" class="form-control" ng-model="reg_info.fname">
+				</div>
+	            
+	            <div class="form-group">
+	                <label for="mname">Middle Name</label>
+	                <input type="text" class="form-control" ng-model="reg_info.mname">
+				</div>
+				<div class="form-group">
+					<label for="lname">Last Name</label>
+					<input type="text" class="form-control" ng-model="reg_info.lname">
+				</div>
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" class="form-control" ng-model="reg_info.username">
+				</div>
+				<div class="form-group">
+					<label for="birthdate">Birth Date</label>
+					<input type="text" class="form-control" ng-model="reg_info.birthdate">
+					<small class="text-muted">Must be in the format -> mm/dd/yyyy</small>
+				</div>
+				<div>
+					<label for="email">Email</label>
+					<input type="email" class="form-control" ng-model="reg_info.email">
+				</div>
+				<div>
+					<label for="gender">Gender</label>
+					<input type="text" class="form-control" ng-model="reg_info.gender">
+					<small class="text-muted">This response is private and optional</small>
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" id="password" name="password" ng-model="reg_info.password">
+					<small class="text-muted">Must be more than 6 characters</small>
+				</div>
+				<div class="form-group">
+					<label for="password">Confirm Password</label>
+					<input type="password" class="form-control" id="password" name="confirm_password" ng-model="reg_info.confirm_password" compare-to="reg_info.password">
+					<div ng-hide="passwordsAreEqual" class="ng-hide">Hi {{}}</div>
+				</div>
+				<button type="submit" class="btn btn-primary btn-block btn-lg create-button" ng-click="registerUser()" ng-disabled="isButtonDisabled()">Login</button>
             </form>
           </div>
 
