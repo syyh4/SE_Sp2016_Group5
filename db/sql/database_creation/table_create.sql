@@ -400,3 +400,14 @@ CREATE TABLE user_auth_tokens (
 	UNIQUE (token)
 );
 
+CREATE TABLE company_feed_items (
+	feed_item_id		SERIAL,
+	cid					BIGINT UNSIGNED,
+	feed_type			VARCHAR(100),
+	date_posted			TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	feed_body			VARCHAR(500),
+	offer_id			BIGINT UNSIGNED,
+	PRIMARY KEY (feed_item_id),
+	FOREIGN KEY (cid) REFERENCES company(uid),
+	FOREIGN KEY (offer_id) REFERENCES job_offer(offer_id)
+);

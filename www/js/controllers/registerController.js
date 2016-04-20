@@ -57,10 +57,14 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 						"&birthdate=" + clean_date($scope.reg_info.birthdate);
 		
 		show_load_spinner();
+		
+		
+		
 		$http({
 			method : 'GET',
 			url : reg_url
 		}).then(function successCallBack(response) {
+			
 			
 			hide_load_spinner();
 			console.log("data -> " + JSON.stringify(response.data));
@@ -93,6 +97,25 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 		$scope.registerButtonDisabled = !isValidInfo;
 	}, true);
 	
+	function clean_reg_dict() {
+		
+		
+		for (var key in $scope.reg_info) {
+			if ($scope.reg_info.hasOwnProperty(key)) {
+				
+				var old_value = $scope.reg_info.key;
+				
+				var new_value = remove_returns( old_key );
+				
+				
+				$scope.reg_info.key = new_value;
+			}
+		}
+	}
+	function remove_returns( str ) {
+		
+		return str.replace('\r', '');
+	}
 	function clean_date( date_str ) {
 		
 		var clean_date;
