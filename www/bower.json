@@ -1,0 +1,21 @@
+{
+  "name": "linkedin_group_5",
+  "homepage": "https://github.com/syyh4/SE_Sp2016_Group5",
+  "authors": [
+    "forsythetony <forsythetony@gmail.com>"
+  ],
+  "description": "The linked in based group project for Spring CS4320",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-chart.js": "^0.10.0",
+    "angular-spinner": "^0.8.1"
+  }
+}
