@@ -1,5 +1,5 @@
-var app = angular.module('linkedinApp', [])
-  .controller('RegistrationController', function($scope, $http) {
+var app = angular.module('linkedinApp', ['angularSpinner'])
+  .controller('RegistrationController', ['$scope', '$http', 'usSpinnerService', function($scope, $http, usSpinnerService) {
   	  	
   	$scope.reg_info = {
 	  	'fname' : '',
@@ -25,7 +25,7 @@ var app = angular.module('linkedinApp', [])
 	  	};
 	  	
 	$scope.registerButtonDisabled = false;
-	
+	$scope.showLoadSpinner = false;
 	$scope.passwordsAreEqual = true;
 	
 	$scope.isButtonDisabled = function() {
@@ -51,12 +51,25 @@ var app = angular.module('linkedinApp', [])
 						"&birthdate=" + clean_date($scope.reg_info.birthdate);
 		
 		console.log("Register URL = " + reg_url);
+		show_load_spinner();
 		$http({
 			method : 'GET',
 			url : reg_url
 		}).then(function successCallBack(response) {
 			
+			hide_load_spinner();
 			console.log("data -> " + JSON.stringify(response.data));
+			
+			if (typeof(Storage) !== "undefined") {
+				
+				sessionStorage.auth_token = response.data.auth_info.auth_token;
+				sessionStorage.auth_token_expire_time = response.data.auth_info.expires_in;
+				
+				
+			} else {
+				console.log("Browser does not support storage");
+				
+			}
 			
 		}, function errorCallback(response) {
 			
@@ -186,8 +199,32 @@ var app = angular.module('linkedinApp', [])
 	$scope.isValidInformation = false;
 	
 	
+	function show_load_spinner() {
+		
+		if (!$scope.showLoadSpinner) {
+			if (!$scope.registerButtonDisabled) {
+				$scope.registerButtonDisabled = true;
+			}
+			$scope.showLoadSpinner = true;
+			usSpinnerService.spin('reg-user-request-spinner');
+			
+		}
+		
+		
+	}
 	
-  });
+	function hide_load_spinner() {
+		
+		if ($scope.showLoadSpinner) {
+			if ($scope.registerButtonDisabled) {
+				$scope.registerButtonDisabled = false;
+			}
+			$scope.showLoadSpinner = false;
+			usSpinnerService.stop('reg-user-request-spinner');
+		}
+	}
+	
+  }]);
   
 var compareTo = function() {
     return {

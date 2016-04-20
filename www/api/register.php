@@ -184,24 +184,51 @@
 								
 								
 								
+								$issued_to = $saved_last_insert_id;
+								$auth_token = generate_64_char_random_string();
 								
-								//	Return the persons information
 								
-								http_response_code(200);
+								$insert_auth_token_query = "INSERT INTO user_auth_tokens (issued_to, token) VALUES ( $issued_to , '$auth_token')";
 								
-								$ret_array = array(
+								if ($db_conn->query($insert_auth_token_query)) {
+									//	Return the persons information
+								
+									http_response_code(200);
+								
+									$ret_auth_info = array(
+										"uid" => $issued_to,
+										"auth_token" => $auth_token,
+										"expires_in" => 15
+									);
 									
-									"uid" => $last_insert_id,
-									"username" => $req_username,
-									"email" => $req_email,
-									"first_name" => $req_fname,
-									"middle_name" => $req_mname,
-									"last_name" => $req_lname,
-									"birth_date" => $req_birthdate,
-									"gender" => $req_gender
-								);
+
+									$ret_user_info = array(
+										
+										"uid" => $saved_last_insert_id,
+										"username" => $req_username,
+										"email" => $req_email,
+										"first_name" => $req_fname,
+										"middle_name" => $req_mname,
+										"last_name" => $req_lname,
+										"birth_date" => $req_birthdate,
+										"gender" => $req_gender
+									);
+									
+									$ret_arr = array(
+										"auth_info" => $ret_auth_info,
+										"user_info" => $ret_user_info
+									);
+
+									
+									echo json_encode($ret_arr);
+								}
+								else {
+									set_error_response( 201, "SQL Error -> " . $db_conn->error);
+								}
 								
-								echo json_encode($ret_array);
+								
+								
+								
 								
 								
 								
@@ -417,7 +444,7 @@
 		
 		return $ret_array;
 	}
-	function generate_255_char_random_string() {
+	function generate_64_char_random_string() {
 		
 		$length = 64;
 		

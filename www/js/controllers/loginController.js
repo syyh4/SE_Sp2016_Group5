@@ -7,11 +7,31 @@ var app = angular.module('linkedinApp', [])
 		
 	};
 	
+	var base_url = "http://40.86.85.30/cs4320_v2/";
+	
+	checkIfLoggedIn();
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	function checkIfLoggedIn() {
+		
+		if (typeof(Storage) !== "undefined") {
+			
+			if (sessionStorage.auth_token) {
+				$window.location.href = base_url + "home.php";
+			}
+		}
+		
+	}
 	$scope.authenticate = function() {
 		
-		var auth_url = "http://40.86.85.30/cs4320_v2/api/authorization.php";
+		var auth_url = base_url + "api/authorization.php";
 		
 		var auth_url = auth_url + "?authtype=initial&" + "username=" + $scope.credentials.username + "&password=" + $scope.credentials.password;
 		
@@ -20,7 +40,7 @@ var app = angular.module('linkedinApp', [])
 			url : auth_url
 		}).then(function successCallBack(response) {
 			
-			$window.location.href = "http://40.86.85.30/cs4320_v2/register.php";
+			$window.location.href = base_url + "register.php";
 			console.log("data -> " + JSON.stringify(response.data));
 			
 		}, function errorCallback(response) {

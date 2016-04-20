@@ -6,6 +6,8 @@
 	
 	<head>
 		<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+		<script src="bower_components/spin.js/spin.js"></script>
+		<script type="text/javascript" src="bower_components/angular-spinner/angular-spinner.min.js"></script>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		
@@ -90,6 +92,9 @@
 				</div>
 				<button type="submit" class="btn btn-primary btn-block btn-lg create-button" ng-click="registerUser()" ng-disabled="isButtonDisabled()">Login</button>
             </form>
+            <div ng-show="showLoadSpinner">
+	            <span us-spinner spinner-key="reg-user-request-spinner"></span>
+            </div>
           </div>
 
         </div>
