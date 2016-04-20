@@ -1,6 +1,13 @@
 var app = angular.module('linkedinApp', ['angularSpinner'])
   .controller('RegistrationController', ['$scope', '$http', 'usSpinnerService', function($scope, $http, usSpinnerService) {
-  	  	
+  	 
+	var settings = {
+		'base_url' : 'http://52.165.38.69/',
+		'dev_base_url' : 'http://40.86.85.30/cs4320_v2/'
+	};
+	
+	var use_main_url = false;
+	
   	$scope.reg_info = {
 	  	'fname' : '',
 	  	'mname' : '',
@@ -32,13 +39,12 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 		
 		var retVal = $scope.registerButtonDisabled;
 		
-		console.log("Returning -> " + retVal);
 		return retVal;
 		
 	}
 	$scope.registerUser = function() {
 		
-		var reg_url = "http://40.86.85.30/cs4320_v2/api/register.php";
+		var reg_url = get_base_url() + "api/register.php";
 		
 		var reg_url = reg_url + "?action=reguser&" +
 						"fname=" + $scope.reg_info.fname + 
@@ -50,7 +56,6 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 						"&gender=" + $scope.reg_info.gender +
 						"&birthdate=" + clean_date($scope.reg_info.birthdate);
 		
-		console.log("Register URL = " + reg_url);
 		show_load_spinner();
 		$http({
 			method : 'GET',
@@ -83,15 +88,9 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 	
 	$scope.$watch('reg_info', function(newVal, oldVal) {
 		
-//		console.log("The old dictionary -> " + JSON.stringify(oldVal) + "... New Val -> " + JSON.stringify(newVal));
-		
 		var isValidInfo = validate_registration_dictionary();
 		
-		//console.log("isValidInfo -> " + isValidInfo);
-		
 		$scope.registerButtonDisabled = !isValidInfo;
-		
-		console.log($scope.registerButtonDisabled);
 	}, true);
 	
 	function clean_date( date_str ) {
@@ -130,7 +129,6 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 		//	Passwords
 		isValid.passwords = areValidPasswords( $scope.reg_info.password , $scope.reg_info.confirm_password);
 		
-		console.log( isValid );
 
 		if (isValid.fname && isValid.mname && isValid.lname && isValid.birthdate && isValid.email && isValid.gender && isValid.passwords)
 		{
@@ -224,6 +222,17 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 		}
 	}
 	
+	
+	function get_base_url() {
+		
+		if (use_main_url) {
+			return settings.base_url;
+		}
+		else {
+			return settings.dev_base_url;
+		}
+	}
+	
   }]);
   
 var compareTo = function() {
@@ -237,11 +246,7 @@ var compareTo = function() {
             ngModel.$validators.compareTo = function(modelValue) {
 	            
 	            var compare_value = modelValue == scope.otherModelValue;
-	            console.log(( compare_value ? "They're equal!" : "They're not equal!"));
-	            
-	            console.log( ngModel );
 	            scope.passwordsAreEqual = compare_value;
-	            console.log("The pass are equal value is " + scope.passwordsAreEqual);
                 return modelValue == scope.otherModelValue;
             };
  

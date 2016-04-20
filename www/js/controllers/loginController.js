@@ -1,13 +1,18 @@
 var app = angular.module('linkedinApp', [])
   .controller('LoginController', function($scope, $http, $window) {
-  	  	
+  	
+	var settings = {
+		'base_url' : 'http://52.165.38.69/',
+		'dev_base_url' : 'http://40.86.85.30/cs4320_v2/'
+	};
+	
+	var use_main_url = false;  	
+	
 	$scope.credentials = {
 		'username' : '',
 		'password' : ''
 		
 	};
-	
-	var base_url = "http://40.86.85.30/cs4320_v2/";
 	
 	checkIfLoggedIn();
 	
@@ -31,7 +36,7 @@ var app = angular.module('linkedinApp', [])
 	}
 	$scope.authenticate = function() {
 		
-		var auth_url = base_url + "api/authorization.php";
+		var auth_url = get_base_url() + "api/authorization.php";
 		
 		var auth_url = auth_url + "?authtype=initial&" + "username=" + $scope.credentials.username + "&password=" + $scope.credentials.password;
 		
@@ -53,6 +58,15 @@ var app = angular.module('linkedinApp', [])
 		
 	}
 	
-	
+	function get_base_url() {
+		
+		if (use_main_url) {
+			return settings.base_url;
+		}
+		else {
+			return settings.dev_base_url;
+		}
+	}
+
 	
   });
