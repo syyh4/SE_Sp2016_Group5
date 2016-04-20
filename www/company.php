@@ -6,11 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Angular -->
-	<script src="http://cdn.rawgit.com/nnnick/Chart.js/master/Chart.min.js" type="text/javascript"></script>
+	<script src="bower_components/Chart.js/Chart.js" type="text/javascript"></script>
+	
     <link rel="stylesheet" href="http://cdn.rawgit.com/jtblin/angular-chart.js/master/dist/angular-chart.css" type="text/css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.min.js" type="text/javascript"></script>
-  	<script src="http://cdn.rawgit.com/jtblin/angular-chart.js/master/dist/angular-chart.js" type="text/javascript"></script>
-  
+    
+	<script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
+	
+  	<script src="bower_components/angular-chart.js/angular-chart.js" type="text/javascript"></script>
+  	
 	<script type= "text/javascript" src="js/controllers/companyController.js"></script>
     
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -86,15 +89,8 @@
     <![endif]-->
   </head>
   <body ng-app="linkedinApp">
-	  <div ng-controller="CompanyController">
+	  
 
-	<div class="row">
-		<div class="col-md-8">
-			<canvas id="bar" class="chart chart-bar" chart-data="ageBarChartData" chart-labels="ageBarChartLabels" chart-legend="true"  chart-series="ageBarChartSeries"></canvas>
-		</div>
-		<div class="col-md-4">
-		</div>
-	</div>
     <!-- NAVBAR
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <nav class="navbar navbar-inverse navbar-static-top">
@@ -120,194 +116,205 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
-    <!-- ABOUT COMPANY
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1 box">
-          <div class="col-sm-5 text-center">
-            <img src="http://placehold.it/250x250" class="img-responsive" style="display:inline-block;">
-          </div>
-          <div class="col-md-7 text-center">
-            <h1 class="company-name">Company Name</h1>
-            <h2 class="lead location">Location</h2>
-            <p class="company-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem nisi dicta deleniti quisquam nemo ipsam distinctio minima omnis harum temporibus nam necessitatibus facilis non modi nihil, labore, sapiente optio neque. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione labore fugiat ipsam omnis natus inventore, ullam saepe debitis adipisci laborum unde quisquam? Numquam ea omnis quae error, corporis incidunt aliquam.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- EMPLOYEES
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5 col-md-offset-1 box">
-          <h1 class="text-center employeesheader">Current Employees</h1>
-          <div class="employeelist">
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="http://placehold.it/64x64">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Employee One</h4>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
-              </div>
-            </div>
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="http://placehold.it/64x64">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Employee Two</h4>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
-              </div>
-            </div>
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="http://placehold.it/64x64">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Employee Three</h4>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
-              </div>
-            </div>
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="http://placehold.it/64x64">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Employee Four</h4>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- POSITIONS
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <div class="col-md-5 box">
-          <h1 class="text-center positionsheader">Available Positions</h1>
-          <div class="positionlist">
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="http://placehold.it/64x64">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Position One</h4>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
-              </div>
-            </div>
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="http://placehold.it/64x64">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Position Two</h4>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
-              </div>
-            </div>
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="http://placehold.it/64x64">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Position Three</h4>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
-              </div>
-            </div>
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="http://placehold.it/64x64">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Position Four</h4>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MAP
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1 box">
-          <img src="http://placehold.it/1000x500" class="img-responsive">
-        </div>
-      </div>
-    </div>
-
-    <!-- SALARY INFORMATION
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1 box">
-          <h1 class="text-center salariesheader">Salaries</h1>
-          <div class="row">
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <img src="http://placehold.it/242x200">
-                <div class="caption text-center">
-                  <h3>Position</h3>
-                  <p>Average Salary: $100,000</p>
-                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <img src="http://placehold.it/242x200">
-                <div class="caption text-center">
-                  <h3>Position</h3>
-                  <p>Average Salary: $100,000</p>
-                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <img src="http://placehold.it/242x200">
-                <div class="caption text-center">
-                  <h3>Position</h3>
-                  <p>Average Salary: $100,000</p>
-                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <img src="http://placehold.it/242x200">
-                <div class="caption text-center">
-                  <h3>Position</h3>
-                  <p>Average Salary: $100,000</p>
-                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+	
+	
+	
+	<div ng-controller="CompanyController">
+			<div class="row">
+				<div class="col-md-8">
+					<canvas id="bar" class="chart chart-bar" chart-data="ageBarChartData" chart-labels="ageBarChartLabels" chart-legend="true"  chart-series="ageBarChartSeries"></canvas>
+				</div>
+				<div class="col-md-4">
+				</div>
+			</div>
+			
+	    <!-- ABOUT COMPANY
+	    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	    <div class="container">
+	      <div class="row">
+	        <div class="col-md-10 col-md-offset-1 box">
+	          <div class="col-sm-5 text-center">
+	            <img src="http://placehold.it/250x250" class="img-responsive" style="display:inline-block;">
+	          </div>
+	          <div class="col-md-7 text-center">
+	            <h1 class="company-name">Company Name</h1>
+	            <h2 class="lead location">Location</h2>
+	            <p class="company-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem nisi dicta deleniti quisquam nemo ipsam distinctio minima omnis harum temporibus nam necessitatibus facilis non modi nihil, labore, sapiente optio neque. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione labore fugiat ipsam omnis natus inventore, ullam saepe debitis adipisci laborum unde quisquam? Numquam ea omnis quae error, corporis incidunt aliquam.</p>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	    
+	    <!-- EMPLOYEES
+	    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	    <div class="container">
+	      <div class="row">
+	        <div class="col-md-5 col-md-offset-1 box">
+	          <h1 class="text-center employeesheader">Current Employees</h1>
+	          <div class="employeelist">
+	            <div class="media">
+	              <div class="media-left">
+	                <a href="#">
+	                  <img class="media-object" src="http://placehold.it/64x64">
+	                </a>
+	              </div>
+	              <div class="media-body">
+	                <h4 class="media-heading">Employee One</h4>
+	                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
+	              </div>
+	            </div>
+	            <div class="media">
+	              <div class="media-left">
+	                <a href="#">
+	                  <img class="media-object" src="http://placehold.it/64x64">
+	                </a>
+	              </div>
+	              <div class="media-body">
+	                <h4 class="media-heading">Employee Two</h4>
+	                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
+	              </div>
+	            </div>
+	            <div class="media">
+	              <div class="media-left">
+	                <a href="#">
+	                  <img class="media-object" src="http://placehold.it/64x64">
+	                </a>
+	              </div>
+	              <div class="media-body">
+	                <h4 class="media-heading">Employee Three</h4>
+	                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
+	              </div>
+	            </div>
+	            <div class="media">
+	              <div class="media-left">
+	                <a href="#">
+	                  <img class="media-object" src="http://placehold.it/64x64">
+	                </a>
+	              </div>
+	              <div class="media-body">
+	                <h4 class="media-heading">Employee Four</h4>
+	                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	
+	        <!-- POSITIONS
+	        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	        <div class="col-md-5 box">
+	          <h1 class="text-center positionsheader">Available Positions</h1>
+	          <div class="positionlist">
+	            <div class="media">
+	              <div class="media-left">
+	                <a href="#">
+	                  <img class="media-object" src="http://placehold.it/64x64">
+	                </a>
+	              </div>
+	              <div class="media-body">
+	                <h4 class="media-heading">Position One</h4>
+	                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
+	              </div>
+	            </div>
+	            <div class="media">
+	              <div class="media-left">
+	                <a href="#">
+	                  <img class="media-object" src="http://placehold.it/64x64">
+	                </a>
+	              </div>
+	              <div class="media-body">
+	                <h4 class="media-heading">Position Two</h4>
+	                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
+	              </div>
+	            </div>
+	            <div class="media">
+	              <div class="media-left">
+	                <a href="#">
+	                  <img class="media-object" src="http://placehold.it/64x64">
+	                </a>
+	              </div>
+	              <div class="media-body">
+	                <h4 class="media-heading">Position Three</h4>
+	                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
+	              </div>
+	            </div>
+	            <div class="media">
+	              <div class="media-left">
+	                <a href="#">
+	                  <img class="media-object" src="http://placehold.it/64x64">
+	                </a>
+	              </div>
+	              <div class="media-body">
+	                <h4 class="media-heading">Position Four</h4>
+	                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	
+	    <!-- MAP
+	    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	    <div class="container">
+	      <div class="row">
+	        <div class="col-md-10 col-md-offset-1 box">
+	          <img src="http://placehold.it/1000x500" class="img-responsive">
+	        </div>
+	      </div>
+	    </div>
+	
+	    <!-- SALARY INFORMATION
+	    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	    <div class="container">
+	      <div class="row">
+	        <div class="col-md-10 col-md-offset-1 box">
+	          <h1 class="text-center salariesheader">Salaries</h1>
+	          <div class="row">
+	            <div class="col-sm-3">
+	              <div class="thumbnail">
+	                <img src="http://placehold.it/242x200">
+	                <div class="caption text-center">
+	                  <h3>Position</h3>
+	                  <p>Average Salary: $100,000</p>
+	                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
+	                </div>
+	              </div>
+	            </div>
+	            <div class="col-sm-3">
+	              <div class="thumbnail">
+	                <img src="http://placehold.it/242x200">
+	                <div class="caption text-center">
+	                  <h3>Position</h3>
+	                  <p>Average Salary: $100,000</p>
+	                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
+	                </div>
+	              </div>
+	            </div>
+	            <div class="col-sm-3">
+	              <div class="thumbnail">
+	                <img src="http://placehold.it/242x200">
+	                <div class="caption text-center">
+	                  <h3>Position</h3>
+	                  <p>Average Salary: $100,000</p>
+	                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
+	                </div>
+	              </div>
+	            </div>
+	            <div class="col-sm-3">
+	              <div class="thumbnail">
+	                <img src="http://placehold.it/242x200">
+	                <div class="caption text-center">
+	                  <h3>Position</h3>
+	                  <p>Average Salary: $100,000</p>
+	                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	</div>
     <!-- FOOTER
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <footer class="footer">
