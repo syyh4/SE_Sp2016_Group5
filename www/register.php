@@ -5,7 +5,7 @@
 <html lang="en">
 	
 	<head>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.0/Chart.js"></script>
+		<script type="text/javascript" src="https://raw.githubusercontent.com/nnnick/Chart.js/master/Chart.min.js"></script>
 		<script src="bower_components/spin.js/spin.js"></script>
 		<script type="text/javascript" src="bower_components/angular-spinner/angular-spinner.min.js"></script>
 		<!-- Latest compiled and minified CSS -->

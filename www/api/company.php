@@ -134,7 +134,7 @@
 										
 										foreach($bar_data as $key => $value ) {
 											
-											array_push($labels_arr, $key);
+											array_push($labels_arr, $value["range"]);
 											array_push($data_arr, $value["count"]);
 										}
 										
