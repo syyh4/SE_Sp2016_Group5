@@ -17,7 +17,7 @@ All information will be kept in a database.
 Ethan Hannah, Anthony Forsythe, Wil Thuston, Luke Anderson, Shizeng Yao
 
 ### Website
-Index/Register: http://52.165.38.69
+Index/Register: http://52.165.38.69/home.php
 
 Login: http://52.165.38.69/login.php
 
@@ -28,5 +28,7 @@ User: http://52.165.38.69/user.php
 Search: http://52.165.38.69/search.php
 
 Activity: http://52.165.38.69/activity.php
+
+Search: http://52.165.38.69/search.php
 
 
