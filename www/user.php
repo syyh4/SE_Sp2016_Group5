@@ -101,7 +101,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://52.165.38.69/home.php">LinkedIn</a>
+          <a class="navbar-brand" href="http://52.165.38.69/index.php">LinkedIn</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
