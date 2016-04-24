@@ -101,13 +101,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">LinkedIn</a>
+          <a class="navbar-brand" href="http://52.165.38.69/home.php">LinkedIn</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">My Profile</a></li>
-            <li><a href="#">Search</a></li>
+            <li><a href="http://52.165.38.69/home.php">Home</a></li>
+            <li><a href="http://52.165.38.69/user.php">My Profile</a></li>
+            <li><a href="http://52.165.38.69/search.php">Search</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Logout</a></li>
