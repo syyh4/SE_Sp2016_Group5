@@ -42,7 +42,9 @@
     <!-- REGISTER
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div>
-	    I'm empty
+	We are developing a new website like "LinkedIn".<br>
+	People can register on this site and serach for jobs.<br>
+	Registered users have a personal profile and can connect with friends and view positions offered by companines.<br>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
