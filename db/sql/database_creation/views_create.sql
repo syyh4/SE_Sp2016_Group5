@@ -24,7 +24,35 @@ AS
           L.zip 
    FROM   company C, 
           location L 
-   WHERE  C.lid = L.lid); 
+   WHERE  C.lid = L.lid
+   ); 
    
    
+DROP VIEW IF EXISTS company_employees_view;
 
+CREATE VIEW company_employees_view AS
+(
+	SELECT 
+		C.name, C.uid as cid, COUNT(*) as total_employees,
+		TRUNCATE(MAX((ABS(DATEDIFF(P.birth_date, CURDATE()))) / 365), 2) AS max_emp_age,
+		TRUNCATE((ABS(AVG(DATEDIFF(P.birth_date, CURDATE()))) / 365), 2) AS avg_emp_age,
+		TRUNCATE(MIN((ABS(DATEDIFF(P.birth_date, CURDATE()))) / 365), 2) AS min_emp_age
+	FROM company C, person P, company_employees CE
+	WHERE CE.cid = C.uid AND CE.eid = P.uid
+	GROUP BY C.uid
+);
+
+
+DROP VIEW IF EXISTS employees_view;
+CREATE VIEW employees_view AS 
+(
+	SELECT
+		C.uid as cid, C.name as company_name, 
+		P.uid as eid, P.firstname, P.lastname, P.birth_date, P.age
+	FROM
+		person P, company C, company_employees CE
+	WHERE
+		P.uid = CE.eid 
+	AND
+		C.uid = CE.cid
+);

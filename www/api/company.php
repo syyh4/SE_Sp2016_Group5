@@ -30,7 +30,8 @@
 	switch ($req_method) {
 		
 		case 'GET':
-			//	Check the authorization_type (either 'initial' or 'refresh'
+			
+			$valid_auth_token = false;
 			
 			if (isset($_GET['auth_token'])) {
 				
@@ -42,21 +43,8 @@
 				
 				if ($result = $db_conn->query($get_token_sql))
 				{
-					if ($row = $result->fetch_row()) {
-						
-						$get_all_companies_sql = "SELECT uid FROM user";
-		
-						if ($company_result = $db_conn->query($get_all_companies_sql)) {
-							
-							http_response_code(200);
-							echo json_encode($company_result);
-							
-						}
-						else {
-							
-							set_error_response( 23, $db_conn->error);
-						}
-
+					if ($result->num_rows > 0) {
+						$valid_auth_token = true;
 					}
 				}
 				else 
@@ -68,6 +56,323 @@
 			else 
 			{
 				set_error_response( 4, "The auth parameter was not properly set");
+			}
+			
+			
+			
+			if ($valid_auth_token) {
+				
+				if (isset($_REQUEST['req_type'])) {
+					$req_type = $_GET['req_type'];
+					
+					
+					switch ($req_type) {
+						
+						case "analytics":
+						
+							if (isset($_GET["cid"]) && isset($_GET["graph-type"])) {
+								$cid = $_GET["cid"];
+								$graph_type = $_GET["graph-type"];
+								
+								
+								switch ($graph_type) {
+									
+									case "age-bar-chart":
+									
+										$ranges = array(
+											"18 - 25" => "age >= 18 AND age < 25",
+											"25 - 35" => "age >= 25 AND age < 35",
+											"35 - 45" => "age >= 35 AND age < 45",
+											"45 - 60" => "age >= 45 AND age < 60",
+											"60+" => "age >= 60"	
+										);
+										
+										
+										
+										//	First get the total number of employees
+										
+										$total_employee_count;
+										
+										$total_employee_count_sql =	"SELECT COUNT(*) AS global_emp_count FROM employees_view";
+										
+										if ($result = $db_conn->query($total_employee_count_sql)) {
+											
+											if($result->num_rows == 1) {
+												
+												if($result_array = $result->fetch_array(MYSQLI_ASSOC)) {
+													
+													$global_emp_count = $result_array["global_emp_count"];
+													
+													$total_employee_count = $global_emp_count;
+												}
+												else {
+													set_error_response( 204 , "SQL Error -> " . $db_conn->error );
+												}
+											}
+											else {
+												set_error_response( 203 , "I didn't get the correct number of rows back...");
+												break;
+											}
+											
+											
+										}
+										else {
+											set_error_response( 203 , "SQL ERROR -> " . $db_conn->error );
+											break;
+										}
+										
+										
+										$total_company_employees;
+										$company_name;
+										
+										$get_company_info_sql = "SELECT * FROM company_employees_view WHERE cid = " . $cid;
+										
+										
+										if ($result = $db_conn->query($get_company_info_sql)) {
+											
+											if ($result->num_rows == 1) {
+												
+												if ($result_array = $result->fetch_array(MYSQLI_ASSOC)) {
+													
+													$result_comp_name = $result_array["name"];
+													$result_total_emp = $result_array["total_employees"];
+													
+													$company_name = $result_comp_name;
+													$total_company_employees = $result_total_emp;
+
+												}
+												
+											}
+											else {
+												set_error_response( 203 , "I didn't get the correct number of rows..." );
+												break;
+											}
+										}
+										else {
+											set_error_response( 201 , "SQL ERROR -> " . $db_conn->error );
+											break;
+										}
+										
+										
+										
+										
+										//	Get the employee counts for all companies
+										$global_age_range_vals = array();
+										$company_age_range_vals = array();
+										
+										
+										
+										foreach( $ranges as $k => $v ) {
+											
+											$global_range_query = "SELECT COUNT(*) as total_emp FROM employees_view "
+																	. "WHERE " . $v;
+											
+											if ($result = $db_conn->query($global_range_query)) {
+												
+												if ($result->num_rows == 1) {
+													
+													if ($result_array = $result->fetch_array(MYSQLI_ASSOC)) {
+														
+														$tmp_arr = array(
+															"range" => $k,
+															"count" => $result_array["total_emp"]
+														);
+														
+														array_push($global_age_range_vals, $tmp_arr);
+													}
+													else {
+														set_error_response( 202 , "SQL ERROR -> " . $db_conn->error );
+														break;
+													}
+													
+												}
+												else {
+													set_error_response( 201 , "The number of rows was off...");
+													break;
+												}
+											}
+											else {
+												set_error_response( 202 , "SQL ERROR -> " . $db_conn->error );
+												break;
+											}
+											
+											
+											$company_range_query = "SELECT COUNT(*) as total_emp FROM employees_view "
+																	. "WHERE " . $v . " "
+																	. "AND cid = " . $cid;
+												
+											if ($result = $db_conn->query($company_range_query)) {
+												
+												if ($result->num_rows == 1) {
+													
+													if ($result_array = $result->fetch_array(MYSQLI_ASSOC)) {
+														
+														$tmp_arr = array(
+															"range" => $k,
+															"count" => $result_array["total_emp"]
+														);
+														
+														array_push($company_age_range_vals, $tmp_arr);
+													}
+													else {
+														set_error_response( 202 , "SQL ERROR -> " . $db_conn->error );
+														break;
+													}
+													
+												}
+												else {
+													set_error_response( 201 , "The number of rows was off...");
+													break;
+												}
+											}
+											else {
+												set_error_response( 202 , "SQL ERROR -> " . $db_conn->error );
+												break;
+											}				
+										}
+										
+										
+										
+										
+										$ranges_values_count = count($company_age_range_vals);
+										
+										$global_data = array();
+										$company_data = array();
+										
+										for ($i = 0; $i < $ranges_values_count; $i++) {
+											
+											$curr_global = $global_age_range_vals[$i];
+											$curr_comp = $company_age_range_vals[$i];
+											
+											$curr_global_count = $curr_global["count"];
+											$curr_comp_count = $curr_comp["count"];
+											
+											$global_value = ($curr_global["count"] / $total_employee_count) * 100;
+											$comp_value = ($curr_comp["count"] / $total_company_employees) * 100;
+											
+											$global_value = number_format($global_value, 2, '.', '');
+											$comp_value = number_format($comp_value, 2 , '.', '');
+											
+											array_push($global_data, $global_value);
+											array_push($company_data, $comp_value);
+										}
+										
+										
+										$labels_arr = array();
+										
+										foreach($global_age_range_vals as $key => $value ) {
+											
+											array_push($labels_arr, $value["range"]);
+										}
+																				
+										
+										
+										$dataset_one_series_name = $company_name . " Values";
+										$dataset_one = array(
+											"label" => "age-data",
+											"fillColor" => convert_reqular_color_to_rgb("blue"),
+											"strokeColor" => convert_reqular_color_to_rgb("blue"),
+											"highlightFill" => convert_reqular_color_to_rgb("light-blue"),
+											"highlightStroke" => convert_reqular_color_to_rgb("blue"),
+											"data" => $company_data
+										);
+										
+										$dataset_two_series_name = "Global Values";
+										$dataset_two = array(
+											"label" => "age-data",
+											"fillColor" => convert_reqular_color_to_rgb("blue"),
+											"strokeColor" => convert_reqular_color_to_rgb("blue"),
+											"highlightFill" => convert_reqular_color_to_rgb("light-blue"),
+											"highlightStroke" => convert_reqular_color_to_rgb("blue"),
+											"data" => $global_data
+										);
+										
+										$company_info = array(
+											"cid" => $cid
+										);
+										
+										$chart_data = array(
+											"labels" => $labels_arr,
+											"datasets" => array( $dataset_one, $dataset_two ),
+											"series" => array( $dataset_one_series_name, $dataset_two_series_name)
+										);
+										
+										$ret_array = array(
+											"company-info" => $company_info,
+											"bar-chart-data" => $chart_data
+										);
+										
+										http_response_code(200);
+										
+										echo json_encode($ret_array);
+										
+									break;
+									
+									
+									
+									
+									
+									
+								}
+							}
+						
+						
+						
+						break;
+						
+						
+						case 'company-info':
+						
+						
+							if (isset($_GET['cid'])) {
+								
+								$cid = $_GET['cid'];
+								
+								$get_company_info_sql = "SELECT * FROM company_full_view WHERE company_id = " . $cid;
+								
+								
+								if ($result = $db_conn->query($get_company_info_sql)) {
+									
+									if ($result->num_rows == 1) {
+										
+										if ($result_row = $result->fetch_array(MYSQLI_ASSOC)) {
+											
+											http_response_code(200);
+											echo json_encode($result_row);
+											
+										}
+										else {
+											set_error_response( 203 , "SQL Error -> " . $db_conn->error );
+										}
+										
+										
+									}
+									else {
+										set_error_response( 202 , "The number of rows wasn't right...");
+										break;
+									}
+									
+									
+								}
+								else {
+									set_error_response( 202 , "SQL Error -> " . $db_conn->error );
+									break;
+								}
+								
+							}
+						
+						
+						break;
+						
+						
+					}	
+					
+				}				
+				
+				
+				
+				
+				
 			}
 		break;
 		
@@ -99,7 +404,71 @@
 		UTILITY FUNCTIONS
 	*/
 	
+	function convert_reqular_color_to_rgb( $color ) {
+		$rgb_string;
+		
+		switch ($color) {
+			
+			case "blue":
+				$hex_string = "#336699";
+				$alpha_val = 0.8;
+				$rgb_string = convert_hex_to_rgb( $hex_string, $alpha_val);
+			break;
+			
+			case "light-blue":
+				$hex_string = "#336699";
+				$alpha_val = 0.4;
+				$rgb_string = convert_hex_to_rgb( $hex_string, $alpha_val);
+			break;
+			
+			case "red":
+			
+				$hex_string = "#e60000";
+				$alpha_val = 0.8;
+				$rgb_string = convert_hex_to_rgb( $hex_string, $alpha_val);
+			break;
+			
+			case "light-red":
+			
+				$hex_string = "#e60000";
+				$alpha_val = 0.4;
+				$rgb_string = convert_hex_to_rgb( $hex_string, $alpha_val);
+			break;
+			
+			default:
+			
+				$hex_string = "#e60000";
+				$alpha_val = 0.4;
+				$rgb_string = convert_hex_to_rgb( $hex_string, $alpha_val);
+			break;
+		}
+		return $rgb_string;	
+	}
 	
+	
+	function convert_hex_to_rgb( $hex_string, $alpha) {
+		
+		$clean_string = $hex_string;
+		
+		if (strpos($hex_string, "#") == 0) {
+			$clean_string = str_replace("#", "", $hex_string);
+		}
+		
+		$red = substr($clean_string, 0, 2);
+		$green = substr($clean_string, 2, 2);
+		$blue = substr($clean_string, 4, 2);
+		
+		$red_dec = hexdec($red);
+		$green_dec = hexdec($green);
+		$blue_dec = hexdec($blue);
+		
+		return get_rgb_string_for_values( $red_dec, $green_dec, $blue_dec, $alpha);		
+	}
+
+	function get_rgb_string_for_values( $r , $g , $b, $a ) {
+		
+		return "rgba( $r, $g, $b, $a )";
+	}
 	function generate_255_char_random_string() {
 		
 		$length = 64;
