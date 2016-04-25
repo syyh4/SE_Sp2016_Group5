@@ -27,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">LinkedIn</a>
+          <a class="navbar-brand" href="http://52.165.38.69/index.php">LinkedIn</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -42,7 +42,9 @@
     <!-- REGISTER
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div>
-	    I'm empty
+	We are developing a new website like "LinkedIn".<br>
+	People can register on this site and serach for jobs.<br>
+	Registered users have a personal profile and can connect with friends and view positions offered by companines.<br>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
