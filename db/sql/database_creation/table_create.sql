@@ -400,6 +400,23 @@ CREATE TABLE user_auth_tokens (
 	UNIQUE (token)
 );
 
+#
+#	Table Name
+#
+#	Columns
+#		-	feed_item_id	(This will be the primary key of the feed item)
+#		-	cid				(This references the company's uid value)
+#		-	feed_type		(This is the type of the feed item)
+#		-	date_posted		(This is the date the feed item was posted)
+#		-	feed_body		(This is the body of the feed item)
+#		-	offer_id		(This references the job offer's offer_id value)
+#
+#	Primary Key
+#		-	feed_item_id
+#
+#	Purpose
+#		This table will hold all of feed items for a company
+#
 CREATE TABLE company_feed_items (
 	feed_item_id		SERIAL,
 	cid					BIGINT UNSIGNED,

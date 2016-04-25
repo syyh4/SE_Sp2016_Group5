@@ -2,6 +2,46 @@ USE linkedin_group_5;
 
 
 
+
+SELECT
+		C.uid as cid, C.name as company_name, 
+		P.uid as eid, P.firstname, P.lastname, P.birth_date, P.age
+FROM
+		person P, company C, company_employees CE
+WHERE
+		P.uid = CE.eid 
+	AND
+		C.uid = CE.cid
+;
+
+/*
+SELECT 
+	C.name, C.uid as cid, COUNT(*) as total_employees,
+	TRUNCATE(MAX((ABS(DATEDIFF(P.birth_date, CURDATE()))) / 365), 2) AS max_emp_age,
+	TRUNCATE((ABS(AVG(DATEDIFF(P.birth_date, CURDATE()))) / 365), 2) AS avg_emp_age,
+	TRUNCATE(MIN((ABS(DATEDIFF(P.birth_date, CURDATE()))) / 365), 2) AS min_emp_age
+FROM company C, person P, company_employees CE
+WHERE CE.cid = C.uid AND CE.eid = P.uid
+GROUP BY C.uid;
+
+SELECT count(*) total_emp_count FROM company C, person P, company_employees CE WHERE C.uid = CE.cid AND P.uid = CE.eid;
+*/
+-- UPDATE person P SET birth_date = "1995-06-22" WHERE (ABS(DATEDIFF(P.birth_date, CURDATE()) / 365)) < 18;
+
+
+/*
+
+SELECT 
+	C.name, C.uid, COUNT(*)
+	TRUNCATE(MAX((ABS(DATEDIFF(P.birth_date, CURDATE()))) / 365), 2) AS max_emp_age,
+	TRUNCATE((ABS(AVG(DATEDIFF(P.birth_date, CURDATE()))) / 365), 2) AS avg_emp_age,
+	TRUNCATE(MIN((ABS(DATEDIFF(P.birth_date, CURDATE()))) / 365), 2) AS min_emp_age
+FROM company C, person P, company_employees CE
+WHERE CE.cid = C.uid AND CE.eid = P.uid
+GROUP BY C.uid;
+*/
+
+/*
 DROP VIEW user_person_view;
 
 CREATE VIEW user_person_view AS (
@@ -13,6 +53,7 @@ CREATE VIEW user_person_view AS (
 );
 
 SELECT * FROM user_person_view LIMIT 10;
+*/
 
 
 /*

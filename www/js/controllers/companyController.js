@@ -50,12 +50,14 @@ angular.module("myApp", ["chart.js"]).controller("CompanyController", function (
   
   function convert_return_dictionary_to_chart_dict( ret_dict ) {
 	  
+	  	
   		var fixed_dict = {
 	  		"labels" : ret_dict["bar-chart-data"]["labels"],
-	  		"series" : ["bar-chart-data"],
-	  		"data" : [ret_dict["bar-chart-data"]["datasets"][0]["data"]]
+	  		"series" : ret_dict["bar-chart-data"]["series"],
+	  		"data" : [ret_dict["bar-chart-data"]["datasets"][0]["data"], ret_dict["bar-chart-data"]["datasets"][1]["data"]]
   		};
-	  
+  		console.log( fixed_dict );
+  		
   		return fixed_dict;
   }
   function set_session_auth_token() {
