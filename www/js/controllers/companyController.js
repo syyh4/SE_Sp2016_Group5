@@ -30,6 +30,9 @@ angular.module("myApp", ["chart.js"]).controller("CompanyController", function (
 		"pretty_location"	: ""
 	};
 	
+	//	Employees Information
+	$scope.employees = [];
+	
 	//	Chart - Age Info
 	$scope.ageChartInfo = {
 		"labels" : ["January", "February", "March", "April", "May", "June", "July"],
@@ -54,8 +57,36 @@ angular.module("myApp", ["chart.js"]).controller("CompanyController", function (
 	pull_query_params();
 	pull_age_chart_data();
 	pull_basic_company_info();
-	
+	pull_company_employees();
   
+	function pull_company_employees() {
+		
+		
+		var token_info = get_token_information();
+		
+		var req_url = 	base_url + "api/company.php?"
+						+ "cid=" + $scope.queryParams["cid"] + "&"
+						+ "req_type=company-employees&"
+						+ "auth_token=" + token_info["auth_token"];
+						
+		
+		$http({
+			method	:	'GET',
+			url		:	req_url
+		}).then( function successCallback( response ) {
+			
+			$scope.employees = response.data;
+			
+		}, function errorCallback( response ) {
+			
+			var error_string = "There was an error processing the request";
+			console.log( error_string );
+		});
+		
+		
+		
+		
+	}
 	function pull_query_params() {
 		
 		var url_string = $window.location.href;

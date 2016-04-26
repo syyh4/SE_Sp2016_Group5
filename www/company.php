@@ -4,7 +4,7 @@
 
 <html>
 	<head lang="en">
-		<title>Charts</title>
+		<title>Company</title>
 		
 		
 		<script src="bower_components/angular/angular.js"></script>
@@ -103,51 +103,18 @@
       <div class="row">
         <div class="col-md-5 col-md-offset-1 box">
           <h1 class="text-center employeesheader">Current Employees</h1>
-          <div class="employeelist">
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="http://placehold.it/64x64">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Employee One</h4>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
-              </div>
-            </div>
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="http://placehold.it/64x64">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Employee Two</h4>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
-              </div>
-            </div>
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="http://placehold.it/64x64">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Employee Three</h4>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
-              </div>
-            </div>
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="http://placehold.it/64x64">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Employee Four</h4>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id expedita autem illo voluptates velit tempora iste, culpa!
-              </div>
-            </div>
+          <div class="employeelist" ng-repeat="emp in employees">
+			<div class="media">
+				<div class="media-left">
+					<a href="#">
+						<img class="media-object" src="http://i.imgur.com/JDatwND.png?2">
+					</a>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading">{{ emp.fname }} {{ emp.lname }}</h4>
+					<small>Just some basic info about this employee</small>
+				</div>
+			</div>
           </div>
         </div>
 
