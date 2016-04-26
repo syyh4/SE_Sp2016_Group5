@@ -38,6 +38,7 @@ CREATE TABLE person (
 	middlename	varchar(200),
 	lastname	varchar(200),
 	birth_date	DATE,
+	age			REAL,
 	PRIMARY KEY (uid),
 	FOREIGN KEY (uid) REFERENCES user(uid) ON DELETE CASCADE
 );
@@ -60,7 +61,7 @@ CREATE TABLE company (
 	uid			BIGINT UNSIGNED,
 	lid			BIGINT UNSIGNED,
 	name		VARCHAR(300),
-	description VARCHAR(500),
+	description VARCHAR(2000),
 	PRIMARY KEY (uid),
 	FOREIGN KEY (uid) REFERENCES user(uid) ON DELETE CASCADE,
 	FOREIGN KEY (lid) REFERENCES location(lid)

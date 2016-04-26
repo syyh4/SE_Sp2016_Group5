@@ -13,3 +13,7 @@ source ./input_data_v2.sql;
 
 #	Create the views
 source ./views_create.sql;
+
+
+#	Create the triggers
+source ./triggers_create.sql;

@@ -19,19 +19,7 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 	  	'confirm_password' : ''
   	};
   	
-  	
-  	$scope.test_info = {
-	  	'fname' : 'Anthony',
-	  	'lname' : 'Forsythe',
-	  	'birthdate' : '06/22/1993',
-	  	'email' : 'forsythetony@gmail.com',
-	  	'gender' : 'male',
-	  	'username' : 'forsythetony',
-	  	'password' : 'justadefaultpassword',
-	  	'auth_token' : 'auth_token'
-	  	};
-	  	
-	$scope.registerButtonDisabled = false;
+  	$scope.registerButtonDisabled = false;
 	$scope.showLoadSpinner = false;
 	$scope.passwordsAreEqual = true;
 	
@@ -71,8 +59,12 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 			
 			if (typeof(Storage) !== "undefined") {
 				
+				//	Store the authentication token
 				sessionStorage.auth_token = response.data.auth_info.auth_token;
 				sessionStorage.auth_token_expire_time = response.data.auth_info.expires_in;
+				
+				//	Redirect to the home page
+
 				
 				
 			} else {

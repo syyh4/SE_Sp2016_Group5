@@ -33,7 +33,7 @@
           <ul class="nav navbar-nav">
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.php">Login</a></li>
+            <li><a href="/cs4320_v2/logout.php">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

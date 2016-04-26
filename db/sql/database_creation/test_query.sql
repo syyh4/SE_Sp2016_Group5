@@ -1,7 +1,16 @@
 USE linkedin_group_5;
 
+DROP VIEW user_person_view;
 
+CREATE VIEW user_person_view AS (
+	SELECT U.uid, U.username, U.email,
+			P.firstname, P.middlename, P.lastname, P.birth_date, P.age, P.gender
+			
+	FROM user U, person P
+	WHERE U.uid = P.uid
+);
 
+/*
 
 SELECT
 		C.uid as cid, C.name as company_name, 
@@ -13,6 +22,7 @@ WHERE
 	AND
 		C.uid = CE.cid
 ;
+*/
 
 /*
 SELECT 

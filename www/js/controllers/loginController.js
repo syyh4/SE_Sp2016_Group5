@@ -1,12 +1,7 @@
 var app = angular.module('linkedinApp', [])
   .controller('LoginController', function($scope, $http, $window) {
   	
-	var settings = {
-		'base_url' : 'http://52.165.38.69/',
-		'dev_base_url' : 'http://40.86.85.30/cs4320_v2/'
-	};
-	
-	var use_main_url = false;  	
+  	var base_url = 'http://40.86.85.30/cs4320_v2/';
 	
 	$scope.credentials = {
 		'username' : '',
@@ -15,15 +10,7 @@ var app = angular.module('linkedinApp', [])
 	};
 	
 	checkIfLoggedIn();
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	function checkIfLoggedIn() {
 		
 		if (typeof(Storage) !== "undefined") {
@@ -34,19 +21,38 @@ var app = angular.module('linkedinApp', [])
 		}
 		
 	}
+	
+	
+
 	$scope.authenticate = function() {
 		
-		var auth_url = get_base_url() + "api/authorization.php";
+		var auth_url = base_url + "api/authorization.php";
 		
 		var auth_url = auth_url + "?authtype=initial&" + "username=" + $scope.credentials.username + "&password=" + $scope.credentials.password;
+		
+		console.log("The auth url was -> " + auth_url);
+		
 		
 		$http({
 			method : 'GET',
 			url : auth_url
 		}).then(function successCallBack(response) {
 			
-			$window.location.href = base_url + "register.php";
-			console.log("data -> " + JSON.stringify(response.data));
+			//	Pull auth_token data from the response
+			var auth_token = response.data.auth_token;
+			var expires_in = response.data.expires_in;
+			
+			console.log( "The auth_token (1) is -> " + auth_token);
+			//	Set the auth token data in storage
+			if (typeof(Storage) !== "undefined") {
+				sessionStorage.auth_token = auth_token;
+				sessionStorage.expires_in = expires_in;
+			}
+			
+			//	Redirect the user to the home page
+			var redirect_url = base_url + "company.php?cid=2";
+			
+			$window.location.href = redirect_url;
 			
 		}, function errorCallback(response) {
 			

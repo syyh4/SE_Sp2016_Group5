@@ -38,7 +38,6 @@
 				//	Check to see if the auth token exists in the database
 				$auth_token = $_GET['auth_token'];
 				
-				
 				$get_token_sql = "SELECT issued_to, token from user_auth_tokens where token = " . "'$auth_token'";
 				
 				if ($result = $db_conn->query($get_token_sql))
@@ -59,7 +58,7 @@
 			}
 			
 			
-			
+
 			if ($valid_auth_token) {
 				
 				if (isset($_REQUEST['req_type'])) {
@@ -404,6 +403,15 @@
 		UTILITY FUNCTIONS
 	*/
 	
+	function echo_simple( $v ) {
+		
+		echo "\n $v \n";
+	}
+	
+	function echo_with_title($v, $t) {
+		
+		echo "\n $t -> $v ";
+	}
 	function convert_reqular_color_to_rgb( $color ) {
 		$rgb_string;
 		
