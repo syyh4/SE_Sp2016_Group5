@@ -11,6 +11,7 @@ DROP VIEW IF EXISTS company_location_view;
 CREATE VIEW company_full_view 
 AS 
   (SELECT C.uid        AS company_id, 
+			U.prof_image AS company_image,
           C.name       AS company_name, 
           C.description AS company_description,
           L.lid        AS location_id, 
@@ -23,7 +24,7 @@ AS
           L.zip 
    FROM   company C, 
           location L 
-   WHERE  C.lid = L.lid
+   WHERE  C.lid = L.lid AND C.uid = U.uid
    ); 
    
    
@@ -58,7 +59,7 @@ CREATE VIEW employees_view AS
 
 DROP VIEW IF EXISTS user_person_view;
 CREATE VIEW user_person_view AS (
-	SELECT U.uid, U.username, U.email,
+	SELECT U.uid, U.username, U.email, U.prof_image,
 			P.firstname, P.middlename, P.lastname, P.birth_date, P.age, P.gender
 			
 	FROM user U, person P
