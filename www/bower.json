@@ -4,9 +4,10 @@
   "authors": [
     "forsythetony <forsythetony@gmail.com>"
   ],
-  "description": "The linked in based group project for Spring CS4320",
+  "description": "Just a class project we have to do for CS4320 (Spring 2016)",
   "main": "",
   "license": "MIT",
+  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
@@ -15,9 +16,9 @@
     "tests"
   ],
   "dependencies": {
-	"Chart.js" : "1.0.1",
-	"angular" : "1.5.6-build.4764+sha.d985944",
     "angular-chart.js": "^0.10.0",
-    "angular-spinner": "^0.8.1"
+    "angular-bootstrap": "^1.3.2",
+    "angular-spinner": "^0.8.1",
+    "bootstrap": "^3.3.6"
   }
 }
