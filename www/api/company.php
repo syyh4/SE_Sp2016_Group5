@@ -470,7 +470,7 @@
 									$result_age 		= $result_row["age"];
 									$result_company		= $result_row["company_name"];
 									$result_cid			= $result_row["cid"];
-
+									$result_img			= $result_row["emp_image"];
 
 									$ret_array = array(
 										"eid" =>	$result_eid,
@@ -480,6 +480,7 @@
 										"age" => $result_age,
 										"cid" => $result_cid,
 										"company_name" => $result_company
+										"emp_image" => $result_img
 									);
 									
 									array_push($employees, $ret_array);

@@ -166,7 +166,7 @@
 			<div class="media employeesItem">
 				<div class="media-left">
 					<a href="#">
-						<img class="media-object" src="http://i.imgur.com/JDatwND.png?2">
+						<img class="media-object" ng-src="{{ emp.emp_image }}">
 					</a>
 				</div>
 				<div class="media-body">
