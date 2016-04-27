@@ -111,6 +111,7 @@
 	}
 	
 	//	Update the male values
+/*
 	
 	$update_male_images_sql = "UPDATE user SET prof_image = ? WHERE uid = ?";
 	
@@ -127,11 +128,56 @@
 		}
 		
 	}
+*/
 
 
 
 
-
+	
+	$female_update_values = array();
+	
+	$female_images_length = count($female_img_urls);
+	
+	foreach( $female_uids as $female_id ) {
+		
+		$uid_value = $female_id;
+		
+		//	Get a random index value
+		$random_index = (rand(1, $female_images_length)) - 1;
+		
+		$img_value = $female_img_urls[$random_index];
+		
+		$ret_array = array(
+			"uid" => $uid_value,
+			"img_url" => $img_value
+		);
+		
+		array_push($female_update_values, $ret_array);
+		
+	}
+	
+	//	Update the male values
+	
+	$update_female_images_sql = "UPDATE user SET prof_image = ? WHERE uid = ?";
+	
+	if($update_female_images_stmt = $db_conn->prepare($update_female_images_sql)) {
+		
+		foreach( $female_update_values as $update_value_female) {
+			
+			$female_update_uid = $update_value_female["uid"];
+			$female_update_img = $update_value_female["img_url"];
+			
+			$f_uid_copy = $female_update_uid;
+			$f_img_copy = $female_update_img;
+			
+			$update_female_images_stmt->bind_param("si", $female_update_img, $female_update_uid);
+			
+			if($update_male_images_stmt->execute()) {
+				echo "\nI updated the image for the user with uid -> $f_uid_copy to url -> $f_img_copy\n";
+			}
+		}
+		
+	}
 
 	/*
 		CUSTOM FUNCTIONS
