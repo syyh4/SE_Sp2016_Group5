@@ -47,7 +47,7 @@ CREATE VIEW employees_view AS
 (
 	SELECT
 		C.uid as cid, C.name as company_name, 
-		P.uid as eid, P.firstname, P.lastname, P.birth_date, P.age, U.prof_image as emp_image
+		P.uid as eid, P.firstname, P.lastname, P.birth_date, P.age, U.prof_image as emp_image, P.gender
 	FROM
 		person P, company C, company_employees CE, user U
 	WHERE
