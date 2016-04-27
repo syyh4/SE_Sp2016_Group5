@@ -10,13 +10,13 @@ USE linkedin_group_5;
 
 
 #	Google
-UPDATE user set prof_image="image_url" WHERE uid = 2;
+UPDATE user set prof_image="http://www.uspokersites.com/poker-news/wp-content/uploads/2015/08/Google-Headquarters-Betting-Odds-Snippets__1438787825_159.118.232.73.jpg" WHERE uid = 2;
 
 #	Linked In
-UPDATE user set prof_image="image_url" WHERE uid = 3;
+UPDATE user set prof_image="http://www.iamwire.com/wp-content/uploads/2013/06/Linkedin2.jpg" WHERE uid = 3;
 
 #	Microsoft
-UPDATE user set prof_image="image_url" WHERE uid = 4;
+UPDATE user set prof_image="http://www.gizmoids.com/wp-content/uploads/2015/07/microsoft-headquarters-250x250.jpg" WHERE uid = 4;
 
 #	Dell
 UPDATE user set prof_image="image_url" WHERE uid = 5;
@@ -31,19 +31,19 @@ UPDATE user set prof_image="image_url" WHERE uid = 7;
 UPDATE user set prof_image="image_url" WHERE uid = 8;
 
 #	Adobe
-UPDATE user set prof_image="image_url" WHERE uid = 9;
+UPDATE user set prof_image="http://designgallery.online/wp-content/uploads/2016/01/adobe-best-year-award-for-large-tech-office-hot-furnishings-and-offices-250x250.jpg" WHERE uid = 9;
 
 #	Facebook
-UPDATE user set prof_image="image_url" WHERE uid = 10;
+UPDATE user set prof_image="http://static1.gensler.com/uploads/image/12410/filename/thumbs/project_facebook_large_02_1439516652_250x250.jpg" WHERE uid = 10;
 
 #	Coca-Cola
-UPDATE user set prof_image="image_url" WHERE uid = 11;
+UPDATE user set prof_image="http://acuraatlanta.edvoylesacura.com/wp-content/uploads/2016/02/Coca-ColaHQ-250x250.jpg" WHERE uid = 11;
 
 #	Twitter
-UPDATE user set prof_image="image_url" WHERE uid = 12;
+UPDATE user set prof_image="http://uploads.kinibiz.com/2015/04/Twitter-logo-corporate-HQ.jpg" WHERE uid = 12;
 
 #	IBM
-UPDATE user set prof_image="image_url" WHERE uid = 13;
+UPDATE user set prof_image="https://s3-media2.fl.yelpcdn.com/bphoto/Z7sw8LOgdigIRA7UHVii4A/ls.jpg" WHERE uid = 13;
 
 #	Starbucks
 UPDATE user set prof_image="image_url" WHERE uid = 14;
