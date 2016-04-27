@@ -183,7 +183,7 @@
       <!--	Begin Graphs	-->
 	<div class="row">
 		
-        <div class="col-lg-5 col-lg-offset-1" id="age-bar-chart">
+        <div class="col-lg-5 col-lg-offset-1 box" id="age-bar-chart">
           <div class="panel panel-default">
             <div class="panel-heading">Company Age Distribution</div>
             <div class="panel-body">
@@ -193,7 +193,7 @@
           </div>
         </div>
         
-         <div class="col-lg-6 col-sm-12" id="gender-pie-chart">
+         <div class="col-lg-5 box" id="gender-pie-chart">
           <div class="panel panel-default">
             <div class="panel-heading">Company Gender Distribution</div>
             <div class="panel-body">
