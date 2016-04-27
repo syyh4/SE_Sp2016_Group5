@@ -130,6 +130,30 @@
         </div>
       </div>
     </div>
+
+          <!--  Begin Graphs  -->
+          <div class="container">
+  <div class="row">
+        <div class="col-lg-5 col-lg-offset-1 box" style="max-height: 500px;overflow: auto;" id="age-bar-chart">
+          <div class="panel panel-default">
+            <div class="panel-heading">Company Age Distribution</div>
+            <div class="panel-body">
+              <canvas id="line" class="chart chart-bar" chart-data="ageChartInfo.data" chart-labels="ageChartInfo.labels" chart-legend="false"
+                      chart-click="onClick" chart-hover="onHover" chart-series="ageChartInfo.series"></canvas>
+            </div>
+          </div>
+        </div>
+        
+         <div class="col-lg-5 box" style="max-height: 500px;overflow: auto;" id="gender-pie-chart">
+          <div class="panel panel-default">
+            <div class="panel-heading">Company Gender Distribution</div>
+            <div class="panel-body">
+              <canvas id="pie" class="chart chart-pie" chart-data="genderChartInfo.data" chart-labels="genderChartInfo.labels"></canvas>
+            </div>
+          </div>
+        </div>
+  </div>
+  </div>
     
     <!-- EMPLOYEES
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -204,30 +228,7 @@
           </div>
         </div>
       </div>
-      <!--	Begin Graphs	-->
-	<div class="row">
-		
-        <div class="col-lg-5 col-lg-offset-1 box" id="age-bar-chart">
-          <div class="panel panel-default">
-            <div class="panel-heading">Company Age Distribution</div>
-            <div class="panel-body">
-              <canvas id="line" class="chart chart-bar" chart-data="ageChartInfo.data" chart-labels="ageChartInfo.labels" chart-legend="false"
-                      chart-click="onClick" chart-hover="onHover" chart-series="ageChartInfo.series"></canvas>
-            </div>
-          </div>
-        </div>
-        
-         <div class="col-lg-5 box" id="gender-pie-chart">
-          <div class="panel panel-default">
-            <div class="panel-heading">Company Gender Distribution</div>
-            <div class="panel-body">
-              <canvas id="pie" class="chart chart-pie" chart-data="genderChartInfo.data" chart-labels="genderChartInfo.labels"></canvas>
-            </div>
-          </div>
-        </div>
-        
-        
-	</div>
+
     </div>
 
 	
@@ -242,6 +243,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1 box">
+          <h1 class="text-center">Location</h1>
           <img src="http://placehold.it/1000x500" class="img-responsive">
         </div>
       </div>
