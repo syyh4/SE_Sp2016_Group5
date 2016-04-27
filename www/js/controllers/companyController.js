@@ -44,8 +44,8 @@ angular.module("myApp", ["chart.js"]).controller("CompanyController", function (
 	
 	//	Chart - Gender Info
 	$scope.genderChartInfo = {
-		"labels" : ["Male", "Female"],
-		"data" : [88,22]
+		"labels" : [],
+		"data" : []
 	};
 	
   $scope.onClick = function (points, evt) {
