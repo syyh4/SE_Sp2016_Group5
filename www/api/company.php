@@ -489,7 +489,7 @@
 							
 							$get_company_employees_sql_female = "SELECT * FROM employees_view WHERE cid = $cid WHERE gender LIKE 'female%' LIMIT 9";
 							
-							
+							echo $get_company_employees_sql_female;
 							
 							if ($result = $db_conn->query($get_company_employees_sql_female)) {
 								
@@ -523,9 +523,9 @@
 								
 							}
 								
-								http_response_code(200);
-								
-								echo json_encode($employees);							
+							http_response_code(200);
+							
+							echo json_encode($employees);							
 							
 						}
 							
