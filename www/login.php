@@ -42,6 +42,7 @@
     }
     .company-name {
       margin-bottom: 0px;
+      font-size: 60px;
     }
     .company-desc {
       text-align: left;
