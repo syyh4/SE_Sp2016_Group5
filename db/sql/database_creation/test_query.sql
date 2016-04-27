@@ -1,5 +1,9 @@
 USE linkedin_group_5;
 
+select company_id, company_name, count(*) as female_count FROM individual_employees_view WHERE company_id = 2 AND gender LIKE "female%";
+
+
+/*
 DROP VIEW user_person_view;
 
 CREATE VIEW user_person_view AS (
@@ -9,7 +13,7 @@ CREATE VIEW user_person_view AS (
 	FROM user U, person P
 	WHERE U.uid = P.uid
 );
-
+*/
 /*
 
 SELECT

@@ -8,7 +8,6 @@
 USE linkedin_group_5;
 
 DROP VIEW IF EXISTS company_location_view;
-
 CREATE VIEW company_full_view 
 AS 
   (SELECT C.uid        AS company_id, 
@@ -29,7 +28,6 @@ AS
    
    
 DROP VIEW IF EXISTS company_employees_view;
-
 CREATE VIEW company_employees_view AS
 (
 	SELECT 
@@ -58,11 +56,22 @@ CREATE VIEW employees_view AS
 );
 
 
-DROP VIEW user_person_view;
+DROP VIEW IF EXISTS user_person_view;
 CREATE VIEW user_person_view AS (
 	SELECT U.uid, U.username, U.email,
 			P.firstname, P.middlename, P.lastname, P.birth_date, P.age, P.gender
 			
 	FROM user U, person P
 	WHERE U.uid = P.uid
+);
+
+
+DROP VIEW IF EXISTS individual_employees_view;
+CREATE VIEW individual_employees_view AS (
+	SELECT 	C.uid as company_id, C.name as company_name,
+			P.uid as employee_id, P.firstname, P.middlename, P.lastname, P.birth_date, P.age, P.gender
+	FROM	company C, person P, company_employees CE
+	WHERE	CE.cid = C.uid 
+		AND
+			CE.eid = P.uid
 );

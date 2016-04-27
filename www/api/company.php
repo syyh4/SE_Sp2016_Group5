@@ -307,6 +307,88 @@
 										
 									break;
 									
+									case "gender-pie-chart":
+									
+										//	Get the number of females for the company
+										$female_count;
+										
+										$female_count_sql = "SELECT company_id, company_name, count(*) as female_count FROM individual_employees_view WHERE company_id = $cid and gender LIKE 'female%'";
+										
+										if ($result = $db_conn->query($female_count_sql)) {
+											
+											if ($result->num_rows == 1) {
+												
+												
+												if ($result_array = $result->fetch_array(MYSQLI_ASSOC)) {
+													
+													$female_count = $result_array["female_count"];
+													
+												}
+												
+											}
+											else {
+												set_error_response( 201 , "SQL Error -> " . $db_conn->error);
+												break;
+											}
+										}
+										else {
+											set_error_response( 201 , "SQL Error -> " . $db_conn->error );
+											break;
+										}
+										
+										
+										//	Get the number of males for the company
+										
+										$male_count;
+										
+										$male_count_sql = "SELECT company_id, company_name, count(*) as male_count FROM individual_employees_view WHERE company_id = $cid and gender LIKE 'male%'";
+										
+										if ($result = $db_conn->query($male_count_sql)) {
+											
+											if ($result->num_rows == 1) {
+												
+												if ($result_row = $result->fetch_array(MYSQLI_ASSOC)) {
+													
+													$male_count = $result_row["male_count"];
+													
+												}
+												else {
+													set_error_response( 201 , "SQL Error -> " . $db_conn->error );
+													break;
+												}
+											}
+											else {
+												set_error_response( 202 , "I didn't get the correct number of rows back...");
+												break;
+											}
+											
+											
+										}
+										else {
+											set_error_response( 201 , "SQL Error -> " . $db_conn->error );
+											break;
+										}
+									
+									
+									
+									
+										if ((isset($male_count)) && (isset($female_count))) {
+											
+											$total_count = $male_count + $female_count;
+											
+											$labels = array("Male", "Female");
+											$data = array($male_count, $female_count);
+											
+											$ret_array = array(
+												"cid" => $cid,
+												"labels" => $labels,
+												"data" => $data			
+											);
+											
+											http_response_code(200);
+											echo json_encode($ret_array);
+										}
+									break;
 									
 									
 									

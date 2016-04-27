@@ -284,6 +284,234 @@
 			
 		break;
 		
+		case 'POST':
+		
+			//	Get the raw post data
+			$json_raw = file_get_contents("php://input");
+			
+			if ($decoded_json = json_decode($json_raw, true)) {
+				
+				/*
+					PULL AND CLEAN ALL DATA FROM JSON POST
+				*/
+				$fname 		= $decoded_json["firstname"];
+				$lname 		= $decoded_json["lastname"];
+				$mname 		= $decoded_json["middlename"];
+				$birthdate 	= $decoded_json["birthdate"];
+				$gender 	= $decoded_json["gender"];
+				$password 	= $decoded_json["password"];
+				$email		= $decoded_json["email"];
+				$username	= $decoded_json["username"];
+				
+				//	Clean birthdate data
+				
+				$clean_birthdate_info = clean_date( $birthdate );
+				
+				if(!$clean_birthdate_info["isValidDate"]) {
+					set_error_response( 205 , "The birthdate you passed was invalid..." );
+					break;
+				}
+				else {
+					$birthdate = $clean_birthdate_info["validDateString"];
+				}
+				
+				
+				
+				
+				
+				/*
+					MAKE SURE THE USERNAME IS NOT ALREADY IN THE DATABASE
+				*/
+							
+				$username_check_sql = "SELECT * FROM user WHERE username = ?";
+				
+				$username_check_stmt = $db_conn->stmt_init();
+				
+				$username_check_stmt->prepare($username_check_sql);
+				$username_check_stmt->bind_param("s", $username);
+				
+				$username_is_valid = true;
+				
+				if ($username_check_stmt->execute()) {
+					
+					if ($username_check_result = $username_check_stmt->get_result()) {
+						
+						if ($username_check_result->num_rows > 0) {
+							$username_is_valid = false;
+						}
+					}
+					else {
+						
+						set_error_response( 201, "SQL Error -> " . $username_check_stmt->error);
+					}
+					
+				}
+				else {
+					
+					set_error_response( 201, "SQL Error -> " . $db_conn->error);
+					break;
+				}
+				
+				$username_check_stmt->close();
+				
+				
+				
+				//	If the username is invalid send an error...
+				if ($username_is_valid == false) {
+					
+					$error_message = "The username $username has already been taken...";
+					
+					set_error_response( 301 , $error_message );
+					break;
+				}
+				
+				
+				
+				/*
+					INSERT A NEW USER INTO THE DATABASE
+				*/
+				
+				$insert_new_user_sql = "INSERT INTO user (username, email) VALUES ( ? , ? )";
+									
+				$insert_new_user_stmt = $db_conn->prepare($insert_new_user_sql);
+				
+				$insert_new_user_stmt->bind_param("ss" , $username , $email);
+				
+				$last_insert_id;
+				
+				if ($insert_new_user_stmt->execute()) {
+					
+					$last_insert_id = $insert_new_user_stmt->insert_id;
+					
+				}
+				else {
+					
+					set_error_response( 201, "SQL Error -> " . $insert_new_user_stmt->error);
+					break;
+					
+				}
+				
+				$insert_new_user_stmt->close();
+				$saved_last_insert_id = $last_insert_id;
+				
+				/*
+					INSERT A NEW PERSON INTO THE DATABASE
+				*/
+				
+				if (isset($last_insert_id)) {
+					
+					$insert_new_person_sql = "INSERT INTO person ( uid, firstname, middlename, lastname, birth_date, gender ) VALUES ( ? , ? , ? , ? , ? , ? )";
+					
+					if(!($insert_new_person_stmt = $db_conn->prepare($insert_new_person_sql))) {
+						set_error_response( 201 , "SQL Error Preparing the statement -> " . $db_conn->error );
+						break;
+					}
+					
+					if(!($insert_new_person_stmt->bind_param("isssss", $last_insert_id, $fname, $mname, $lname, $birthdate, $gender))) {
+						set_error_response( 202 , "SQL Error (Couldn't Bind Parameters...) -> " . $db_conn->error );
+						break;
+					}
+					
+					if (!$insert_new_person_stmt->execute()) {
+						
+						$error_message = "I couldn't execute the statement to insert the new user ... SQL Error -> " . $db_conn->error;
+						
+						set_error_response( 202 , $error_message );
+						break;
+					}
+				}
+				
+				
+				/*
+					SET THE USER AUTHENTICATION VALUES (salt, hash)
+				*/
+				
+				
+				$salt = sha1( mt_rand() );
+				$hash = sha1( $salt . $password );
+				
+				
+				$insert_user_auth_sql = "INSERT INTO user_authentication (uid, password_hash, salt) VALUES ( $saved_last_insert_id , '$hash', '$salt' )";
+				
+				if(!($db_conn->query($insert_user_auth_sql))) {
+					
+					$error_message = "I couldn't insert the authentication information for the user ... SQL Error -> " . $db_conn->error;
+					
+					set_error_response( 203 , $error_message );
+					break;
+				}
+				
+				
+				
+				/*
+					CREATE A NEW AUTHENTICATION CODE FOR THE USER
+				*/
+				$issued_to = $saved_last_insert_id;
+				$auth_token = generate_64_char_random_string();
+				
+				
+				
+				$insert_auth_token_query = "INSERT INTO user_auth_tokens ( issued_to , token ) VALUES ( $issued_to , '$auth_token' )";
+				
+				if (!($db_conn->query($insert_auth_token_query))) {
+					$error_message = "I couldn't insert the auth_token into the database ... SQL Error -> " . $db_conn->error;
+				
+					set_error_response( 203 , $error_message );
+					break;
+				}
+				
+				
+				/*
+					IF ALL HAS GONE WELL SO FAR THEN SEND BACK THAT SWEET SWEET AUTH TOKEN
+				*/
+				
+				
+				http_response_code(200);
+				
+				//	The authentication information
+				$ret_auth_info = array(
+					"uid" => $issued_to,
+					"auth_token" => $auth_token,
+					"expires_in" => 15
+				);
+				
+				//	The new user information
+				$ret_user_info = array(
+										
+					"uid" => $saved_last_insert_id,
+					"username" => $username,
+					"email" => $email,
+					"first_name" => $fname,
+					"middle_name" => $mname,
+					"last_name" => $lname,
+					"birth_date" => $birthdate,
+					"gender" => $gender
+				);
+				
+				//	Now put it all together
+				$ret_arr = array(
+					"auth_info" => $ret_auth_info,
+					"user_info" => $ret_user_info
+				);
+				
+				echo json_encode($ret_arr);
+				
+				
+			}
+			else
+			{
+				echo "I couldn't decode the darn thing...";
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		break;
 		default:
 			
 			//	Execute the placeholder query
@@ -301,6 +529,8 @@
 		UTILITY FUNCTIONS
 	*/
 	function clean_date( $date_string ) {
+		
+		echo $date_string;
 		
 		$is_valid_date = true;
 		
@@ -373,7 +603,7 @@
 			"isValidDate" => $is_valid_date,
 			"validDateString" => $clean_date_string
 		);
-		
+		echo json_encode($ret_array);
 		return $ret_array;
 	}
 	function validate_parameters_for_action( $action ) {

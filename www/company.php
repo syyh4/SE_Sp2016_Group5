@@ -49,6 +49,11 @@
       margin-top: 0px;
       margin-bottom: 30px;
     }
+    
+    .employeesItem {
+	    margin-top: 10px;
+	    margin-bottom: 10px;
+    }
     .positionsheader {
       margin-top: 0px;
       margin-bottom: 30px;
@@ -64,6 +69,11 @@
     .salariesheader {
       margin-top: 0px;
       margin-bottom: 30px;
+    }
+    
+    .graphContainer {
+	    width: 200px;
+	    height: 200px
     }
     .footer {
       width: 100%;
@@ -104,7 +114,7 @@
         <div class="col-md-5 col-md-offset-1 box">
           <h1 class="text-center employeesheader">Current Employees</h1>
           <div class="employeelist" ng-repeat="emp in employees">
-			<div class="media">
+			<div class="media employeesItem">
 				<div class="media-left">
 					<a href="#">
 						<img class="media-object" src="http://i.imgur.com/JDatwND.png?2">
@@ -170,8 +180,39 @@
           </div>
         </div>
       </div>
+      <!--	Begin Graphs	-->
+	<div class="row">
+		
+        <div class="col-lg-5 col-lg-offset-1" id="age-bar-chart">
+          <div class="panel panel-default">
+            <div class="panel-heading">Company Age Distribution</div>
+            <div class="panel-body">
+              <canvas id="line" class="chart chart-bar" chart-data="ageChartInfo.data" chart-labels="ageChartInfo.labels" chart-legend="false"
+                      chart-click="onClick" chart-hover="onHover" chart-series="ageChartInfo.series"></canvas>
+            </div>
+          </div>
+        </div>
+        
+         <div class="col-lg-6 col-sm-12" id="gender-pie-chart">
+          <div class="panel panel-default">
+            <div class="panel-heading">Company Gender Distribution</div>
+            <div class="panel-body">
+              <canvas id="pie" class="chart chart-pie" chart-data="genderChartInfo.data" chart-labels="genderChartInfo.labels"></canvas>
+            </div>
+          </div>
+        </div>
+        
+        
+	</div>
     </div>
 
+	
+	
+	
+	
+	
+	
+	<!--	End Graphs	-->
     <!-- MAP
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="container">

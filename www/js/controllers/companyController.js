@@ -40,6 +40,11 @@ angular.module("myApp", ["chart.js"]).controller("CompanyController", function (
 		"data" : [[65, 59, 80, 81, 56, 55, 40]]
 	};
 	
+	//	Chart - Gender Info
+	$scope.genderChartInfo = {
+		"labels" : ["Male", "Female"],
+		"data" : [88,22]
+	};
 	
   $scope.onClick = function (points, evt) {
     console.log(points, evt);
@@ -58,7 +63,40 @@ angular.module("myApp", ["chart.js"]).controller("CompanyController", function (
 	pull_age_chart_data();
 	pull_basic_company_info();
 	pull_company_employees();
+	pull_company_gender_information();
   
+	function pull_company_gender_information() {
+		
+		var token_info = get_token_information();
+		
+		
+		var req_url = 	base_url + "api/company.php?"
+						+ "cid=" + $scope.queryParams["cid"] + "&"
+						+ "req_type=analytics&"
+						+ "graph-type=gender-pie-chart&"
+						+ "auth_token=" + token_info["auth_token"];
+						
+		console.log("Gender api req url -> " + req_url);
+		
+		$http({
+			method	:	'GET',
+			url		:	req_url
+		}).then( function successCallback( response ) {
+			
+			clean_company_gender_dict( response.data );
+						
+			console.log( $scope.genderChartInfo );
+			
+		}, function errorCallback( response ) {
+			
+			var error_string = "There was an error processing the request";
+			console.log( error_string );
+		});
+		
+		
+		
+		
+	}
 	function pull_company_employees() {
 		
 		
@@ -198,7 +236,17 @@ angular.module("myApp", ["chart.js"]).controller("CompanyController", function (
 	  });
 	}
 	
-	
+	function clean_company_gender_dict( ret_dict ) {
+		
+		console.log(JSON.stringify( ret_dict ));
+		
+		$scope.genderChartInfo.labels = ret_dict.labels;
+		$scope.genderChartInfo.data = ret_dict.data
+		
+		
+		
+		
+	}
 	function clean_company_info_dict( ret_dict ) {
 		
 		//console.log( ret_dict );

@@ -5,7 +5,8 @@
 <html lang="en">
 	
 	<head>
-		<script type="text/javascript" src="https://raw.githubusercontent.com/nnnick/Chart.js/master/Chart.min.js"></script>
+		<!--	LOAD ANGULAR	-->
+		<script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
 		<script src="bower_components/spin.js/spin.js"></script>
 		<script type="text/javascript" src="bower_components/angular-spinner/angular-spinner.min.js"></script>
 		<!-- Latest compiled and minified CSS -->
@@ -88,7 +89,6 @@
 				<div class="form-group">
 					<label for="password">Confirm Password</label>
 					<input type="password" class="form-control" id="password" name="confirm_password" ng-model="reg_info.confirm_password" compare-to="reg_info.password">
-					<div ng-hide="passwordsAreEqual" class="ng-hide">Hi {{}}</div>
 				</div>
 				<button type="submit" class="btn btn-primary btn-block btn-lg create-button" ng-click="registerUser()" ng-disabled="isButtonDisabled()">Login</button>
             </form>

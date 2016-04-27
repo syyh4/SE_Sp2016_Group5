@@ -1,13 +1,8 @@
 var app = angular.module('linkedinApp', ['angularSpinner'])
   .controller('RegistrationController', ['$scope', '$http', 'usSpinnerService', function($scope, $http, usSpinnerService) {
   	 
-	var settings = {
-		'base_url' : 'http://52.165.38.69/',
-		'dev_base_url' : 'http://40.86.85.30/cs4320_v2/'
-	};
-	
-	var use_main_url = false;
-	
+  	var base_url = "http://40.86.85.30/cs4320_v2/";
+  	
   	$scope.reg_info = {
 	  	'fname' : '',
 	  	'mname' : '',
@@ -32,8 +27,9 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 	}
 	$scope.registerUser = function() {
 		
-		var reg_url = get_base_url() + "api/register.php";
+		var reg_url = base_url + "api/register.php";
 		
+		/*
 		var reg_url = reg_url + "?action=reguser&" +
 						"fname=" + $scope.reg_info.fname + 
 						"&mname=" + $scope.reg_info.mname + 
@@ -43,11 +39,28 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 						"&password=" + $scope.reg_info.password +
 						"&gender=" + $scope.reg_info.gender +
 						"&birthdate=" + clean_date($scope.reg_info.birthdate);
+		*/
 		
+		
+		//	Gather the user's registration POST data
+		var post_data = {
+			"firstname"		:	$scope.reg_info.fname,
+			"middlename" 	: $scope.reg_info.mname,
+			"lastname" 		: $scope.reg_info.lname,
+			"email" 		: $scope.reg_info.email,
+			"username" 		: $scope.reg_info.username,
+			"password" 		: $scope.reg_info.password,
+			"gender" 		: $scope.reg_info.gender,
+			"birthdate" 	: clean_date($scope.reg_info.birthdate)
+		};
+		
+		
+		//	Show the load spinner while the data is being posted
 		show_load_spinner();
 		
 		
 		
+		/*
 		$http({
 			method : 'GET',
 			url : reg_url
@@ -77,7 +90,26 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 			console.log("There was an error");
 			
 		});
+		*/
 		
+		
+		
+		$http.post( reg_url , post_data ).then( function successCallback( response ) {
+			
+			var success_string = response.data;
+			
+			alert( success_string );
+			console.log( success_string );
+			
+			
+		}, function errorCallback( response ) {
+			
+			var error_string = "There was some error posting the registration data";
+			
+			alert( error_string );
+			console.log( error_string );
+			
+		});
 		
 		
 	}
@@ -191,7 +223,7 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 		//console.log( "the name string " + name_str);
 		var isValid = false;
 		
-		if (name_str.length > 5)
+		if (name_str.length > 0)
 			isValid = true;
 		
 		return isValid;
