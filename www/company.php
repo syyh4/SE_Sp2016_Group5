@@ -161,8 +161,9 @@
       <div class="row">
         <div class="col-md-5 col-md-offset-1 box">
           <h1 class="text-center employeesheader">Current Employees</h1>
-          <div class="employeelist" ng-repeat="emp in employees">
-			<div class="media employeesItem"  style="max-height: 500px;overflow: auto;">
+          <div style="max-height: 301px;overflow: auto;">
+          <div class="employeelist" ng-repeat="emp in employees"  >
+			<div class="media employeesItem">
 				<div class="media-left">
 					<a href="#">
 						<img class="media-object" src="http://i.imgur.com/JDatwND.png?2">
@@ -173,6 +174,8 @@
 					<small>Just some basic info about this employee</small>
 				</div>
 			</div>
+
+          </div>
           </div>
         </div>
 
@@ -243,63 +246,12 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1 box">
-          <h1 class="text-center">Location</h1>
+          <h1 class="text-center" style="margin-top: 0px;">Location</h1>
           <img src="http://placehold.it/1000x500" class="img-responsive">
         </div>
       </div>
     </div>
 
-    <!-- SALARY INFORMATION
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1 box">
-          <h1 class="text-center salariesheader">Salaries</h1>
-          <div class="row">
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <img src="http://placehold.it/242x200">
-                <div class="caption text-center">
-                  <h3>Position</h3>
-                  <p>Average Salary: $100,000</p>
-                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <img src="http://placehold.it/242x200">
-                <div class="caption text-center">
-                  <h3>Position</h3>
-                  <p>Average Salary: $100,000</p>
-                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <img src="http://placehold.it/242x200">
-                <div class="caption text-center">
-                  <h3>Position</h3>
-                  <p>Average Salary: $100,000</p>
-                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <img src="http://placehold.it/242x200">
-                <div class="caption text-center">
-                  <h3>Position</h3>
-                  <p>Average Salary: $100,000</p>
-                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- FOOTER
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
