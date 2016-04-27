@@ -20,6 +20,7 @@ CREATE TABLE user (
 	uid			SERIAL,
 	username	varchar(256),
 	email		varchar(320),
+	prof_image	varchar(2083),
 	PRIMARY KEY (uid)
 );
 
