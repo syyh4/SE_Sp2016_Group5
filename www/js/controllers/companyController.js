@@ -1,7 +1,9 @@
 angular.module("myApp", ["chart.js"]).controller("CompanyController", function ($scope, $http, $window) {
 
 	//	CONSTANTS
-	var base_url = "http://40.86.85.30/cs4320_v2/";
+	var base_url_main = "http://52.165.38.69/";
+	var base_url_dev = "http://40.86.85.30/cs4320_v2/";
+	var base_url = base_url_dev;
 
 	
 	/*
