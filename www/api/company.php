@@ -453,11 +453,45 @@
 							
 							
 							
-							$get_company_employees_sql = "SELECT * FROM employees_view WHERE cid = $cid LIMIT 10";
+							$get_company_employees_sql_male = "SELECT * FROM employees_view WHERE cid = $cid WHERE gender LIKE 'male%' LIMIT 1";
 							
 							$employees = array();
 							
-							if ($result = $db_conn->query($get_company_employees_sql)) {
+							if ($result = $db_conn->query($get_company_employees_sql_male)) {
+								
+								while( $result_row = $result->fetch_array(MYSQLI_ASSOC)) {
+									
+									
+									$result_eid			= $result_row["eid"];
+									$result_fname 		= $result_row["firstname"];
+									$result_lname 		= $result_row["lastname"];
+									$result_birthdate 	= $result_row["birth_date"];
+									$result_age 		= $result_row["age"];
+									$result_company		= $result_row["company_name"];
+									$result_cid			= $result_row["cid"];
+									$result_img			= $result_row["emp_image"];
+
+									$ret_array = array(
+										"eid" =>	$result_eid,
+										"fname" =>	$result_fname,
+										"lname" =>	$result_lname,
+										"birthdate" => $result_birthdate,
+										"age" => $result_age,
+										"cid" => $result_cid,
+										"company_name" => $result_company,
+										"emp_image" => $result_img
+									);
+									
+									array_push($employees, $ret_array);
+								
+							}
+							
+							
+							$get_company_employees_sql__female = "SELECT * FROM employees_view WHERE cid = $cid WHERE gender LIKE 'female%' LIMIT 9";
+							
+							
+							
+							if ($result = $db_conn->query($get_company_employees_sql_female)) {
 								
 								
 								while( $result_row = $result->fetch_array(MYSQLI_ASSOC)) {
