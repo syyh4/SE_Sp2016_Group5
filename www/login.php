@@ -88,7 +88,7 @@
           <ul class="nav navbar-nav">
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://52.165.38.69/index.php">Register</a></li>
+            <li><a href="/register.php">Register</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

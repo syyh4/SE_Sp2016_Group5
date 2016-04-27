@@ -21,7 +21,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="/cs4320_v2/index.php">LinkedIn</a>
+	          <a class="navbar-brand" href="/index.php">LinkedIn</a>
 	        </div>
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav">
@@ -41,9 +41,8 @@
 		    sessionStorage.removeItem("user_id");
 		    
 		    //	Next redirect to the login page
-		    var base_url = "http://40.86.85.30/cs4320_v2/";
-		    
-		    var redirect_url = base_url + "login.php";
+	
+		    var redirect_url = "/login.php";
 		    
 		    window.location.replace( redirect_url );
 		    
