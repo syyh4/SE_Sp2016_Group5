@@ -19,7 +19,7 @@ UPDATE user set prof_image="http://www.iamwire.com/wp-content/uploads/2013/06/Li
 UPDATE user set prof_image="http://www.gizmoids.com/wp-content/uploads/2015/07/microsoft-headquarters-250x250.jpg" WHERE uid = 4;
 
 #	Dell
-UPDATE user set prof_image="ihttp://datastorageasean.com/sites/default/files/styles/thumbnail/public/EMC-Dell-Ceos_0.jpg" WHERE uid = 5;
+UPDATE user set prof_image="http://imgur.com/H3M7jHL" WHERE uid = 5;
 
 #	Apple
 UPDATE user set prof_image="http://www.legaluspokersites.com/news/wp-content/uploads/2015/05/Apple-Headquarters-in-Cupertino-California__1431701325_159.118.232.73.jpg" WHERE uid = 6;
