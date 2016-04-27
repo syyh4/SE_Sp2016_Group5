@@ -134,7 +134,7 @@
           <!--  Begin Graphs  -->
           <div class="container">
   <div class="row">
-        <div class="col-lg-5 col-lg-offset-1 box" style="max-height: 500px;overflow: auto;" id="age-bar-chart">
+        <div class="col-lg-5 col-lg-offset-1 box" id="age-bar-chart">
           <div class="panel panel-default">
             <div class="panel-heading">Company Age Distribution</div>
             <div class="panel-body">
@@ -144,7 +144,7 @@
           </div>
         </div>
         
-         <div class="col-lg-5 box" style="max-height: 500px;overflow: auto;" id="gender-pie-chart">
+         <div class="col-lg-5 box" id="gender-pie-chart">
           <div class="panel panel-default">
             <div class="panel-heading">Company Gender Distribution</div>
             <div class="panel-body">
@@ -159,7 +159,7 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="container">
       <div class="row">
-        <div class="col-md-5 col-md-offset-1 box">
+        <div class="col-md-5 col-md-offset-1 box" style="max-height: 500px;overflow: auto;">
           <h1 class="text-center employeesheader">Current Employees</h1>
           <div class="employeelist" ng-repeat="emp in employees">
 			<div class="media employeesItem">
@@ -179,7 +179,7 @@
         <!-- POSITIONS
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="col-md-5 box">
-          <h1 class="text-center positionsheader">Available Positions</h1>
+          <h1 class="text-center positionsheader" style="max-height: 500px;overflow: auto;">Available Positions</h1>
           <div class="positionlist">
             <div class="media">
               <div class="media-left">
