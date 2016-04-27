@@ -78,7 +78,7 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 				//	Redirect the user to the home page ... or to the company page if you're doing your debug stuff
 				var debug_company_uid = 2;
 				
-				var redirect_url = base_url + "company.php?uid=" + debug_company_uid;
+				var redirect_url = base_url + "company.php?cid=" + debug_company_uid;
 				
 				$window.location.href = redirect_url;
 			}
