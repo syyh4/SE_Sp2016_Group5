@@ -525,13 +525,7 @@
 								
 								http_response_code(200);
 								
-								echo json_encode($employees);
-							}
-							else {
-								set_error_response( 201 , "SQL Error -> " . $db_conn->error );
-								break;
-							}
-							
+								echo json_encode($employees);							
 							
 						}
 							
