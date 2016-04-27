@@ -2,9 +2,12 @@
 	
 	//	Include reference to sensitive databse information
 	//		Note:	This file should NOT be included in the public GitHub repository, it should only exist on the server.
-	include("../source_code/db_security/security.php");
+	DEFINE( "DB_HOST" , "localhost");
+	DEFINE( "DB_USERNAME" , "web_user");
+	DEFINE( "DB_PASSWORD" , "pass");
+	DEFINE( "DB_DATABASE" , "linkedin_group_5");	
 	
-	
+		
 	//	First connect to the database using values from the included file
 	$db_conn = new mysqli(constant("DB_HOST"), constant("DB_USERNAME"), constant("DB_PASSWORD"), constant("DB_DATABASE"));
 	
