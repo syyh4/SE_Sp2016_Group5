@@ -11,12 +11,12 @@
 	//	First connect to the database using values from the included file
 	$db_conn = new mysqli(constant("DB_HOST"), constant("DB_USERNAME"), constant("DB_PASSWORD"), constant("DB_DATABASE"));
 	
-	if ($db_conn->error_code) {
+	if ($db_conn->error) {
 		
 		//	This should be replace PHP that sets the HTTP status code to 500 and
 		//	sets the body to the JSON object that contains the error_code and
 		//	error_string as defined by the API
-		die("The connection to the database failed: " . $db_conn->connect_error);
+		die("The connection to the database failed: " . $db_conn->error);
 	}
 	
 	$male_img_urls = array();
@@ -34,8 +34,26 @@
 		array_push($male_img_urls, $male_img_url);
 	}
 	
-	echo json_encode($male_img_urls);
+	/*
+		GET ALL THE FEMALE IMAGE URLS
+	*/
 	
+	$female_img_urls = array();
+	
+	$load_all_female_image_urls_sql	= "SELECT * FROM user_profile_images WHERE img_gender='male'";
+	
+	if (!($result = $db_conn->query($load_all_female_image_urls_sql))) {
+		echo_simple( "I couldn't get all the female images..." );
+		exit(1);
+	}
+	
+	while ($result_row = $result->fetch_array(MYSQLI_ASSOC)) {
+		
+		$female_img_url = $result_row["img_url"];
+		array_push($female_img_urls, $female_img_url);
+	}
+
+	echo "\n" . json_encode($female_img_urls) . "\n";
 	
 
 	
