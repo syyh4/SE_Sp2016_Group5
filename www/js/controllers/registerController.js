@@ -1,5 +1,5 @@
 var app = angular.module('linkedinApp', ['angularSpinner'])
-  .controller('RegistrationController', ['$scope', '$http', '$window', 'usSpinnerService', function($scope, $http, usSpinnerService, $window) {
+  .controller('RegistrationController', function($scope, $http, usSpinnerService, $window) {
   	 
   	/*
 	  	CONSTANTS
@@ -285,7 +285,7 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 		}
 	}
 	
-  }]);
+  });
   
 var compareTo = function() {
     return {
