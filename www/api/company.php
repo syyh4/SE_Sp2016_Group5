@@ -484,8 +484,8 @@
 									
 									array_push($employees, $ret_array);
 								
+								}
 							}
-							
 							
 							$get_company_employees_sql__female = "SELECT * FROM employees_view WHERE cid = $cid WHERE gender LIKE 'female%' LIMIT 9";
 							
@@ -521,7 +521,7 @@
 									
 								}
 								
-								
+							}
 								
 								http_response_code(200);
 								
