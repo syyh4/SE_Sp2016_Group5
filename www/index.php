@@ -98,6 +98,9 @@
     input[type=text] {
       margin-top: 0px;
     }
+    input[type=password] {
+      margin-top: 0px;
+    }
     
     </style>
 
