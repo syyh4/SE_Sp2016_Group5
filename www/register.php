@@ -90,7 +90,7 @@
 					<label for="password">Confirm Password</label>
 					<input type="password" class="form-control" id="password" name="confirm_password" ng-model="reg_info.confirm_password" compare-to="reg_info.password">
 				</div>
-				<button type="submit" class="btn btn-primary btn-block btn-lg create-button" ng-click="registerUser()" ng-disabled="isButtonDisabled()">Login</button>
+				<button type="submit" class="btn btn-primary btn-block btn-lg create-button" ng-click="registerUser()" ng-disabled="isButtonDisabled()">Register</button>
             </form>
             <div ng-show="showLoadSpinner">
 	            <span us-spinner spinner-key="reg-user-request-spinner"></span>
