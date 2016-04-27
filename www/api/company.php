@@ -453,7 +453,7 @@
 							
 							
 							
-							$get_company_employees_sql_male = "SELECT * FROM employees_view WHERE cid = $cid WHERE gender LIKE 'male%' LIMIT 1";
+							$get_company_employees_sql_male = "SELECT * FROM employees_view WHERE cid = $cid AND gender LIKE 'male%' LIMIT 1";
 							
 							$employees = array();
 							
@@ -487,7 +487,7 @@
 								}
 							}
 							
-							$get_company_employees_sql_female = "SELECT * FROM employees_view WHERE cid = $cid WHERE gender LIKE 'female%' LIMIT 9";
+							$get_company_employees_sql_female = "SELECT * FROM employees_view WHERE cid = $cid AND gender LIKE 'female%' LIMIT 9";
 							
 							echo $get_company_employees_sql_female;
 							
