@@ -1,6 +1,14 @@
 USE linkedin_group_5;
 
 
+/*
+	Image Format:	jpg
+	Image Size:		250px * 250px
+	Image Content:	Preferably these should be images of the campus or whatever
+	Image URL:		The url should preferably be located somewhere on imgur
+*/
+
+
 #	Google
 UPDATE user set prof_image="image_url" WHERE uid = 2;
 
