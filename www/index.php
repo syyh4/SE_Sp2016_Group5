@@ -91,6 +91,9 @@
     .create-button {
       margin-top: 30px;
     }
+    input[type=text] {
+      margin-top: 0px;
+    }
     
     </style>
 
