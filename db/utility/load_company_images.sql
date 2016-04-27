@@ -19,16 +19,16 @@ UPDATE user set prof_image="http://www.iamwire.com/wp-content/uploads/2013/06/Li
 UPDATE user set prof_image="http://www.gizmoids.com/wp-content/uploads/2015/07/microsoft-headquarters-250x250.jpg" WHERE uid = 4;
 
 #	Dell
-UPDATE user set prof_image="image_url" WHERE uid = 5;
+UPDATE user set prof_image="ihttp://datastorageasean.com/sites/default/files/styles/thumbnail/public/EMC-Dell-Ceos_0.jpg" WHERE uid = 5;
 
 #	Apple
-UPDATE user set prof_image="image_url" WHERE uid = 6;
+UPDATE user set prof_image="http://www.legaluspokersites.com/news/wp-content/uploads/2015/05/Apple-Headquarters-in-Cupertino-California__1431701325_159.118.232.73.jpg" WHERE uid = 6;
 
 #	Intel
-UPDATE user set prof_image="image_url" WHERE uid = 7;
+UPDATE user set prof_image="http://i2.wp.com/paulwallbank.com/wp-content/uploads/2013/10/intel-CPU-manufacturer-corporate-headquarters-image.jpg?resize=250%2C250" WHERE uid = 7;
 
 #	HP
-UPDATE user set prof_image="image_url" WHERE uid = 8;
+UPDATE user set prof_image="http://cdn1.benzinga.com/files/imagecache/250x250C/images/story/2012/hewlett-packard-japan-head-office.jpg" WHERE uid = 8;
 
 #	Adobe
 UPDATE user set prof_image="http://designgallery.online/wp-content/uploads/2016/01/adobe-best-year-award-for-large-tech-office-hot-furnishings-and-offices-250x250.jpg" WHERE uid = 9;
@@ -46,4 +46,4 @@ UPDATE user set prof_image="http://uploads.kinibiz.com/2015/04/Twitter-logo-corp
 UPDATE user set prof_image="https://s3-media2.fl.yelpcdn.com/bphoto/Z7sw8LOgdigIRA7UHVii4A/ls.jpg" WHERE uid = 13;
 
 #	Starbucks
-UPDATE user set prof_image="image_url" WHERE uid = 14;
+UPDATE user set prof_image="https://s3-media1.fl.yelpcdn.com/bphoto/xZbmNrcu56KyrfwIRICGig/ls.jpg" WHERE uid = 14;
