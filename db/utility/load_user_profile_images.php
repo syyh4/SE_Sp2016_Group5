@@ -65,13 +65,16 @@
 		exit(2);
 	}
 	
-	while ($result_row = $db_conn->fetch_array(MYSQLI_ASSOC)) {
+	while ($result_row = $result->fetch_array(MYSQLI_ASSOC)) {
 		
 		$male_uid = $result_row["uid"];
 		
 		array_push($male_uids, $male_uid);
 	}
 	
+	echo "\n Male UIDS -> \n " . json_encode($male_uids) . "\n";
+	
+	//	Get all the female UIDs
 	
 	
 	
