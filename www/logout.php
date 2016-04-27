@@ -38,6 +38,7 @@
 		 	//	First remove the 'auth_token' & 'expires_in' values from the session storage
 		 	sessionStorage.removeItem("auth_token");
 		    sessionStorage.removeItem("expires_in");
+		    sessionStorage.removeItem("user_id");
 		    
 		    //	Next redirect to the login page
 		    var base_url = "http://40.86.85.30/cs4320_v2/";
