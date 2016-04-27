@@ -40,7 +40,7 @@
 	
 	$female_img_urls = array();
 	
-	$load_all_female_image_urls_sql	= "SELECT * FROM user_profile_images WHERE img_gender='male'";
+	$load_all_female_image_urls_sql	= "SELECT * FROM user_profile_images WHERE img_gender='female'";
 	
 	if (!($result = $db_conn->query($load_all_female_image_urls_sql))) {
 		echo_simple( "I couldn't get all the female images..." );
@@ -56,6 +56,12 @@
 	echo "\n" . json_encode($female_img_urls) . "\n";
 	
 
+	$male_uids = array();
+	
+	$load_all_male_uids = "SELECT uid FROM person WHERE gender LIKE 'male%'";
+	
+	if (!($result = $db_conn->query($load_all_male_uids)))
+	
 	
 	
 	
