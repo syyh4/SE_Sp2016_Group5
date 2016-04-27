@@ -1,5 +1,5 @@
 var app = angular.module('linkedinApp', ['angularSpinner'])
-  .controller('RegistrationController', ['$scope', '$http', 'usSpinnerService', function($scope, $http, usSpinnerService, $window) {
+  .controller('RegistrationController', ['$scope', '$http', '$window', 'usSpinnerService', function($scope, $http, usSpinnerService, $window) {
   	 
   	/*
 	  	CONSTANTS
