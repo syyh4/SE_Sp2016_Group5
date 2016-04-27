@@ -12,14 +12,14 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
   	
   	
   	$scope.reg_info = {
-	  	'fname' : '',
-	  	'mname' : '',
-	  	'lname' : '',
-	  	'birthdate' : '',
-	  	'email' : '',
-	  	'gender' : '',
-	  	'password' : '',
-	  	'confirm_password' : ''
+	  	'fname' : 'Anthony',
+	  	'mname' : 'Robert',
+	  	'lname' : 'Forsythe',
+	  	'birthdate' : '06/22/1993',
+	  	'email' : 'forsythetony@gmail.com',
+	  	'gender' : 'male',
+	  	'password' : 'defaultpassword',
+	  	'confirm_password' : 'defaultpassword'
   	};
   	
   	$scope.registerButtonDisabled = false;
