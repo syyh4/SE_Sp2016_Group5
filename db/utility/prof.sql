@@ -8,7 +8,7 @@ CREATE TABLE user_profile_images (
 	PRIMARY KEY (img_id)
 );
 
-LOAD DATA LOCAL INFILE '../../input_data/v3/person_profile_images.csv' INTO TABLE user_profile_images
+LOAD DATA LOCAL INFILE '../input_data/v3/user_profile_images.csv' INTO TABLE user_profile_images
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
