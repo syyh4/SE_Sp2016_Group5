@@ -65,7 +65,7 @@
       margin-top: 10px;
       margin-bottom: 100px;
       padding-top: 40px;
-      padding-bottom: 40px;
+      padding-bottom: 65px;
       background-color: white;
       -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
       -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
