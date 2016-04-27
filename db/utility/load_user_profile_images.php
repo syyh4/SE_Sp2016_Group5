@@ -172,7 +172,7 @@
 			
 			$update_female_images_stmt->bind_param("si", $female_update_img, $female_update_uid);
 			
-			if($update_male_images_stmt->execute()) {
+			if($update_female_images_stmt->execute()) {
 				echo "\nI updated the image for the user with uid -> $f_uid_copy to url -> $f_img_copy\n";
 			}
 		}
