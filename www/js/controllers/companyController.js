@@ -297,12 +297,14 @@ angular.module("myApp", ["chart.js"]).controller("CompanyController", function (
 		
 		if (typeof(Storage) !== "undefined") {
 			
-			var auth_token = sessionStorage.auth_token;
-			var expires_in = sessionStorage.expires_in;
+			var auth_token 	= Storage.getItem( "auth_token" );
+			var expires_in 	= Storage.getItem( "expires_in" );
+			var user_id		= Storage.getItem( "user_id" );
 			
 			ret_dict = {
-				"auth_token" : auth_token,
-				"expires_in" : expires_in
+				"auth_token" 	: auth_token,
+				"expires_in" 	: expires_in,
+				"user_id"		: user_id
 			};
 		}
 		

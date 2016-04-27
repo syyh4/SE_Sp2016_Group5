@@ -116,7 +116,7 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 		
 		if(typeof(Storage) !== "undefined" ) {
 			
-			sessionStorage.key = value;
+			Storage.setItem( key , value );
 			
 			return true;
 		}
