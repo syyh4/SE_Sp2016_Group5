@@ -479,7 +479,7 @@
 										"birthdate" => $result_birthdate,
 										"age" => $result_age,
 										"cid" => $result_cid,
-										"company_name" => $result_company
+										"company_name" => $result_company,
 										"emp_image" => $result_img
 									);
 									
