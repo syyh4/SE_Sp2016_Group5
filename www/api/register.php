@@ -530,8 +530,6 @@
 	*/
 	function clean_date( $date_string ) {
 		
-		echo $date_string;
-		
 		$is_valid_date = true;
 		
 		$clean_date_string;
@@ -603,7 +601,6 @@
 			"isValidDate" => $is_valid_date,
 			"validDateString" => $clean_date_string
 		);
-		echo json_encode($ret_array);
 		return $ret_array;
 	}
 	function validate_parameters_for_action( $action ) {

@@ -37,18 +37,6 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 		
 		var reg_url = base_url + "api/register.php";
 		
-		/*
-		var reg_url = reg_url + "?action=reguser&" +
-						"fname=" + $scope.reg_info.fname + 
-						"&mname=" + $scope.reg_info.mname + 
-						"&lname=" + $scope.reg_info.lname +
-						"&email=" + $scope.reg_info.email +
-						"&username=" + $scope.reg_info.username +
-						"&password=" + $scope.reg_info.password +
-						"&gender=" + $scope.reg_info.gender +
-						"&birthdate=" + clean_date($scope.reg_info.birthdate);
-		*/
-		
 		
 		//	Gather the user's registration POST data
 		var post_data = {
