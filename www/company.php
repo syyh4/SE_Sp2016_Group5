@@ -252,57 +252,6 @@
       </div>
     </div>
 
-    <!-- SALARY INFORMATION
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1 box">
-          <h1 class="text-center salariesheader">Salaries</h1>
-          <div class="row">
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <img src="http://placehold.it/242x200">
-                <div class="caption text-center">
-                  <h3>Position</h3>
-                  <p>Average Salary: $100,000</p>
-                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <img src="http://placehold.it/242x200">
-                <div class="caption text-center">
-                  <h3>Position</h3>
-                  <p>Average Salary: $100,000</p>
-                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <img src="http://placehold.it/242x200">
-                <div class="caption text-center">
-                  <h3>Position</h3>
-                  <p>Average Salary: $100,000</p>
-                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <img src="http://placehold.it/242x200">
-                <div class="caption text-center">
-                  <h3>Position</h3>
-                  <p>Average Salary: $100,000</p>
-                  <p><a href="#" class="btn btn-primary" role="button">Apply</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- FOOTER
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->

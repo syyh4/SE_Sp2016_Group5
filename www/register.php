@@ -13,13 +13,64 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		
 		<script type="text/javascript" src="js/controllers/registerController.js"></script>
+
+		 <!-- CUSTOM STYLES
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <style type="text/css">
+    
+    body, html {
+      background-color: #e7e9ec;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+    .box {
+      margin-top: 10px;
+      margin-bottom: 100px;
+      padding-top: 40px;
+      padding-bottom: 65px;
+      background-color: white;
+      -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
+      -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
+      box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
+    }
+    .location {
+      margin-top: 0px;
+      margin-bottom: 10px;
+    }
+    .company-name {
+      margin-bottom: 0px;
+      font-size: 60px;
+    }
+    .company-desc {
+      text-align: left;
+    }
+    .footer p {
+      margin: 15px 0px;
+    }
+    .form-group label {
+      color: #66696A;
+      font-weight: 500;
+      margin-bottom: 0px;
+    }
+    .create-button {
+      margin-top: 30px;
+      font-size: 31px;
+      font-weight: 300;
+    }
+    input[type=text] {
+      margin-top: 0px;
+    }
+    input[type=password] {
+      margin-top: 0px;
+    }
+    
+    </style>
 	</head>
 	
 	<body ng-app="linkedinApp">
 		
 		 <!-- NAVBAR
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <nav class="navbar navbar-inverse navbar-static-top">
+    <nav class="navbar navbar-inverse navbar-static-top" style="margin-bottom:0px">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -42,7 +93,8 @@
 
     <!-- REGISTER
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="container" ng-controller="RegistrationController as regCtrl">
+    <div class="container-fluid" style="background-image: url('http://www.hdwallpapera.com/wp-content/uploads/wallpaper/dmhdwallpapers/wallpapers-005/Beautiful%20City%20Background%20Hd.jpg');
+    background-size: cover;padding-top:20px;" ng-controller="RegistrationController as regCtrl">
       <div class="row">
         <div class="col-md-6 text-center col-md-offset-3 box">
           <h1 class="company-name">LinkedIn</h1>
