@@ -246,7 +246,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1 box">
-          <h1 class="text-center">Location</h1>
+          <h1 class="text-center" style="margin-top: 0px;">Location</h1>
           <img src="http://placehold.it/1000x500" class="img-responsive">
         </div>
       </div>
