@@ -1,5 +1,5 @@
 var app = angular.module('linkedinApp', ['angularSpinner'])
-  .controller('RegistrationController', ['$scope', '$http', 'usSpinnerService', function($scope, $http, usSpinnerService) {
+  .controller('RegistrationController', ['$scope', '$http', 'usSpinnerService', function($scope, $http, usSpinnerService, $window) {
   	 
   	/*
 	  	CONSTANTS
@@ -55,47 +55,42 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 		show_load_spinner();
 		
 		
-		
-		/*
-		$http({
-			method : 'GET',
-			url : reg_url
-		}).then(function successCallBack(response) {
+		$http.post( reg_url , post_data ).then( function successCallback( response ) {
 			
 			
+			//	First stop the load spinner
 			hide_load_spinner();
-			console.log("data -> " + JSON.stringify(response.data));
 			
-			if (typeof(Storage) !== "undefined") {
+			
+			if (response.status == 200 ) {
 				
-				//	Store the authentication token
-				sessionStorage.auth_token = response.data.auth_info.auth_token;
-				sessionStorage.auth_token_expire_time = response.data.auth_info.expires_in;
+				//	Gather the auth token data
+				var auth_token 		= response.data.auth_info.auth_token;
+				var auth_expires_in = response.data.auth_info.expires_in;
+				var user_id 		= response.data.auth_info.uid;
 				
-				//	Redirect to the home page
-
+				//	Store the token information in session storage
+				store_value_for_key_in_session_storage( "auth_token" , auth_token);
+				store_value_for_key_in_session_storage( "expires_in" , auth_expires_in );
+				store_value_for_key_in_session_storage( "user_id" , user_id );
 				
 				
-			} else {
-				console.log("Browser does not support storage");
+				//	Redirect the user to the home page ... or to the company page if you're doing your debug stuff
+				var debug_company_uid = 2;
+				
+				var redirect_url = base_url + "company.php?uid=" + debug_company_uid;
+				
+				$window.location.href = redirect_url;
+			}
+			else {
+				
+				var error_message = "I got a bad status code " + response.status;
+				
+				alert( error_message );
+				console.log( error_message );
 				
 			}
 			
-		}, function errorCallback(response) {
-			
-			console.log("There was an error");
-			
-		});
-		*/
-		
-		
-		
-		$http.post( reg_url , post_data ).then( function successCallback( response ) {
-			
-			var success_string = response.data;
-			
-			alert( success_string );
-			console.log( success_string );
 			
 			
 		}, function errorCallback( response ) {
@@ -117,6 +112,20 @@ var app = angular.module('linkedinApp', ['angularSpinner'])
 		$scope.registerButtonDisabled = !isValidInfo;
 	}, true);
 	
+	function store_value_for_key_in_session_storage( key , value ) {
+		
+		if(typeof(Storage) !== "undefined" ) {
+			
+			sessionStorage.key = value;
+			
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+		
+	}
 	function clean_reg_dict() {
 		
 		
