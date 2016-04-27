@@ -63,6 +63,7 @@
     }
     .box {
       margin-top: 10px;
+      margin-bottom: 100px;
       padding-top: 40px;
       padding-bottom: 40px;
       background-color: white;
