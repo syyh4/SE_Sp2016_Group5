@@ -60,7 +60,17 @@
 	
 	$load_all_male_uids = "SELECT uid FROM person WHERE gender LIKE 'male%'";
 	
-	if (!($result = $db_conn->query($load_all_male_uids)))
+	if (!($result = $db_conn->query($load_all_male_uids))) {
+		echo_simple( "I couldn't get all the male uids");
+		exit(2);
+	}
+	
+	while ($result_row = $db_conn->fetch_array(MYSQLI_ASSOC)) {
+		
+		$male_uid = $result_row["uid"];
+		
+		array_push($male_uids, $male_uid);
+	}
 	
 	
 	
