@@ -159,10 +159,10 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="container">
       <div class="row">
-        <div class="col-md-5 col-md-offset-1 box" style="max-height: 500px;overflow: auto;">
+        <div class="col-md-5 col-md-offset-1 box">
           <h1 class="text-center employeesheader">Current Employees</h1>
           <div class="employeelist" ng-repeat="emp in employees">
-			<div class="media employeesItem">
+			<div class="media employeesItem"  style="max-height: 500px;overflow: auto;">
 				<div class="media-left">
 					<a href="#">
 						<img class="media-object" src="http://i.imgur.com/JDatwND.png?2">
@@ -179,8 +179,8 @@
         <!-- POSITIONS
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="col-md-5 box">
-          <h1 class="text-center positionsheader" style="max-height: 500px;overflow: auto;">Available Positions</h1>
-          <div class="positionlist">
+          <h1 class="text-center positionsheader">Available Positions</h1>
+          <div class="positionlist"  style="max-height: 500px;overflow: auto;">
             <div class="media">
               <div class="media-left">
                 <a href="#">
