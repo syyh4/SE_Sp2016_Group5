@@ -77,6 +77,7 @@
     }
     .company-name {
       margin-bottom: 0px;
+      font-size: 60px;
     }
     .company-desc {
       text-align: left;
@@ -91,6 +92,8 @@
     }
     .create-button {
       margin-top: 30px;
+      font-size: 31px;
+      font-weight: 300;
     }
     input[type=text] {
       margin-top: 0px;
@@ -109,7 +112,7 @@
 
     <!-- NAVBAR
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <nav class="navbar navbar-inverse navbar-static-top">
+    <nav class="navbar navbar-inverse navbar-static-top" style="margin-bottom:0px">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -135,7 +138,8 @@
 
     <!-- REGISTER
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="container">
+    <div class="container-fluid" style="background-image: url('http://www.hdwallpapera.com/wp-content/uploads/wallpaper/dmhdwallpapers/wallpapers-005/Beautiful%20City%20Background%20Hd.jpg');
+    background-size: cover;padding-top:20px;">
       <div class="row">
         <div class="col-md-6 text-center col-md-offset-3 box">
           <h1 class="company-name">LinkedIn</h1>
