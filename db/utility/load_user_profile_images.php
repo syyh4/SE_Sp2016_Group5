@@ -16,38 +16,24 @@
 		die("The connection to the database failed: " . $db_conn->connect_error);
 	}
 	
+	$male_img_urls = array();
 	
+	$load_all_male_image_urls_sql = "SELECT * FROM user_profile_images WHERE img_gender='male'";
 	
-	$all_rand_ints = array();
-	
-	
-	$min_value = 0;
-	$max_value = 100;
-	
-	
-	$total_values = 50;
-	
-	echo "\n Min Value:\t$min_value\n Max Value:\t$max_value\n Total Values:\t$total_values\n";
-
-	for($i = 0; $i < $total_values; $i++) {
-		
-		$rand_int = rand($min_value, $max_value);
-		
-		array_push($all_rand_ints, $rand_int);
-	}
-
-	echo "\n\nEchoing Array Values...\n";
-	
-	
-	foreach( $all_rand_ints as $rand_int ) {
-		
-		echo "\nRand Int:\t$rand_int";
+	if (!($result = $db_conn->query($load_all_male_image_urls_sql))) {
+		echo_simple( "I couldn't get all the male images..." );
+		exit(1);
 	}
 	
-	echo "\n";
-
-
-
+	while ($result_row = $result->fetch_array(MYSQLI_ASSOC)) {
+		
+		$male_img_url = $result_row["img_url"];
+		array_push($male_img_urls, $male_img_url);
+	}
+	
+	echo json_encode($male_img_urls);
+	
+	
 
 	
 	
@@ -64,6 +50,9 @@
 	/*
 		CUSTOM FUNCTIONS
 	*/
+	function echo_simple( $v ) {
+		echo "\n$v\n";
+	}
 	function generate_255_char_random_string() {
 		
 		$length = 64;
