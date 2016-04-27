@@ -55,7 +55,7 @@ CREATE VIEW employees_view AS
 	AND
 		C.uid = CE.cid
 	AND 
-		U.uid = CE.eid
+		U.uid = P.uid
 );
 
 
