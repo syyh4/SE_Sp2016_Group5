@@ -76,11 +76,57 @@
 	
 	//	Get all the female UIDs
 	
+	$female_uids = array();
+	
+	$load_all_female_uids = "SELECT uid FROM person WHERE gender LIKE 'female%'";
+	
+	if (!($result = $db_conn->query($load_all_female_uids))) {
+		echo_simple( "I couldn't get all the female uids");
+		exit(2);
+	}
+	
+	while ($result_row = $result->fetch_array(MYSQLI_ASSOC)) {
+		
+		$female_uid = $result_row["uid"];
+		
+		array_push($female_uids, $female_uid);
+	}
+	
+	$male_update_values = array();
 	
 	
+	foreach( $male_uids as $male_id ) {
+		
+		$uid_value = $male_id;
+		
+		$img_value = $male_img_urls[0];
+		
+		$ret_array = array(
+			"uid" => $uid_value,
+			"img_url" => $img_value
+		);
+		
+		$male_update_values = array();
+		
+	}
 	
+	//	Update the male values
 	
+	$update_male_images_sql = "UPDATE user SET prof_image = ? WHERE uid = ?";
 	
+	if($update_male_images_stmt = $db_conn->prepare($update_male_images_sql)) {
+		
+		foreach( $male_update_values as $update_value_male) {
+			
+			$male_update_uid = $update_value_male["uid"];
+			$male_update_img = $update_value_male["img_url"];
+			
+			$update_male_images_stmt->bind_param("si", $male_update_img, $male_update_uid);
+			
+			$update_male_images_stmt->execute();
+		}
+		
+	}
 
 
 
