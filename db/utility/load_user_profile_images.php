@@ -106,7 +106,7 @@
 			"img_url" => $img_value
 		);
 		
-		$male_update_values = array();
+		array_push($male_update_values, $ret_array);
 		
 	}
 	
