@@ -23,7 +23,8 @@ AS
           L.country, 
           L.zip 
    FROM   company C, 
-          location L 
+          location L,
+          user U
    WHERE  C.lid = L.lid AND C.uid = U.uid
    ); 
    
