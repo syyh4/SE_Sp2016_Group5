@@ -251,7 +251,7 @@ angular.module("myApp", ["chart.js"]).controller("CompanyController", function (
 	}
 	function clean_company_info_dict( ret_dict ) {
 		
-		//console.log( ret_dict );
+		console.log( ret_dict );
 		
 		//	Put all values from the response dictionary into the
 		//	controllers 'basicInfo' scope dictionary
