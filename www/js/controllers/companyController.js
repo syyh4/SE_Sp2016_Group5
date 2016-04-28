@@ -266,7 +266,7 @@ angular.module("myApp", ["chart.js"]).controller("CompanyController", function (
 		$scope.basicInfo.state 			= ret_dict["state"];
 		$scope.basicInfo.country 		= ret_dict["country"];
 		$scope.basicInfo.zip 			= ret_dict["zip"];
-		
+		$scope.basicInfo.image_url		= ret_dict["company_image"];
 		
 		//	Set the pretty location value
 		var pretty_location = $scope.basicInfo.street_address + ", " + $scope.basicInfo.city + ", " + $scope.basicInfo.state + " " + $scope.basicInfo.zip;

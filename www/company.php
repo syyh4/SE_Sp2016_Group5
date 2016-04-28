@@ -120,7 +120,7 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1 box">
           <div class="col-sm-5 text-center">
-            <img src="http://placehold.it/250x250" class="img-responsive" style="display:inline-block;">
+            <img ng-src="basicInfo.image_url" class="img-responsive" style="display:inline-block;">
           </div>
           <div class="col-md-7 text-center">
             <h1 class="company-name">{{ basicInfo.name }}</h1>
