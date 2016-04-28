@@ -523,7 +523,7 @@
 							}
 								
 							http_response_code(200);
-							shuffle($employees)
+							shuffle($employees);
 							echo json_encode($employees);							
 							
 						}
