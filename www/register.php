@@ -124,11 +124,11 @@
 					<input type="text" class="form-control" ng-model="reg_info.birthdate">
 					<small class="text-muted">Must be in the format -> mm/dd/yyyy</small>
 				</div>
-				<div>
+				<div class="form-group">
 					<label for="email">Email</label>
 					<input type="email" class="form-control" ng-model="reg_info.email">
 				</div>
-				<div>
+				<div class="form-group">
 					<label for="gender">Gender</label>
 					<input type="text" class="form-control" ng-model="reg_info.gender">
 					<small class="text-muted">This response is private and optional</small>
