@@ -251,8 +251,6 @@ angular.module("myApp", ["chart.js"]).controller("CompanyController", function (
 	}
 	function clean_company_info_dict( ret_dict ) {
 		
-		console.log( ret_dict );
-		
 		//	Put all values from the response dictionary into the
 		//	controllers 'basicInfo' scope dictionary
 		$scope.basicInfo.cid 			= ret_dict["company_id"];
@@ -272,6 +270,9 @@ angular.module("myApp", ["chart.js"]).controller("CompanyController", function (
 		var pretty_location = $scope.basicInfo.street_address + ", " + $scope.basicInfo.city + ", " + $scope.basicInfo.state + " " + $scope.basicInfo.zip;
 		
 		$scope.basicInfo.pretty_location = pretty_location;
+		
+		console.log("Scope Basic Info " + $scope.basicInfo);
+		
 		
 	}
 	function convert_return_dictionary_to_chart_dict( ret_dict ) {
