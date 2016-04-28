@@ -7,7 +7,7 @@
 */
 USE linkedin_group_5;
 
-DROP VIEW IF EXISTS company_location_view;
+DROP VIEW IF EXISTS company_full_view;
 CREATE VIEW company_full_view 
 AS 
   (SELECT C.uid        AS company_id, 
