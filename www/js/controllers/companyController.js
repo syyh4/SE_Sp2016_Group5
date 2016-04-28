@@ -192,7 +192,6 @@ angular.module("myApp", ["chart.js"]).controller("CompanyController", function (
 						"auth_token=" + token_info["auth_token"];
 
 		console.log( api_url );
-		
 		$http({
 			method 	: 'GET',
 			url 	: api_url
