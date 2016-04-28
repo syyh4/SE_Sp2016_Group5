@@ -453,7 +453,7 @@
 							
 							
 							
-							$get_company_employees_sql_male = "SELECT * FROM employees_view WHERE cid = $cid AND gender LIKE 'male%' LIMIT 1";
+							$get_company_employees_sql_male = "SELECT * FROM employees_view WHERE cid = $cid AND gender LIKE 'male%' LIMIT 3";
 							
 							$employees = array();
 							
@@ -487,9 +487,8 @@
 								}
 							}
 							
-							$get_company_employees_sql_female = "SELECT * FROM employees_view WHERE cid = $cid AND gender LIKE 'female%' LIMIT 9";
+							$get_company_employees_sql_female = "SELECT * FROM employees_view WHERE cid = $cid AND gender LIKE 'female%' LIMIT 7";
 							
-							echo $get_company_employees_sql_female;
 							
 							if ($result = $db_conn->query($get_company_employees_sql_female)) {
 								
@@ -525,7 +524,7 @@
 								
 							http_response_code(200);
 							
-							echo json_encode($employees);							
+							echo json_encode(shuffle($employees));							
 							
 						}
 							
@@ -572,7 +571,6 @@
 	/*
 		UTILITY FUNCTIONS
 	*/
-	
 	function echo_simple( $v ) {
 		
 		echo "\n $v \n";
