@@ -136,7 +136,7 @@
   <div class="row">
         <div class="col-lg-5 col-lg-offset-1 box" id="age-bar-chart">
           <div class="panel panel-default">
-            <div class="panel-heading">Company Age Distribution</div>
+            <div class="panel-heading">Company Age Distribution (%)</div>
             <div class="panel-body">
               <canvas id="line" class="chart chart-bar" chart-data="ageChartInfo.data" chart-labels="ageChartInfo.labels" chart-legend="false"
                       chart-click="onClick" chart-hover="onHover" chart-series="ageChartInfo.series"></canvas>
