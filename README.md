@@ -30,3 +30,11 @@ Search: http://52.165.38.69/search.php
 Activity: http://52.165.38.69/activity.php
 
 ### Deploying application
+
+To install our app, first of all you should have apache2 MySQL installed. 
+
+Secondly, open terminal, navigate to the directory where you would like install our app, and then type "git clone https://github.com/syyh4/SE_Sp2016_Group5.git"
+
+Third, by changing /etc/apache2/sites-available/52.165.38.69.conf, you could change all website URL information.
+
+Last, by changing files under /home/evan/SE_Sp2016_Group5/www, you are able to change all contents on our website.
